@@ -232,7 +232,7 @@ export const seed = async ({
     payload.updateGlobal({
       slug: 'footer',
       data: {
-        navItems: [
+        quickLinks: [
           {
             link: {
               type: 'custom',
@@ -240,6 +240,8 @@ export const seed = async ({
               url: '/admin',
             },
           },
+        ],
+        legalLinks: [
           {
             link: {
               type: 'custom',
