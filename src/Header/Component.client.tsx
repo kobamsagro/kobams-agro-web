@@ -40,52 +40,52 @@ interface HeaderClientProps {
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
-   const [isScrolled, setIsScrolled] = useState(false)
-   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-   const [searchQuery, setSearchQuery] = useState('')
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
-   const isMobile = useMediaQuery('(max-width: 640px)')
-   const isTablet = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')
-   const isDesktop = useMediaQuery('(min-width: 1025px)')
+  const isMobile = useMediaQuery('(max-width: 640px)')
+  const isTablet = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')
+  const isDesktop = useMediaQuery('(min-width: 1025px)')
 
-   useEffect(() => {
-     const handleScroll = () => {
-       if (window.scrollY > 50) {
-         setIsScrolled(true)
-       } else {
-         setIsScrolled(false)
-       }
-     }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
 
-     window.addEventListener('scroll', handleScroll)
-     return () => {
-       window.removeEventListener('scroll', handleScroll)
-     }
-   }, [])
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
-   // Close mobile menu when pathname changes
-   useEffect(() => {
-     setIsMobileMenuOpen(false)
-   }, [pathname])
+  // Close mobile menu when pathname changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [pathname])
 
-   const headerClasses = `fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-5`
+  const headerClasses = `fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-5`
 
-   const getLinkClasses = (href: string) => {
-     const isActive = pathname === href
-     const baseClasses = `hover:text-black transition-colors duration-300 text-lg font-medium`
-     const activeClasses = isActive
-       ? isScrolled
-         ? 'text-[#FFCB05] font-bold'
-         : 'text-[#184504] font-bold'
-       : ''
-     const scrollClasses = isScrolled
-       ? 'text-black hover:text-[#FFCB05] font-semibold'
-       : 'text-[#184504]'
-     return `${baseClasses} ${isActive ? activeClasses : scrollClasses}`
-   }
-   
+  const getLinkClasses = (href: string) => {
+    const isActive = pathname === href
+    const baseClasses = `hover:text-black transition-colors duration-300 text-lg font-medium`
+    const activeClasses = isActive
+      ? isScrolled
+        ? 'text-[#FFCB05] font-bold'
+        : 'text-[#184504] font-bold'
+      : ''
+    const scrollClasses = isScrolled
+      ? 'text-black hover:text-[#FFCB05] font-semibold'
+      : 'text-[#184504]'
+    return `${baseClasses} ${isActive ? activeClasses : scrollClasses}`
+  }
+
   useEffect(() => {
     setHeaderTheme(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -125,7 +125,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             <div className="hidden md:flex items-center  space-x-8">
               <Link href="/about" className={getLinkClasses('/about')}>
                 <div className="flex items-center gap-2">
-                  
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                       <div className="flex items-center gap-1">
@@ -243,7 +242,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </div>
 
           {/* button */}
-          <button className="bg-[#E1A72B] text-white px-6 py-3 rounded-full hover:bg-[#184504] hover:text-white font-semibold transition-colors duration-300">Contact</button>
+          <button className="bg-[#E1A72B] text-white px-6 py-3 rounded-full hover:bg-[#184504] hover:text-white font-semibold transition-colors duration-300">
+            Contact
+          </button>
         </div>
       )}
       {/* <div className="py-8 flex justify-between">
