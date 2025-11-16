@@ -8,13 +8,13 @@ import React, { cache } from 'react'
 import { homeStatic } from '@/endpoints/seed/home-static'
 // import HeroSection from '@/components/HeroSection'
 
-
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import HeroSection from '../../../components/HeroSection/HeroSection'
+import ProductsSection from '../../../components/ProductsSection/ProductsSection'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -69,9 +69,22 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout } = page
 
+  // Fetch products for the products section
+  const payload = await getPayload({ config: configPromise })
+  const productsData = await payload.find({
+    collection: 'products',
+    limit: 6,
+    where: {
+      status: {
+        equals: 'available',
+      },
+    },
+  })
+
   return (
     <>
-    <HeroSection />
+      <HeroSection />
+      <ProductsSection products={productsData.docs} />
     </>
   )
 }

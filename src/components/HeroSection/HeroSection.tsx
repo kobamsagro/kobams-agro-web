@@ -49,7 +49,7 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
-{/* stat end */}
+          {/* stat end */}
           {/* Right Content - Product Cards */}
           <div className="relative grid grid-cols-2 h-[600px]">
             {/* Cocoa Beans Card - Left Full Height */}

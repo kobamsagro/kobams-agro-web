@@ -77,7 +77,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     const baseClasses = `hover:text-black transition-colors duration-300 text-lg font-medium`
     const activeClasses = isActive
       ? isScrolled
-        ? 'text-[#FFCB05] font-bold'
+        ? 'text-[#222222] font-bold'
         : 'text-[#184504] font-bold'
       : ''
     const scrollClasses = isScrolled
