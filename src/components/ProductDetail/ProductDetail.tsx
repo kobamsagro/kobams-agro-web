@@ -16,8 +16,24 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-[#184504] text-white py-20">
-        <div className="container mx-auto px-6">
+      <section className="bg-[#184504] text-white py-32">
+        <div className="container mx-auto my-12 px-6">
+          {/* Breadcrumb */}
+          <div className="">
+            <div className="container mx-auto px-6">
+              <div className="flex items-center gap-2 text-sm text-white">
+                <Link href="/" className="hover:text-black">
+                  Home
+                </Link>
+                <span>/</span>
+                <Link href="/#products" className="hover:text-black">
+                  Products
+                </Link>
+                <span>/</span>
+                <span className="text-yellow-600">{product.name}</span>
+              </div>
+            </div>
+          </div>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
@@ -26,11 +42,11 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
                 <p className="text-yellow-400 text-xl italic mb-6">{product.botanicalName}</p>
               )}
               <p className="text-lg mb-8">{product.description}</p>
-              {product.status === 'available' && (
+              {/* {product.status === 'available' && (
                 <span className="inline-block bg-yellow-400 text-[#184504] px-6 py-2 rounded-full font-semibold">
                   Available
                 </span>
-              )}
+              )} */}
             </div>
 
             {/* Right Image */}
@@ -42,22 +58,6 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
           </div>
         </div>
       </section>
-      {/* Breadcrumb */}
-      <div className="bg-gray-50 py-4">
-        <div className="container mx-auto px-6">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#184504]">
-              Home
-            </Link>
-            <span>/</span>
-            <Link href="/#products" className="hover:text-[#184504]">
-              Products
-            </Link>
-            <span>/</span>
-            <span className="text-yellow-600">{product.name}</span>
-          </div>
-        </div>
-      </div>
 
       {/* Quality Specifications */}
       {product.specifications && product.specifications.length > 0 && (
@@ -158,7 +158,7 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
       <section className="py-16 bg-[#184504] text-white">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-2xl mx-auto">
-            <div className="text-5xl mb-4">📊</div>
+            <div className="text-5xl mb-4"></div>
             <h2 className="text-3xl font-bold mb-4">Minimum Order Quantity</h2>
             <p className="text-5xl font-bold text-yellow-400 mb-6">{product.moq}</p>
             <p className="text-lg mb-8">Competitive pricing for bulk orders</p>
@@ -178,7 +178,7 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
               Request a Quote
             </button>
             <button className="bg-[#184504] hover:bg-[#2d4a1f] text-white font-semibold px-8 py-4 rounded-lg transition-colors">
-              📞 WhatsApp Inquiry
+              WhatsApp Inquiry
             </button>
           </div>
         </div>

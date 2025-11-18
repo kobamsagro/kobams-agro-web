@@ -13,7 +13,7 @@ export default function FAQPage() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-[#184504] text-white py-32">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto my-12 px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">FAQs</h1>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto">
             Everything you need to know about our processes, products, and partnerships

@@ -21,7 +21,7 @@ export default function TermsPage() {
 
       {/* Content Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-6
+        <div className="container mx-auto px-6 max-w-4xl">
           {/* Section 1 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">

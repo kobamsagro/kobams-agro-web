@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function ProductsHero() {
   return (
-    <section className="relative bg-[#184504]  text-white py-36">
-      <div className="container mx-auto px-6 text-center">
+    <section className="relative bg-[#184504]  text-white py-32">
+      <div className="container mx-auto my-12 px-6 text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
           Premium Agricultural Products
         </h1>
