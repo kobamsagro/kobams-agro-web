@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-import type { Header } from '@/payload-types'
+import type { Header, Product } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
@@ -36,9 +36,10 @@ function useMediaQuery(query: string): boolean {
 
 interface HeaderClientProps {
   data: Header
+  products?: Product[]
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -123,58 +124,52 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             {/* product start */}
 
             <div className="hidden md:flex items-center  space-x-8">
-              <Link href="/about" className={getLinkClasses('/about')}>
-                <div className="flex items-center gap-2">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <div className="flex items-center gap-1">
-                        Product{' '}
-                        <span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            height="24"
-                            fill="currentColor"
-                          >
-                            <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
-                          </svg>
-                        </span>
-                      </div>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuLabel>Support</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        {' '}
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Contact Us</span>
+              <DropdownMenu>
+                <DropdownMenuTrigger className={getLinkClasses('/products')}>
+                  <div className="flex items-center gap-1">
+                    Products{' '}
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                      >
+                        <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
+                      </svg>
+                    </span>
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="max-h-[400px] overflow-y-auto">
+                  <DropdownMenuLabel>Our Products</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <Link href="/products" className="w-full">
+                      <span className="text-[16px] font-semibold">View All Products</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  {products && products.length > 0 ? (
+                    products.map((product) => (
+                      <DropdownMenuItem key={product.id}>
+                        <Link href={`/products/${product.slug}`} className="w-full">
+                          <span className="text-[16px]">{product.name}</span>
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Track an order</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Cancel an order</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Return a product</span>
-                        </Link>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
-              </Link>
+                    ))
+                  ) : (
+                    <DropdownMenuItem disabled>
+                      <span className="text-[14px] text-gray-500">No products available</span>
+                    </DropdownMenuItem>
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
             {/* product end */}
             {/* services start */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/about" className={getLinkClasses('/about')}>
+              <Link href="/services" className={getLinkClasses('/services')}>
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-1">Services </div>
                 </div>
@@ -242,9 +237,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </div>
 
           {/* button */}
+          <Link href="/contact">
           <button className="bg-[#E1A72B] text-white px-6 py-3 rounded-full hover:bg-[#184504] hover:text-white font-semibold transition-colors duration-300">
             Contact
           </button>
+          </Link>
         </div>
       )}
       {/* <div className="py-8 flex justify-between">

@@ -63,7 +63,7 @@ export default function HeroSection() {
             </div>
 
             {/* Right Column - Cashew Nuts and Sesame Seeds Stacked */}
-            <div className="flex flex-col  ">
+            <div className="flex flex-col">
               {/* Cashew Nuts Card */}
               <div className="relative h-full rounded-3xl overflow-hidden group">
                 <Image

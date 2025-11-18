@@ -15,6 +15,11 @@ import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import HeroSection from '../../../components/HeroSection/HeroSection'
 import ProductsSection from '../../../components/ProductsSection/ProductsSection'
+import AboutSection from '../../../components/AboutSection/AboutSection'
+import ServicesSection from '../../../components/ServicesSection/ServicesSection'
+import PartnersSection from '../../../components/PartnersSection/PartnersSection'
+import TestimonialsSection from '../../../components/TestimonialsSection/TestimonialsSection'
+import NewsSection from '../../../components/NewsSection/NewsSection'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -81,10 +86,50 @@ export default async function Page({ params: paramsPromise }: Args) {
     },
   })
 
+  // Fetch partners
+  const partnersData = await payload.find({
+    collection: 'partners',
+    limit: 12,
+    where: {
+      active: {
+        equals: true,
+      },
+    },
+    sort: 'order',
+    depth: 2,
+  })
+
+  // Fetch testimonials
+  const testimonialsData = await payload.find({
+    collection: 'testimonials',
+    limit: 10,
+    where: {
+      status: {
+        equals: 'approved',
+      },
+    },
+    sort: '-createdAt',
+    depth: 2,
+  })
+
+  // Fetch latest blog posts
+  const postsData = await payload.find({
+    collection: 'posts',
+    limit: 3,
+    sort: '-publishedAt',
+    depth: 2,
+  })
+
   return (
     <>
       <HeroSection />
       <ProductsSection products={productsData.docs} />
+      <AboutSection />
+      <ServicesSection />
+      <PartnersSection partners={partnersData.docs} />
+
+      <TestimonialsSection testimonials={testimonialsData.docs} />
+      <NewsSection posts={postsData.docs} />
     </>
   )
 }
