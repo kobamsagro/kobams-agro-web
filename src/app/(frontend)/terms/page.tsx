@@ -32,7 +32,7 @@ export default function TermsPage() {
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                Welcome to Kobam's Agro Solutions. These Terms and Conditions ("Terms") govern your
+                Welcome to Kobam&apos;s Agro Solutions. These Terms and Conditions (&ldquo;Terms&rdquo;) govern your
                 access to and use of our website, products, and services. By accessing or using our
                 services, you agree to be bound by these Terms. If you do not agree with any part
                 of these Terms, please do not use our services.
@@ -292,7 +292,7 @@ export default function TermsPage() {
               <p>
                 We may update these Terms from time to time to reflect changes in our practices or
                 for legal, operational, or regulatory reasons. We will notify you of any material
-                changes by posting the updated Terms on our website and updating the "Last Updated"
+                changes by posting the updated Terms on our website and updating the &ldquo;Last Updated&rdquo;
                 date.
               </p>
               <p>
@@ -316,7 +316,7 @@ export default function TermsPage() {
                 Conditions or our privacy practices, please contact us:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                <p className="font-semibold text-gray-900 mb-2">Kobam's Agro Solutions</p>
+                <p className="font-semibold text-gray-900 mb-2">Kobam&apos;s Agro Solutions</p>
                 <p>Email: info@kobamsagro.com</p>
                 <p>Phone: +234 (0) 123 456 7890</p>
                 <p>Address: 123 Agricultural Way, Lagos, Nigeria</p>
@@ -329,4 +329,3 @@ export default function TermsPage() {
   )
 }
 
-max-w-4xl
