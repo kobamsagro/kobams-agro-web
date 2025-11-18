@@ -33,10 +33,10 @@ export default function PrivacyPage() {
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                At Kobam's Agro Solutions, we are committed to protecting your privacy and ensuring
-                the security of your personal information. This Privacy Policy explains how we
-                collect, use, disclose, and safeguard your information when you visit our website,
-                use our services, or engage with us in any way.
+                At Kobam&apos;s Agro Solutions, we are committed to protecting your privacy and
+                ensuring the security of your personal information. This Privacy Policy explains how
+                we collect, use, disclose, and safeguard your information when you visit our
+                website, use our services, or engage with us in any way.
               </p>
               <p>
                 Please read this Privacy Policy carefully. By accessing or using our services, you
@@ -422,7 +422,7 @@ export default function PrivacyPage() {
                 we will:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Update the "Last Updated" date at the top of this policy</li>
+                <li>Update the &quot;Last Updated&quot; date at the top of this policy</li>
                 <li>Post the revised policy on our website</li>
                 <li>
                   Notify you via email or prominent notice on our website for material changes
@@ -448,10 +448,10 @@ export default function PrivacyPage() {
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
                 If you have any questions, concerns, or requests regarding this Privacy Policy or
-                our data practices, please don't hesitate to contact us:
+                our data practices, please don&apos;t hesitate to contact us:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                <p className="font-semibold text-gray-900 mb-2">Kobam's Agro Solutions</p>
+                <p className="font-semibold text-gray-900 mb-2">Kobam&apos;s Agro Solutions</p>
                 <p className="mb-1">
                   <strong>Email:</strong> privacy@kobamsagro.com
                 </p>
