@@ -81,7 +81,7 @@ export default function AboutUs() {
               </div>
               <div>
                 <h3 className="font-bold text-xl text-[#2d4a1f] mb-2">Mechanized Farming</h3>
-                <p className="text-gray-600">Advanced equipment for improved productivity</p>
+                <p className="text-gray-600">Advanced equipment for improved productivity.</p>
               </div>
             </div>
 

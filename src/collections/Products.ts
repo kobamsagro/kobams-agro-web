@@ -137,6 +137,23 @@ export const Products: CollectionConfig = {
       ],
     },
     {
+      name: 'category',
+      type: 'select',
+      options: [
+        { label: 'Grains & Seeds', value: 'grains-seeds' },
+        { label: 'Roots & Tubers', value: 'roots-tubers' },
+        { label: 'Legumes', value: 'legumes' },
+        { label: 'Nuts', value: 'nuts' },
+        { label: 'Spices', value: 'spices' },
+        { label: 'Other', value: 'other' },
+      ],
+      required: true,
+      label: 'Product Category',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'featured',
       type: 'checkbox',
       label: 'Featured Product',

@@ -1,0 +1,154 @@
+'use client'
+import React, { useState } from 'react'
+
+export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        e.currentTarget.reset()
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <div className="bg-white rounded-2xl p-8 shadow-lg">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+      <p className="text-gray-600 mb-6">
+        Fill out the form below and we&apos;ll get back to you within 24 hours
+      </p>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Name and Email */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+              placeholder="Your email address"
+            />
+          </div>
+        </div>
+
+        {/* Phone Number */}
+        <div>
+          <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+            placeholder="Enter your phone number"
+          />
+        </div>
+
+        {/* Subject */}
+        <div>
+          <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
+            Subject *
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+            placeholder="What is this regarding?"
+          />
+        </div>
+
+        {/* Message */}
+        <div>
+          <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+            Message * (Max 500 characters)
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={5}
+            maxLength={500}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent resize-none"
+            placeholder="Tell us how we can help you..."
+          />
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-[#184504] hover:bg-black text-white font-semibold px-8 py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        >
+          {isSubmitting ? (
+            'Sending...'
+          ) : (
+            <>
+              Submit
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </>
+          )}
+        </button>
+
+        {/* Status Messages */}
+        {submitStatus === 'success' && (
+          <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+            Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
+          </div>
+        )}
+        {submitStatus === 'error' && (
+          <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+            Sorry, there was an error sending your message. Please try again or contact us directly.
+          </div>
+        )}
+      </form>
+    </div>
+  )
+}

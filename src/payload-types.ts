@@ -70,6 +70,8 @@ export interface Config {
     pages: Page;
     posts: Post;
     products: Product;
+    partners: Partner;
+    testimonials: Testimonial;
     media: Media;
     categories: Category;
     users: User;
@@ -93,6 +95,8 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -818,8 +822,55 @@ export interface Product {
       }[]
     | null;
   moq: string;
+  category: 'grains-seeds' | 'roots-tubers' | 'legumes' | 'nuts' | 'spices' | 'other';
   featured?: boolean | null;
   status?: ('available' | 'out-of-stock' | 'coming-soon') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: string;
+  name: string;
+  logo: string | Media;
+  category?: ('investor' | 'financial' | 'technology' | 'distribution' | 'strategic') | null;
+  website?: string | null;
+  description?: string | null;
+  /**
+   * Lower numbers appear first
+   */
+  order?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  location: string;
+  photo?: (string | null) | Media;
+  rating: number;
+  testimonial: string;
+  /**
+   * For verification purposes only, not displayed publicly
+   */
+  email?: string | null;
+  /**
+   * Set to Hidden to remove from public display
+   */
+  status: 'approved' | 'hidden';
+  /**
+   * Show this testimonial prominently
+   */
+  featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1024,6 +1075,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'products';
         value: string | Product;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: string | Partner;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
       } | null)
     | ({
         relationTo: 'media';
@@ -1299,8 +1358,41 @@ export interface ProductsSelect<T extends boolean = true> {
         id?: T;
       };
   moq?: T;
+  category?: T;
   featured?: T;
   status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  category?: T;
+  website?: T;
+  description?: T;
+  order?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  location?: T;
+  photo?: T;
+  rating?: T;
+  testimonial?: T;
+  email?: T;
+  status?: T;
+  featured?: T;
   updatedAt?: T;
   createdAt?: T;
 }
