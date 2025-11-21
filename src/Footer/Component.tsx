@@ -234,13 +234,13 @@ export async function Footer() {
           </p>
           <div className="flex gap-4 text-sm">
             <Link
-              href="/privacy-policy"
+              href="/privacy"
               className="text-gray-300 hover:text-black/80 transition-colors duration-200"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/terms-and-conditions"
+              href="/terms"
               className="text-gray-300 hover:text-black/80 transition-colors duration-200"
             >
               Terms of Service

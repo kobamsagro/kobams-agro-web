@@ -13,6 +13,7 @@ import { Pages } from './collections/Pages'
 import { Partners } from './collections/Partners'
 import { Posts } from './collections/Posts'
 import { Products } from './collections/Products'
+import { Services } from './collections/Services'
 import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
@@ -66,7 +67,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Products, Partners, Testimonials, Media, Categories, Users],
+  collections: [Pages, Posts, Products, Services, Partners, Testimonials, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

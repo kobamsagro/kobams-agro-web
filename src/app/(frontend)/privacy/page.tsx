@@ -11,11 +11,11 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#1a4d2e] to-[#2d5f3f] text-white py-20">
-        <div className="container mx-auto px-6 text-center">
+      <section className="bg-[#184504] text-white py-32">
+        <div className="container mx-auto my-12 px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
           <p className="text-lg text-gray-200">
-            Last updated on October 15, 2024 | Effective Date: October 15, 2024
+            Last updated on November 15, 2025 | Effective Date: November 15, 2025
           </p>
         </div>
       </section>
@@ -26,7 +26,7 @@ export default function PrivacyPage() {
           {/* Section 1 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 1
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">About this Notice</h2>
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           {/* Section 2 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 2
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
           {/* Section 3 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 3
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
           {/* Section 4 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 4
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -155,7 +155,7 @@ export default function PrivacyPage() {
           {/* Section 5 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 5
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -193,7 +193,7 @@ export default function PrivacyPage() {
           {/* Section 6 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 6
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Use of Information</h2>
@@ -237,7 +237,7 @@ export default function PrivacyPage() {
           {/* Section 7 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 7
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Legal Rights</h2>
@@ -292,7 +292,7 @@ export default function PrivacyPage() {
           {/* Section 8 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 8
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -335,7 +335,7 @@ export default function PrivacyPage() {
           {/* Section 9 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 9
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Your Rights and Choices</h2>
@@ -374,7 +374,7 @@ export default function PrivacyPage() {
           {/* Section 10 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 10
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Data Security and Retention</h2>
@@ -408,7 +408,7 @@ export default function PrivacyPage() {
           {/* Section 11 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 11
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -440,7 +440,7 @@ export default function PrivacyPage() {
           {/* Section 12 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 12
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Contact Us</h2>

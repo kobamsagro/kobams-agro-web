@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import type { Partner as PartnerType } from '@/payload-types'
 
 interface PartnersSectionProps {
@@ -34,7 +35,7 @@ export default function PartnersSection({ partners }: PartnersSectionProps) {
                 className="bg-white rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow"
               >
                 {partner.website ? (
-                  <a
+                  <Link
                     href={partner.website}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -46,7 +47,7 @@ export default function PartnersSection({ partners }: PartnersSectionProps) {
                       fill
                       className="object-contain"
                     />
-                  </a>
+                  </Link>
                 ) : (
                   <div className="relative w-full h-20">
                     <Image
