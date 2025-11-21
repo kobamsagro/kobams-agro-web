@@ -10,8 +10,8 @@ export default function ServicesCTA() {
           Ready to Start Your Agro?
         </h2>
         <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-          Join hundreds of farmers and businesses who trust Kobam's Agro Solutions for their
-          agricultural needs. Let's grow together.
+          Join hundreds of farmers and businesses who trust Kobam&apos;s Agro Solutions for their
+          agricultural needs. Let&apos;s grow together.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

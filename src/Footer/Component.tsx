@@ -146,7 +146,7 @@ export async function Footer() {
                 About Us
               </Link>
               <Link
-                href="/news"
+                href="/blog"
                 className="block text-sm md:text-base text-gray-300 hover:text-yellow-400 transition-colors duration-200"
               >
                 News
