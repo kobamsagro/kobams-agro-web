@@ -2,19 +2,20 @@ import React from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | Kobam\'s Agro Solutions',
-  description: 'Read our terms and conditions for using Kobam\'s Agro Solutions services and website.',
+  title: "Terms & Conditions | Kobam's Agro Solutions",
+  description:
+    "Read our terms and conditions for using Kobam's Agro Solutions services and website.",
 }
 
 export default function TermsPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#1a4d2e] to-[#2d5f3f] text-white py-20">
-        <div className="container mx-auto px-6 text-center">
+      <section className="bg-[#184504] text-white py-32">
+        <div className="container mx-auto my-12 px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Terms & Conditions</h1>
           <p className="text-lg text-gray-200">
-            Last updated on October 15, 2024 | Effective Date: October 15, 2024
+            Last updated on November 15, 2025 | Effective Date: November 15, 2025
           </p>
         </div>
       </section>
@@ -25,17 +26,17 @@ export default function TermsPage() {
           {/* Section 1 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 1
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">About this Notice</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                Welcome to Kobam&apos;s Agro Solutions. These Terms and Conditions (&ldquo;Terms&rdquo;) govern your
-                access to and use of our website, products, and services. By accessing or using our
-                services, you agree to be bound by these Terms. If you do not agree with any part
-                of these Terms, please do not use our services.
+                Welcome to Kobam&apos;s Agro Solutions. These Terms and Conditions
+                (&ldquo;Terms&rdquo;) govern your access to and use of our website, products, and
+                services. By accessing or using our services, you agree to be bound by these Terms.
+                If you do not agree with any part of these Terms, please do not use our services.
               </p>
               <p>
                 We reserve the right to modify these Terms at any time. Any changes will be
@@ -48,7 +49,7 @@ export default function TermsPage() {
           {/* Section 2 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 2
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -78,7 +79,7 @@ export default function TermsPage() {
           {/* Section 3 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 3
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -108,7 +109,7 @@ export default function TermsPage() {
           {/* Section 4 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 4
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -123,7 +124,9 @@ export default function TermsPage() {
               <ul className="list-disc pl-6 space-y-2">
                 <li>Business contact information from trade directories</li>
                 <li>Market research and industry insights</li>
-                <li>Social media profile information (if you interact with us on social platforms)</li>
+                <li>
+                  Social media profile information (if you interact with us on social platforms)
+                </li>
                 <li>Credit and payment verification information from financial institutions</li>
               </ul>
             </div>
@@ -132,7 +135,7 @@ export default function TermsPage() {
           {/* Section 5 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 5
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -157,7 +160,7 @@ export default function TermsPage() {
           {/* Section 6 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 6
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Use of Information</h2>
@@ -179,7 +182,7 @@ export default function TermsPage() {
           {/* Section 7 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 7
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Legal Rights</h2>
@@ -195,8 +198,8 @@ export default function TermsPage() {
                 <li>The right to withdraw consent at any time</li>
               </ul>
               <p className="mt-4">
-                To exercise any of these rights, please contact us using the information provided
-                in the Contact Us section below.
+                To exercise any of these rights, please contact us using the information provided in
+                the Contact Us section below.
               </p>
             </div>
           </div>
@@ -204,17 +207,15 @@ export default function TermsPage() {
           {/* Section 8 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 8
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                How We Use Your Information
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">How We Use Your Information</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                Your information is used to provide, maintain, and improve our services. We may
-                also use your information to:
+                Your information is used to provide, maintain, and improve our services. We may also
+                use your information to:
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Personalize your experience on our website</li>
@@ -229,7 +230,7 @@ export default function TermsPage() {
           {/* Section 9 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 9
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Your Rights and Choices</h2>
@@ -259,7 +260,7 @@ export default function TermsPage() {
           {/* Section 10 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 10
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Data Security and Retention</h2>
@@ -271,9 +272,8 @@ export default function TermsPage() {
                 destruction. However, no method of transmission over the internet is 100% secure.
               </p>
               <p>
-                We retain your personal information for as long as necessary to fulfill the
-                purposes outlined in these Terms, unless a longer retention period is required by
-                law.
+                We retain your personal information for as long as necessary to fulfill the purposes
+                outlined in these Terms, unless a longer retention period is required by law.
               </p>
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function TermsPage() {
           {/* Section 11 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 11
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
@@ -292,8 +292,8 @@ export default function TermsPage() {
               <p>
                 We may update these Terms from time to time to reflect changes in our practices or
                 for legal, operational, or regulatory reasons. We will notify you of any material
-                changes by posting the updated Terms on our website and updating the &ldquo;Last Updated&rdquo;
-                date.
+                changes by posting the updated Terms on our website and updating the &ldquo;Last
+                Updated&rdquo; date.
               </p>
               <p>
                 We encourage you to review these Terms periodically to stay informed about how we
@@ -305,7 +305,7 @@ export default function TermsPage() {
           {/* Section 12 */}
           <div className="mb-12">
             <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-[#1a4d2e] text-white rounded-full flex items-center justify-center font-bold">
+              <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 12
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">Contact Us</h2>
@@ -328,4 +328,3 @@ export default function TermsPage() {
     </main>
   )
 }
-

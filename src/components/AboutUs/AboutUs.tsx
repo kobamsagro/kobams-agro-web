@@ -6,14 +6,14 @@ export default function AboutUs() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[400px] text-white overflow-hidden">
+      <section className="relative h-[500px] text-white overflow-hidden">
         <Image
-          src="/assets/about-hero.jpg"
+          src="/assets/about-hero.png"
           alt="About Kobam's Agro Solutions"
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        {/* <div className="absolute inset-0 bg-black/50" /> */}
         <div className="container relative z-10 mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Kobam&apos;s Agro Solutions</h1>
           <p className="text-lg max-w-2xl">
@@ -34,7 +34,7 @@ export default function AboutUs() {
                   Kobam&apos;s Agro Solutions is a leading player in the agricultural value chain —
                   specializing in crop production, exportation, and agro-technology. Founded on a
                   passion for food security and economic empowerment, Kobam&apos;s connects
-                  smallholder farmers to global markets, fostering growth through sustainable
+                  small-scale farmers to global markets, fostering growth through sustainable
                   practices and innovation.
                 </p>
                 <p>
@@ -286,24 +286,24 @@ export default function AboutUs() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: 'Kolawole Adisa',
-                role: 'Chief Executive Officer',
+                name: 'Adebayo Kobam',
+                role: 'CEO & Founder',
                 description: 'Leading the company with 15+ years of experience in agro-export.',
               },
               {
-                name: 'Ayoola Adeleke',
-                role: 'Operations Manager',
+                name: 'Dr. Funmi Adebayo',
+                role: 'Chief Operations Officer',
                 description:
                   'Ensuring seamless operations and quality control across all processes.',
               },
               {
-                name: 'Funmi Olawale',
-                role: 'Export Coordinator',
+                name: 'Ibrahim Hassan',
+                role: 'Export Director',
                 description: 'Managing international logistics and client relationships.',
               },
               {
-                name: 'Bola Ogunleye',
-                role: 'Quality Assurance Lead',
+                name: 'Dr. Kemi Ogundinmu',
+                role: 'Research & Technology Lead',
                 description: 'Maintaining the highest standards in product quality and safety.',
               },
             ].map((member, index) => (

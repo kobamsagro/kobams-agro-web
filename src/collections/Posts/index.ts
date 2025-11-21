@@ -17,6 +17,7 @@ import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
+import { setMetaImage } from './hooks/setMetaImage'
 
 import {
   MetaDescriptionField,
@@ -144,9 +145,14 @@ export const Posts: CollectionConfig<'posts'> = {
             MetaTitleField({
               hasGenerateFn: true,
             }),
-            MetaImageField({
-              relationTo: 'media',
-            }),
+            {
+              ...MetaImageField({
+                relationTo: 'media',
+              }),
+              hooks: {
+                beforeChange: [setMetaImage],
+              },
+            },
 
             MetaDescriptionField({}),
             PreviewField({

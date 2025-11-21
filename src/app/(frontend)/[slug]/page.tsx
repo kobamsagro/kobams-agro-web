@@ -124,10 +124,9 @@ export default async function Page({ params: paramsPromise }: Args) {
     <>
       <HeroSection />
       <ProductsSection products={productsData.docs} />
-      <AboutSection />
       <ServicesSection />
+      <AboutSection />
       <PartnersSection partners={partnersData.docs} />
-
       <TestimonialsSection testimonials={testimonialsData.docs} />
       <NewsSection posts={postsData.docs} />
     </>

@@ -1,7 +1,16 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
+import toast, { Toaster } from 'react-hot-toast'
 import type { Testimonial as TestimonialType } from '@/payload-types'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
 interface TestimonialsSectionProps {
   testimonials: TestimonialType[]
@@ -26,6 +35,7 @@ const StarRating = ({ rating }: { rating: number }) => {
 export default function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showForm, setShowForm] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const visibleTestimonials = 3
   const maxIndex = Math.max(0, testimonials.length - visibleTestimonials)
@@ -38,8 +48,43 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
     setCurrentIndex((prev) => Math.min(maxIndex, prev + 1))
   }
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const response = await fetch('/api/testimonials', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        toast.success(
+          data.message || 'Thank you! Your testimonial has been published successfully.',
+        )
+        e.currentTarget.reset()
+        setShowForm(false)
+        // Reload the page after 2 seconds to show the new testimonial
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      } else {
+        toast.error(data.error || 'Failed to submit testimonial. Please try again.')
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+      <Toaster position="top-center" />
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -152,11 +197,10 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
           </div>
         ) : (
           <div className="text-center py-16 bg-white rounded-2xl shadow-lg mb-12">
-           
             <h3 className="text-2xl font-bold text-gray-900 mb-2">Be the First to Share!</h3>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              We&apos;d love to hear about your experience working with us. Share your story and help
-              others discover the quality of our services.
+              We&apos;d love to hear about your experience working with us. Share your story and
+              help others discover the quality of our services.
             </p>
             <button
               onClick={() => setShowForm(true)}
@@ -167,116 +211,120 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
           </div>
         )}
 
-       
-
-        {/* CTA Button */}
+        {/* CTA Button with Dialog */}
         <div className="text-center">
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className="bg-yellow-400 hover:bg-yellow-500 text-[#1a4d2e] font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg"
-          >
-            {showForm ? 'Hide Form' : 'Share Your Story'}
-          </button>
-        </div>
-
-        {/* Testimonial Form */}
-        {showForm && (
-          <div className="mt-12 max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-[#1a4d2e] mb-6">Share Your Experience</h3>
-            <form action="/api/testimonials" method="POST" className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
-                    placeholder="John Ade"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Role/Title *
-                  </label>
-                  <input
-                    type="text"
-                    name="role"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
-                    placeholder="Farmer"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Location *
-                  </label>
-                  <input
-                    type="text"
-                    name="location"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
-                    placeholder="Kaduna, Nigeria"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email (Optional)
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Rating *</label>
-                <select
-                  name="rating"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
-                >
-                  <option value="5">5 Stars - Excellent</option>
-                  <option value="4">4 Stars - Very Good</option>
-                  <option value="3">3 Stars - Good</option>
-                  <option value="2">2 Stars - Fair</option>
-                  <option value="1">1 Star - Poor</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Your Testimonial *
-                </label>
-                <textarea
-                  name="testimonial"
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
-                  placeholder="Share your experience working with Kobam's Agro Solutions..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-[#1a4d2e] hover:bg-[#2d5f3f] text-white font-semibold px-8 py-4 rounded-lg transition-colors"
-              >
-                Submit Testimonial
+          <Dialog open={showForm} onOpenChange={setShowForm}>
+            <DialogTrigger asChild>
+              <button className="bg-yellow-400 hover:bg-yellow-500 text-[#1a4d2e] font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">
+                Share Your Story
               </button>
-              <p className="text-sm text-gray-500 text-center">
-                Your testimonial will be published immediately
-              </p>
-            </form>
-          </div>
-        )}
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-[#1a4d2e]">
+                  Share Your Experience
+                </DialogTitle>
+                <DialogDescription>
+                  Tell us about your experience working with Kobam&apos;s Agro Solutions
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleSubmit} className="space-y-6 mt-4">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+                      placeholder="John Ade"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Role/Title *
+                    </label>
+                    <input
+                      type="text"
+                      name="role"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+                      placeholder="Farmer"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Location *
+                    </label>
+                    <input
+                      type="text"
+                      name="location"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+                      placeholder="Kaduna, Nigeria"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Email (Optional)
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Rating *</label>
+                  <select
+                    name="rating"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+                  >
+                    <option value="5">5 Stars - Excellent</option>
+                    <option value="4">4 Stars - Very Good</option>
+                    <option value="3">3 Stars - Good</option>
+                    <option value="2">2 Stars - Fair</option>
+                    <option value="1">1 Star - Poor</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Your Testimonial *
+                  </label>
+                  <textarea
+                    name="testimonial"
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a4d2e] focus:border-transparent"
+                    placeholder="Share your experience working with Kobam's Agro Solutions..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#1a4d2e] hover:bg-[#2d5f3f] text-white font-semibold px-8 py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit Testimonial'}
+                </button>
+
+                <p className="text-sm text-gray-500 text-center">
+                  Your testimonial will be published immediately
+                </p>
+              </form>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
     </section>
   )

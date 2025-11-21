@@ -77,7 +77,7 @@ export default function ExportArticlesList() {
                   className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-[#1a4d2e] text-white rounded-lg flex items-center justify-center font-bold text-xl">
+                    <div className="flex-shrink-0 w-12 h-12 bg-[#184504] text-white rounded-lg flex items-center justify-center font-bold text-xl">
                       {article.id}
                     </div>
                     <div className="flex-1">
@@ -101,7 +101,7 @@ export default function ExportArticlesList() {
                       </div>
                       <Link
                         href={`/export-guide/${article.id}`}
-                        className="text-[#1a4d2e] font-semibold hover:underline inline-flex items-center gap-1"
+                        className="text-[#184504] font-semibold hover:underline inline-flex items-center gap-1"
                       >
                         Read Article →
                       </Link>
@@ -119,17 +119,17 @@ export default function ExportArticlesList() {
               <h3 className="font-bold text-gray-900 mb-4">Quick Navigator</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="text-[#1a4d2e] hover:underline flex items-center gap-2">
+                  <Link href="#" className="text-[#184504] hover:underline flex items-center gap-2">
                     <span className="text-yellow-500">→</span> Export Process Steps
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-[#1a4d2e] hover:underline flex items-center gap-2">
+                  <Link href="#" className="text-[#184504] hover:underline flex items-center gap-2">
                     <span className="text-yellow-500">→</span> Quality Standards
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-[#1a4d2e] hover:underline flex items-center gap-2">
+                  <Link href="#" className="text-[#184504] hover:underline flex items-center gap-2">
                     <span className="text-yellow-500">→</span> Customs Procedures
                   </Link>
                 </li>
@@ -137,7 +137,7 @@ export default function ExportArticlesList() {
             </div>
 
             {/* Help Card */}
-            <div className="bg-[#1a4d2e] text-white rounded-lg p-6">
+            <div className="bg-[#184504] text-white rounded-lg p-6">
               <h3 className="font-bold text-xl mb-2">Need Expert Help?</h3>
               <p className="text-gray-200 text-sm mb-4">
                 Our export specialists are ready to guide you through the entire export process

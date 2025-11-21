@@ -142,8 +142,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="max-h-[400px] overflow-y-auto">
-                  <DropdownMenuLabel>Our Products</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <Link href="/products" className="w-full">
                       <span className="text-[16px] font-semibold">View All Products</span>
@@ -206,29 +204,23 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                       </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuLabel>Support</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
                       <DropdownMenuItem>
                         {' '}
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Contact Us</span>
+                        <Link href="/export-guide" className={getLinkClasses('/export-guide')}>
+                          <span className="text-[16px] flex-grow text-right">Export Guide</span>
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem>
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Track an order</span>
+                        <Link href="/news" className={getLinkClasses('/blog')}>
+                          <span className="text-[16px] flex-grow text-right">News</span>
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem>
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Cancel an order</span>
+                        <Link href="/faq" className={getLinkClasses('/faq')}>
+                          <span className="text-[16px] flex-grow text-right">Faq</span>
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Link href="/contact" className={getLinkClasses('/contact')}>
-                          <span className="text-[16px] flex-grow text-right">Return a product</span>
-                        </Link>
-                      </DropdownMenuItem>
+                      
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -238,9 +230,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
 
           {/* button */}
           <Link href="/contact">
-          <button className="bg-[#E1A72B] text-white px-6 py-3 rounded-full hover:bg-[#184504] hover:text-white font-semibold transition-colors duration-300">
-            Contact
-          </button>
+            <button className="bg-[#E1A72B] text-white px-6 py-3 rounded-full hover:bg-[#184504] hover:text-white font-semibold transition-colors duration-300">
+              Contact
+            </button>
           </Link>
         </div>
       )}
