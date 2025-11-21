@@ -145,12 +145,14 @@ export const Posts: CollectionConfig<'posts'> = {
             MetaTitleField({
               hasGenerateFn: true,
             }),
-            MetaImageField({
-              relationTo: 'media',
+            {
+              ...MetaImageField({
+                relationTo: 'media',
+              }),
               hooks: {
                 beforeChange: [setMetaImage],
               },
-            }),
+            },
 
             MetaDescriptionField({}),
             PreviewField({
