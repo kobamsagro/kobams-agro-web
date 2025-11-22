@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: 'Empowering Agriculture Through Innovation & Global Trade',
 }
 
+export const revalidate = 0 // Disable caching for immediate updates
+
 export default async function ServicesPage() {
   const payload = await getPayload({ config })
 

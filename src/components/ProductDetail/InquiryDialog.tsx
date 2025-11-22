@@ -3,25 +3,19 @@ import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-interface RequestQuoteDialogProps {
+interface InquiryDialogProps {
   isOpen: boolean
   onClose: () => void
   productName: string
-  minQuantity?: string
 }
 
-export default function RequestQuoteDialog({
-  isOpen,
-  onClose,
-  productName,
-  minQuantity = '5',
-}: RequestQuoteDialogProps) {
+export default function InquiryDialog({ isOpen, onClose, productName }: InquiryDialogProps) {
   const [formData, setFormData] = useState({
-    name: '',
-    company: '',
+    fullName: '',
+    companyName: '',
     email: '',
     phone: '',
-    quantity: '',
+    country: '',
     message: '',
   })
 
@@ -32,7 +26,7 @@ export default function RequestQuoteDialog({
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/quotes', {
+      const response = await fetch('/api/inquiries', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,11 +40,11 @@ export default function RequestQuoteDialog({
       const data = await response.json()
 
       if (response.ok) {
-        toast.success(data.message || 'Quote request sent successfully!')
-        setFormData({ name: '', company: '', email: '', phone: '', quantity: '', message: '' })
+        toast.success(data.message || 'Inquiry sent successfully!')
+        setFormData({ fullName: '', companyName: '', email: '', phone: '', country: '', message: '' })
         onClose()
       } else {
-        toast.error(data.error || 'Failed to submit request. Please try again.')
+        toast.error(data.error || 'Failed to submit inquiry. Please try again.')
       }
     } catch (error) {
       toast.error('Network error. Please check your connection and try again.')
@@ -74,7 +68,7 @@ export default function RequestQuoteDialog({
         <div className="p-8">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-[#184504]">Request Quote</h2>
+            <h2 className="text-3xl font-bold text-[#184504]">Make an Inquiry</h2>
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -85,42 +79,42 @@ export default function RequestQuoteDialog({
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name */}
+            {/* Full Name */}
             <div>
-              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-                Name <span className="text-red-500">*</span>
+              <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
+                Full Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
               />
             </div>
 
-            {/* Company */}
+            {/* Company Name */}
             <div>
-              <label htmlFor="company" className="block text-gray-700 font-medium mb-2">
-                Company <span className="text-red-500">*</span>
+              <label htmlFor="companyName" className="block text-gray-700 font-medium mb-2">
+                Company Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                id="company"
-                name="company"
-                value={formData.company}
+                id="companyName"
+                name="companyName"
+                value={formData.companyName}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
               />
             </div>
 
-            {/* Email */}
+            {/* Email Address */}
             <div>
               <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                Email <span className="text-red-500">*</span>
+                Email Address <span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
@@ -133,10 +127,10 @@ export default function RequestQuoteDialog({
               />
             </div>
 
-            {/* Phone */}
+            {/* Phone Number */}
             <div>
               <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
-                Phone
+                Phone Number
               </label>
               <input
                 type="tel"
@@ -148,19 +142,18 @@ export default function RequestQuoteDialog({
               />
             </div>
 
-            {/* Quantity */}
+            {/* Country/Region */}
             <div>
-              <label htmlFor="quantity" className="block text-gray-700 font-medium mb-2">
-                Quantity (MT) <span className="text-red-500">*</span>
+              <label htmlFor="country" className="block text-gray-700 font-medium mb-2">
+                Country/Region <span className="text-red-500">*</span>
               </label>
               <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                value={formData.quantity}
+                type="text"
+                id="country"
+                name="country"
+                value={formData.country}
                 onChange={handleChange}
-                placeholder={`Minimum: ${minQuantity}`}
-                min={minQuantity}
+                placeholder="Enter your country/region"
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
               />
@@ -192,7 +185,7 @@ export default function RequestQuoteDialog({
               disabled={isSubmitting}
               className="w-full bg-yellow-400 hover:bg-yellow-500 text-[#184504] font-semibold py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Sending...' : 'Send Quote Request'}
+              {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
             </button>
           </form>
         </div>

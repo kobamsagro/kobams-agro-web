@@ -1,19 +1,15 @@
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { NextResponse } from 'next/server'
-import { sendContactNotification } from '@/lib/email'
+import { sendInquiryNotification } from '@/lib/email'
 
 export async function POST(request: Request) {
   try {
-    const formData = await request.formData()
+    const body = await request.json()
 
-    const fullName = formData.get('fullName') as string
-    const email = formData.get('email') as string
-    const phone = formData.get('phone') as string
-    const subject = formData.get('subject') as string
-    const message = formData.get('message') as string
+    const { fullName, companyName, email, phone, country, product, message } = body
 
-    if (!fullName || !email || !subject || !message) {
+    if (!fullName || !companyName || !email || !country || !product) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
@@ -21,37 +17,42 @@ export async function POST(request: Request) {
 
     // Save to database
     await payload.create({
-      collection: 'contacts',
+      collection: 'inquiries',
       data: {
         fullName,
+        companyName,
         email,
         phone: phone || undefined,
-        subject,
-        message,
+        country,
+        product,
+        message: message || undefined,
         status: 'new',
       },
     })
 
     // Send email notification
-    await sendContactNotification({
+    await sendInquiryNotification({
       fullName,
+      companyName,
       email,
       phone: phone || undefined,
-      subject,
-      message,
+      country,
+      product,
+      message: message || undefined,
     })
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Thank you for contacting us! We will get back to you soon.',
+        message:
+          'Thank you! Your inquiry has been submitted successfully. We will get back to you soon.',
       },
       { status: 201 },
     )
   } catch (error) {
-    console.error('Error processing contact form:', error)
+    console.error('Error submitting inquiry:', error)
     return NextResponse.json(
-      { error: 'Failed to process your request. Please try again.' },
+      { error: 'Failed to submit inquiry. Please try again.' },
       { status: 500 },
     )
   }

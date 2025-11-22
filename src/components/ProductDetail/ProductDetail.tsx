@@ -1,8 +1,10 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Product, Media } from '@/payload-types'
+import RequestQuoteDialog from './RequestQuoteDialog'
+import InquiryDialog from './InquiryDialog'
 
 interface ProductDetailProps {
   product: Product
@@ -10,6 +12,9 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail({ product, relatedProducts }: ProductDetailProps) {
+  const [isQuoteDialogOpen, setIsQuoteDialogOpen] = useState(false)
+  const [isInquiryDialogOpen, setIsInquiryDialogOpen] = useState(false)
+
   const imageUrl =
     typeof product.image === 'object' && product.image !== null ? (product.image as Media).url : ''
 
@@ -174,11 +179,17 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
             Get competitive pricing and reliable delivery for bulk orders
           </p>
           <div className="flex gap-4 justify-center">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-[#184504] font-semibold px-8 py-4 rounded-lg transition-colors">
+            <button
+              onClick={() => setIsQuoteDialogOpen(true)}
+              className="bg-yellow-400 hover:bg-yellow-500 text-[#184504] font-semibold px-8 py-4 rounded-lg transition-colors"
+            >
               Request a Quote
             </button>
-            <button className="bg-[#184504] hover:bg-[#2d4a1f] text-white font-semibold px-8 py-4 rounded-lg transition-colors">
-              WhatsApp Inquiry
+            <button
+              onClick={() => setIsInquiryDialogOpen(true)}
+              className="bg-[#184504] hover:bg-[#2d4a1f] text-white font-semibold px-8 py-4 rounded-lg transition-colors"
+            >
+              Make an Enquiry
             </button>
           </div>
         </div>
@@ -232,6 +243,19 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
           </div>
         </section>
       )}
+
+      {/* Dialogs */}
+      <RequestQuoteDialog
+        isOpen={isQuoteDialogOpen}
+        onClose={() => setIsQuoteDialogOpen(false)}
+        productName={product.name}
+        minQuantity={product.moq}
+      />
+      <InquiryDialog
+        isOpen={isInquiryDialogOpen}
+        onClose={() => setIsInquiryDialogOpen(false)}
+        productName={product.name}
+      />
     </div>
   )
 }

@@ -11,90 +11,173 @@ interface FAQ {
 const faqData: Record<FAQCategory, FAQ[]> = {
   partnerships: [
     {
-      question: "How can I partner with Kobam's as a local supplier?",
+      question: ` How can I become a partner or distributor for Kobam's products?`,
       answer:
-        'We welcome partnerships with local farmers and suppliers who meet our quality standards. To become a supplier, please contact our procurement team through our partnership form. We will assess your production capacity, quality standards, and certifications. Our team will guide you through the onboarding process, which includes farm visits, quality assessments, and contract negotiations.',
+        'To become a partner, you can contact us via our official email with your business details, intended products, and target markets. Our team will review your application and guide you through the partnership process.',
     },
     {
-      question: 'What are the requirements to become a certified food supplier?',
+      question: 'Can partners request customized packaging or product specifications?',
       answer:
-        'To become a certified supplier, you must meet several requirements: maintain organic or sustainable farming practices, possess relevant agricultural certifications (such as GlobalGAP or organic certification), demonstrate consistent production capacity, comply with food safety standards, and pass our quality inspection process. We provide support and guidance to help suppliers meet these requirements.',
+        'Yes. We work closely with partners to accommodate custom packaging, labeling, and product specifications in line with buyer requirements and international export standards.',
     },
     {
-      question: 'Do you provide training for new partners?',
+      question: 'Can I choose my preferred shipping partner?',
       answer:
-        'Yes, we offer comprehensive training programs for our partners. This includes training on sustainable farming practices, quality control measures, post-harvest handling, documentation requirements, and export standards. We also provide ongoing technical support and regular workshops to ensure our partners maintain the highest quality standards.',
+        `Yes. Clients may nominate their preferred shipping partner, subject to Kobam's approval to ensure regulatory compliance and proper liability coverage.
+Note: Kobam's is not liable for damage to goods shipped using the client's nominated shipping method.`,
     },
     {
-      question: 'What is the payment structure for suppliers?',
+      question: 'Can you accommodate large, bulk orders?',
       answer:
-        'We offer competitive and transparent payment structures. Payment terms are typically net 30-45 days after delivery and quality verification. We provide advance payments for long-term partners and offer flexible payment options based on order volume and partnership duration. All payment terms are clearly outlined in our supplier agreements.',
+        'Absolutely. We are fully equipped for B2B bulk export and international distribution.',
+    },
+    {
+      question: `How do I contact Kobam's customer service?`,
+      answer:
+        'Absolutely. We are fully equipped for B2B bulk export and international distribution.',
     },
   ],
   shipping: [
     {
-      question: 'What shipping methods do you offer?',
+      question: ` What products does Kobam's Agro Solutions specialize in ?`,
       answer:
-        'We offer various shipping methods including sea freight (FCL and LCL), air freight for urgent orders, and land transportation for regional deliveries. The choice of shipping method depends on your location, order size, and delivery timeline. We work with trusted logistics partners to ensure safe and timely delivery of all products.',
+        'We export premium agricultural commodities such as sorghum, soya beans, ginger, turmeric, maize, cocoa beans, sesame seed, and palm kernels, sourced directly from Nigerian farms.',
     },
     {
-      question: 'How long does international shipping take?',
+      question: 'Are your products sustainably sourced?',
       answer:
-        'International shipping times vary by destination and shipping method. Sea freight typically takes 3-6 weeks, air freight takes 5-10 days, and regional land transport takes 1-2 weeks. We provide detailed shipping timelines during the quotation process and keep you updated throughout the shipping process with tracking information.',
+        'Yes. We partner with local and regional farmers who follow sustainable agricultural practices. We apply strict quality controls across sourcing, processing, and packaging to meet global safety and quality standards.',
     },
     {
-      question: 'Do you handle customs clearance?',
+      question: 'How do you ensure product quality?',
       answer:
-        'Yes, we provide comprehensive customs clearance support. Our experienced team handles all export documentation, customs declarations, and compliance requirements. We work with customs brokers in destination countries to facilitate smooth clearance. We also provide guidance on import regulations and requirements for your specific country.',
+        'We implement rigorous quality control checks at every stage, ensuring compliance with international standards.',
     },
     {
-      question: 'What are your packaging standards?',
+      question: 'What is your Minimum Order Quantity (MOQ)?',
       answer:
-        'We use industry-standard packaging designed to maintain product quality during transit. This includes food-grade materials, moisture barriers, proper labeling, and compliance with international packaging standards. We can also accommodate custom packaging requirements based on your specifications and destination country regulations.',
+          `
+Our Minimum Order Quantity (MOQ) at Kobam's Agro Solutions is one full 20ft container per product category. 
+`,
+    },
+     {
+      question: ' Do you offer trial orders?',
+      answer:
+          `
+Yes. At Kobam's Agro Solutions, we offer trial orders between 5–10 MT for new buyers.
+Note: Trial orders are subject to negotiation and product availability.`
+
+    },
+     {
+      question: 'Do you provide certifications for your products?',
+      answer:
+          `
+Yes. All products are accompanied by the necessary export certifications and supporting documents upon request.
+
+`,
+    },
+     {
+      question: `What should I do if I receive the wrong product?
+`,
+      answer:
+          `
+Contact our support team immediately with photos and order details. Once verified, we will provide compensation or replacement credits.
+
+
+`,
     },
   ],
   logistics: [
     {
-      question: 'How do you ensure product quality during transportation?',
+      question: 'Which global markets do you serve?',
       answer:
-        'We implement strict quality control measures throughout the logistics chain. This includes temperature-controlled storage, proper handling procedures, quality inspections before shipping, sealed containers to prevent contamination, and real-time monitoring during transit. We also provide certificates of quality and origin with each shipment.',
+        'We currently export to West Africa, the European Union (EU), and the Middle East, with plans to expand into organic and speciality markets in Europe and North America.',
     },
     {
-      question: 'Can I track my shipment?',
+      question: 'What are your Standard delivery terms?',
       answer:
-        "Yes, we provide comprehensive shipment tracking. Once your order ships, you will receive tracking information via email. You can monitor your shipment's progress through our online portal or by contacting our logistics team. We provide regular updates on shipment status, estimated arrival times, and any potential delays.",
+        "Our standard delivery term is FOB (Free On Board) at Nigerian ports. CIF (Cost, Insurance, and Freight) can be arranged upon request.",
     },
     {
-      question: 'What happens if there is a delay in delivery?',
+      question: 'What is the average lead time for orders?',
       answer:
-        'In case of delays, we immediately notify you and provide updated delivery timelines. We work proactively with our logistics partners to minimize delays and find alternative solutions when necessary. For significant delays beyond our control, we discuss compensation options or alternative arrangements based on the terms of your contract.',
+        `Lead time typically ranges from 2–4 weeks, depending on the commodity, order volume, and destination.`,
     },
     {
-      question: 'Do you offer warehousing services?',
+      question: ' Do you provide shipment tracking?',
       answer:
-        'Yes, we offer warehousing and storage solutions for customers who need flexible delivery schedules. Our warehouses are equipped with proper storage facilities, climate control, and security systems. We can store your products and arrange delivery according to your schedule, helping you manage inventory and reduce logistics costs.',
+        'Yes. All buyers receive tracking information for their shipments, allowing real-time monitoring from the port of origin to delivery.',
     },
+    {
+      question: 'How do you ensure product freshness during long-distance shipping?',
+      answer:
+        'We maintain a comprehensive cold chain logistics system with pre-cooling, reefer containers, and ventilated export packaging. This protects product freshness and shelf life from harvest to delivery.',
+    },
+    {
+      question: 'What are your packaging and private labelling capabilities?',
+      answer:
+        'We offer export-ready cartons, crates, bins, and mesh bags with private labelling, multilingual stickers, barcoding, and custom sizes, all certified under IFS & BRCGS standards.',
+    },
+     {
+      question: 'What happens if goods are damaged, defective, or lost during transit?',
+      answer:
+        `If your goods arrive damaged, defective, or are confirmed lost during transit, Kobam's will provide compensation or replacement credits for verified claims. Since returns are not allowed, all claims must be submitted within 24–72 hours of delivery.`,
+    },
+      {
+      question: 'How are refunds processed for order cancellations?',
+      answer:
+        `Approved refunds are completed within 7–14 business days through the original payment channel.`,
+    },
+    {
+      question: 'What documents are provided with my order?',
+      answer:
+        `Kobam's provides Commercial Invoice, Bill of Lading / Air Waybill, Certificate of Origin, Phytosanitary Certificate, and Insurance Certificate.
+All documents are stored digitally for client access and retrieval.`,
+    },
+     {
+      question: `How can I place an order with Kobam's Agro Solutions?`,
+      answer:
+        `Orders can be initiated directly from the Product Detail Page by clicking the “Get Quote” or “Send Inquiry” button. Once your request is submitted, our sales team will reach out with pricing, availability, shipping options, and required export documentation.`,
+    },
+   
+     {
+      question: `How can I place an order with Kobam's Agro Solutions?`,
+      answer:
+        `Orders can be initiated directly from the Product Detail Page by clicking the “Get Quote” or “Send Inquiry” button. Once your request is submitted, our sales team will reach out with pricing, availability, shipping options, and required export documentation.
+        You may also follow up via email or phone for faster processing. Your order is confirmed once payment and compliance checks are completed.`,
+    },
+     {
+      question: `Do you provide certifications for your products?`,
+      answer:
+        `Yes, our products are certified to meet international standards, and we can provide the necessary documentation upon request.`,
+    },
+     {
+      question: `What payment methods do you accept?`,
+      answer:
+        `We accept secure international payments via a Letter of Credit (LC) or Telegraphic Transfer (TT) before shipment. For established or long-term partners, customized payment terms can be arranged through negotiation.`,
+    },
+
   ],
   compliance: [
     {
+      question: 'Are your products certified for international export?',
+      answer:
+        'Yes. Our products comply with global quality and safety standards, including SONCAP, NAFDAC, ISO 9001, and Global GAP. Independent regulators validate and certify each shipment.',
+    },
+    {
       question: 'What certifications do your products have?',
       answer:
-        'Our products hold various international certifications including organic certifications, fair trade certifications, food safety certifications (HACCP, ISO 22000), quality management certifications (ISO 9001), and export certifications. Specific certifications vary by product. We can provide detailed certification documentation upon request.',
+        'All our commodities are certified to meet international export standards. Depending on the product, we provide Certificates of Analysis (COA) and Phytosanitary Certificates to ensure compliance with buyer and destination-country requirements.',
     },
     {
-      question: 'How do you ensure compliance with international standards?',
+      question: 'Do you provide Certificates of Analysis (COA) for your exports?',
       answer:
-        'We maintain strict compliance through regular audits, quality testing, documentation management, staff training, and partnerships with certified laboratories. We stay updated on international regulations and standards, and our quality assurance team ensures all products meet or exceed requirements for your destination market.',
+        `Yes. Every shipment can be accompanied by a Certificate of Analysis detailing product quality, moisture content, and other relevant parameters. This guarantees transparency and quality assurance for our buyers.`,
     },
     {
-      question: 'Can you provide phytosanitary certificates?',
+      question: 'Do you follow any industry-standard quality assurance procedures?',
       answer:
-        "Yes, we provide phytosanitary certificates and all necessary export documentation. Our team works with relevant government agencies to obtain required certificates for each shipment. We ensure all documentation is accurate, complete, and compliant with both Nigerian export regulations and your country's import requirements.",
-    },
-    {
-      question: 'What quality control measures do you have in place?',
-      answer:
-        'We implement comprehensive quality control at every stage: farm-level inspections, post-harvest quality checks, laboratory testing for contaminants and quality parameters, storage and handling protocols, pre-shipment inspections, and third-party quality verification. We maintain detailed quality records and provide quality certificates with each shipment.',
+        'Yes. We implement internationally recognized quality assurance protocols, including pre-shipment inspections, lab testing (when neccessary), and proper documentation to maintain product integrity throughout the supply chain.',
     },
   ],
 }

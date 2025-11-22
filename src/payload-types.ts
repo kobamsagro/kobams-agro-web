@@ -73,6 +73,9 @@ export interface Config {
     services: Service;
     partners: Partner;
     testimonials: Testimonial;
+    quotes: Quote;
+    inquiries: Inquiry;
+    contacts: Contact;
     media: Media;
     categories: Category;
     users: User;
@@ -99,6 +102,9 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    quotes: QuotesSelect<false> | QuotesSelect<true>;
+    inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
+    contacts: ContactsSelect<false> | ContactsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -919,6 +925,67 @@ export interface Testimonial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes".
+ */
+export interface Quote {
+  id: string;
+  name: string;
+  company: string;
+  email: string;
+  phone?: string | null;
+  product: string;
+  quantity: string;
+  message?: string | null;
+  status: 'new' | 'in-progress' | 'quoted' | 'closed';
+  /**
+   * Internal notes for staff only
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries".
+ */
+export interface Inquiry {
+  id: string;
+  fullName: string;
+  companyName: string;
+  email: string;
+  phone?: string | null;
+  country: string;
+  product: string;
+  message?: string | null;
+  status: 'new' | 'in-progress' | 'responded' | 'closed';
+  /**
+   * Internal notes for staff only
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+  subject: string;
+  message: string;
+  status: 'new' | 'in-progress' | 'responded' | 'closed';
+  /**
+   * Internal notes for staff only
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1130,6 +1197,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: string | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'quotes';
+        value: string | Quote;
+      } | null)
+    | ({
+        relationTo: 'inquiries';
+        value: string | Inquiry;
+      } | null)
+    | ({
+        relationTo: 'contacts';
+        value: string | Contact;
       } | null)
     | ({
         relationTo: 'media';
@@ -1470,6 +1549,55 @@ export interface TestimonialsSelect<T extends boolean = true> {
   email?: T;
   status?: T;
   featured?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes_select".
+ */
+export interface QuotesSelect<T extends boolean = true> {
+  name?: T;
+  company?: T;
+  email?: T;
+  phone?: T;
+  product?: T;
+  quantity?: T;
+  message?: T;
+  status?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries_select".
+ */
+export interface InquiriesSelect<T extends boolean = true> {
+  fullName?: T;
+  companyName?: T;
+  email?: T;
+  phone?: T;
+  country?: T;
+  product?: T;
+  message?: T;
+  status?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts_select".
+ */
+export interface ContactsSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  subject?: T;
+  message?: T;
+  status?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

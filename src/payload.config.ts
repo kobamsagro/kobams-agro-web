@@ -8,11 +8,14 @@ import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
+import { Contacts } from './collections/Contacts'
+import { Inquiries } from './collections/Inquiries'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Partners } from './collections/Partners'
 import { Posts } from './collections/Posts'
 import { Products } from './collections/Products'
+import { Quotes } from './collections/Quotes'
 import { Services } from './collections/Services'
 import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
@@ -67,7 +70,20 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Products, Services, Partners, Testimonials, Media, Categories, Users],
+  collections: [
+    Pages,
+    Posts,
+    Products,
+    Services,
+    Partners,
+    Testimonials,
+    Quotes,
+    Inquiries,
+    Contacts,
+    Media,
+    Categories,
+    Users,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
