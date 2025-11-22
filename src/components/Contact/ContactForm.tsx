@@ -1,14 +1,13 @@
 'use client'
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setSubmitStatus('idle')
 
     const formData = new FormData(e.currentTarget)
 
@@ -18,14 +17,16 @@ export default function ContactForm() {
         body: formData,
       })
 
+      const data = await response.json()
+
       if (response.ok) {
-        setSubmitStatus('success')
+        toast.success(data.message || 'Message sent successfully!')
         e.currentTarget.reset()
       } else {
-        setSubmitStatus('error')
+        toast.error(data.error || 'Failed to send message. Please try again.')
       }
     } catch (error) {
-      setSubmitStatus('error')
+      toast.error('Network error. Please check your connection and try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -136,18 +137,6 @@ export default function ContactForm() {
             </>
           )}
         </button>
-
-        {/* Status Messages */}
-        {submitStatus === 'success' && (
-          <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
-            Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
-          </div>
-        )}
-        {submitStatus === 'error' && (
-          <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
-            Sorry, there was an error sending your message. Please try again or contact us directly.
-          </div>
-        )}
       </form>
     </div>
   )

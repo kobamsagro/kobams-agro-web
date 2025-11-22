@@ -15,6 +15,7 @@ import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
+import { Toaster } from 'react-hot-toast'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -38,6 +39,31 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <AdminBar
             adminBarProps={{
               preview: isEnabled,
+            }}
+          />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: '#fff',
+                color: '#333',
+                padding: '16px',
+                borderRadius: '8px',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+              },
+              success: {
+                iconTheme: {
+                  primary: '#10b981',
+                  secondary: '#fff',
+                },
+              },
+              error: {
+                iconTheme: {
+                  primary: '#ef4444',
+                  secondary: '#fff',
+                },
+              },
             }}
           />
 
