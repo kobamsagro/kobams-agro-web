@@ -1,9 +1,11 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
+const RESEND_API_KEY = process.env.RESEND_API_KEY
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@kobamsagro.com'
 const FROM_EMAIL = process.env.FROM_EMAIL || 'notifications@kobamsagro.com'
+
+// Only initialize Resend if API key is available
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
 
 interface ContactEmailData {
   fullName: string
@@ -34,6 +36,22 @@ interface InquiryEmailData {
 }
 
 export async function sendContactNotification(data: ContactEmailData) {
+  // If no Resend API key, just log to console
+  if (!resend) {
+    console.log('📧 [EMAIL NOTIFICATION] Contact Form Submission')
+    console.log('To:', ADMIN_EMAIL)
+    console.log('Subject:', `New Contact Form Submission: ${data.subject}`)
+    console.log('---')
+    console.log('Name:', data.fullName)
+    console.log('Email:', data.email)
+    if (data.phone) console.log('Phone:', data.phone)
+    console.log('Subject:', data.subject)
+    console.log('Message:', data.message)
+    console.log('Submitted at:', new Date().toLocaleString())
+    console.log('---')
+    return { success: true }
+  }
+
   try {
     await resend.emails.send({
       from: FROM_EMAIL,
@@ -59,6 +77,24 @@ export async function sendContactNotification(data: ContactEmailData) {
 }
 
 export async function sendQuoteNotification(data: QuoteEmailData) {
+  // If no Resend API key, just log to console
+  if (!resend) {
+    console.log('📧 [EMAIL NOTIFICATION] Quote Request')
+    console.log('To:', ADMIN_EMAIL)
+    console.log('Subject:', `New Quote Request: ${data.product}`)
+    console.log('---')
+    console.log('Product:', data.product)
+    console.log('Quantity:', data.quantity, 'MT')
+    console.log('Name:', data.name)
+    console.log('Company:', data.company)
+    console.log('Email:', data.email)
+    if (data.phone) console.log('Phone:', data.phone)
+    if (data.message) console.log('Message:', data.message)
+    console.log('Submitted at:', new Date().toLocaleString())
+    console.log('---')
+    return { success: true }
+  }
+
   try {
     await resend.emails.send({
       from: FROM_EMAIL,
@@ -87,6 +123,24 @@ export async function sendQuoteNotification(data: QuoteEmailData) {
 }
 
 export async function sendInquiryNotification(data: InquiryEmailData) {
+  // If no Resend API key, just log to console
+  if (!resend) {
+    console.log('📧 [EMAIL NOTIFICATION] Product Inquiry')
+    console.log('To:', ADMIN_EMAIL)
+    console.log('Subject:', `New Product Inquiry: ${data.product}`)
+    console.log('---')
+    console.log('Product:', data.product)
+    console.log('Name:', data.fullName)
+    console.log('Company:', data.companyName)
+    console.log('Email:', data.email)
+    if (data.phone) console.log('Phone:', data.phone)
+    console.log('Country/Region:', data.country)
+    if (data.message) console.log('Message:', data.message)
+    console.log('Submitted at:', new Date().toLocaleString())
+    console.log('---')
+    return { success: true }
+  }
+
   try {
     await resend.emails.send({
       from: FROM_EMAIL,
