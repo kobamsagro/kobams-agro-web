@@ -21,6 +21,8 @@ import PartnersSection from '../../../components/PartnersSection/PartnersSection
 import TestimonialsSection from '../../../components/TestimonialsSection/TestimonialsSection'
 import NewsSection from '../../../components/NewsSection/NewsSection'
 
+export const revalidate = 0 // Disable caching for immediate updates
+
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const pages = await payload.find({
@@ -120,11 +122,24 @@ export default async function Page({ params: paramsPromise }: Args) {
     depth: 2,
   })
 
+  // Fetch services
+  const servicesData = await payload.find({
+    collection: 'services',
+    limit: 3,
+    where: {
+      status: {
+        equals: 'active',
+      },
+    },
+    sort: 'order',
+    depth: 2,
+  })
+
   return (
     <>
       <HeroSection />
       <ProductsSection products={productsData.docs} />
-      <ServicesSection />
+      <ServicesSection services={servicesData.docs} />
       <AboutSection />
       <PartnersSection partners={partnersData.docs} />
       <TestimonialsSection testimonials={testimonialsData.docs} />

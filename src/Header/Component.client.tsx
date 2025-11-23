@@ -211,13 +211,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem>
-                        <Link href="/news" className={getLinkClasses('/blog')}>
+                        <Link href="/blog" className={getLinkClasses('/blog')}>
                           <span className="text-[16px] flex-grow text-right">News</span>
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem>
                         <Link href="/faq" className={getLinkClasses('/faq')}>
-                          <span className="text-[16px] flex-grow text-right">Faq</span>
+                          <span className="text-[16px] flex-grow text-right">FAQ</span>
                         </Link>
                       </DropdownMenuItem>
                       
