@@ -15,7 +15,7 @@ export default function ContactPage() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-[#184504] text-white py-32">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container my-12 mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto">
             Ready to partner with us? Let&apos;s discuss how we can help grow your agricultural business
