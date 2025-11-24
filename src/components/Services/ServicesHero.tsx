@@ -16,7 +16,7 @@ export default function ServicesHero() {
 
       {/* Content */}
       <div className="container mx-auto my-18 py-20 px-6 relative z-10 text-center text-white">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold my-6">
           Empowering Agriculture Through
           <br />
           Innovation & Global Trade
