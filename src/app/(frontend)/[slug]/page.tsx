@@ -16,6 +16,7 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import HeroSection from '../../../components/HeroSection/HeroSection'
 import ProductsSection from '../../../components/ProductsSection/ProductsSection'
 import AboutSection from '../../../components/AboutSection/AboutSection'
+import WhyChooseUs from '../../../components/WhyChooseUs/WhyChooseUs'
 import ServicesSection from '../../../components/ServicesSection/ServicesSection'
 import PartnersSection from '../../../components/PartnersSection/PartnersSection'
 import TestimonialsSection from '../../../components/TestimonialsSection/TestimonialsSection'
@@ -141,6 +142,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <ProductsSection products={productsData.docs} />
       <ServicesSection services={servicesData.docs} />
       <AboutSection />
+      <WhyChooseUs />
       <PartnersSection partners={partnersData.docs} />
       <TestimonialsSection testimonials={testimonialsData.docs} />
       <NewsSection posts={postsData.docs} />

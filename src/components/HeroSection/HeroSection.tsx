@@ -16,7 +16,7 @@ export default function HeroSection() {
       {/* Dark Overlay */}
       {/* <div className="absolute inset-0 bg-black/60 z-10" /> */}
 
-      <div className="container relative z-20 mx-auto px-6 py-20 lg:py-32">
+      <div className="container relative z-20 my-12 mx-auto px-6 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-6 items-center">
           {/* Left Content */}
           <div className="space-y-8">
@@ -51,7 +51,7 @@ export default function HeroSection() {
           </div>
           {/* stat end */}
           {/* Right Content - Product Cards */}
-          <div className="relative grid grid-cols-2 h-[600px]">
+          <div className="hidden md:relative md:grid grid-cols-2 h-[600px]">
             {/* Cocoa Beans Card - Left Full Height */}
             <div className="relative rounded-3xl overflow-hidden group ">
               <Image src="/assets/cocoa-bean.png" alt="Cocoa Beans" fill className="object-fill" />

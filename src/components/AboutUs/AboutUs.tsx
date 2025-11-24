@@ -38,24 +38,26 @@ export default function AboutUs() {
                   practices and innovation.
                 </p>
                 <p>
-                  Our commitment to excellence has positioned us as a trusted partner in Africa&apos;s
-                  agricultural transformation, bridging the gap between traditional farming and
-                  modern agricultural technology.
+                  Our commitment to excellence has positioned us as a trusted partner in
+                  Africa&apos;s agricultural transformation, bridging the gap between traditional
+                  farming and modern agricultural technology.
                 </p>
-               
               </div>
             </div>
 
             {/* Image Grid */}
             <div className="grid grid-cols-2 gap-4">
               <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
-                <Image src="/assets/about-1.jpg" alt="Our facility" fill className="object-cover" />
+                <Image src="/assets/about1.jpg" alt="Our facility" fill className="object-cover" />
               </div>
               <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
-                <Image src="/assets/about-2.jpg" alt="Our products" fill className="object-cover" />
+                <Image src="/assets/about2.jpg" alt="Our products" fill className="object-cover" />
               </div>
-              <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden col-span-2">
-                <Image src="/assets/about-3.jpg" alt="Our team" fill className="object-cover" />
+              <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
+                <Image src="/assets/about3.jpg" alt="Our team" fill className="object-cover" />
+              </div>
+              <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
+                <Image src="/assets/about4.jpg" alt="Our team" fill className="object-cover" />
               </div>
             </div>
           </div>

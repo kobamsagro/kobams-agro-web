@@ -99,6 +99,160 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
 
   return (
     <header className={headerClasses}>
+      {/* Mobile Header */}
+      {(isMobile || isTablet) && (
+        <div className="container mx-auto px-4">
+          <div className="bg-white rounded-full shadow-lg border-2 border-[#184504] px-6 py-3 flex justify-between items-center">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/assets/kobams-logo.png"
+                alt="Kobams Agro"
+                width={120}
+                height={60}
+                priority
+              />
+            </Link>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="w-12 h-12 rounded-full border-2 border-[#184504] flex items-center justify-center hover:bg-gray-50 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  className="text-[#184504]"
+                >
+                  <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path>
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  className="text-[#184504]"
+                >
+                  <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Menu Dropdown */}
+          {isMobileMenuOpen && (
+            <div className="bg-white mt-4 rounded-2xl shadow-lg border border-gray-200 py-6 px-6">
+              <nav className="space-y-6">
+                {/* Products with submenu */}
+                <div>
+                  <button
+                    onClick={() => {
+                      const submenu = document.getElementById('mobile-products-submenu')
+                      if (submenu) {
+                        submenu.classList.toggle('hidden')
+                      }
+                    }}
+                    className="flex items-center justify-between w-full text-[#184504] font-semibold text-lg"
+                  >
+                    Products
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                    >
+                      <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
+                    </svg>
+                  </button>
+                  <div id="mobile-products-submenu" className="hidden mt-3 ml-4 space-y-3">
+                    {products && products.length > 0 ? (
+                      products.map((product) => (
+                        <Link
+                          key={product.id}
+                          href={`/products/${product.slug}`}
+                          className="block text-gray-600 hover:text-[#184504]"
+                        >
+                          {product.name}
+                        </Link>
+                      ))
+                    ) : (
+                      <span className="text-gray-400 text-sm">No products available</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Services */}
+                <Link
+                  href="/services"
+                  className="block text-[#184504] font-semibold text-lg hover:text-[#2d4a1f]"
+                >
+                  Services
+                </Link>
+
+                {/* About Us */}
+                <Link
+                  href="/about"
+                  className="block text-[#184504] font-semibold text-lg hover:text-[#2d4a1f]"
+                >
+                  About Us
+                </Link>
+
+                {/* Resources with submenu */}
+                <div>
+                  <button
+                    onClick={() => {
+                      const submenu = document.getElementById('mobile-resources-submenu')
+                      if (submenu) {
+                        submenu.classList.toggle('hidden')
+                      }
+                    }}
+                    className="flex items-center justify-between w-full text-[#184504] font-semibold text-lg"
+                  >
+                    Resources
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                    >
+                      <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
+                    </svg>
+                  </button>
+                  <div id="mobile-resources-submenu" className="hidden mt-3 ml-4 space-y-3">
+                    <Link
+                      href="/export-guide"
+                      className="block text-gray-600 hover:text-[#184504]"
+                    >
+                      Export Guide
+                    </Link>
+                    <Link href="/blog" className="block text-gray-600 hover:text-[#184504]">
+                      News
+                    </Link>
+                    <Link href="/faq" className="block text-gray-600 hover:text-[#184504]">
+                      FAQ
+                    </Link>
+                  </div>
+                </div>
+              </nav>
+
+              {/* Contact Button */}
+              <Link href="/contact" className="block mt-8">
+                <button className="w-full bg-[#E1A72B] text-white px-6 py-4 rounded-full hover:bg-[#184504] font-semibold transition-colors duration-300">
+                  Contact
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Desktop Header */}
       {isDesktop && (
         <div className="container rounded-3xl mx-auto my-4 px-4 py-4 flex justify-between items-center bg-white shadow-lg border border-[#184504]">
           <Link href="/" className="flex items-center">
