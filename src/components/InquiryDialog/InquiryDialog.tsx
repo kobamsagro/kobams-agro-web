@@ -21,14 +21,13 @@ export function InquiryDialog({ isOpen, onClose, productName }: InquiryDialogPro
   })
 
   const [charCount, setCharCount] = useState(0)
-
-  if (!isOpen) return null
-
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error'
     message: string
   } | null>(null)
+
+  if (!isOpen) return null
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
