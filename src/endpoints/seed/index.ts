@@ -9,6 +9,7 @@ import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
+import { seedTeamMembers } from './team-members'
 
 const collections: CollectionSlug[] = [
   'categories',
@@ -203,6 +204,10 @@ export const seed = async ({
       data: contactPageData({ contactForm: contactForm }),
     }),
   ])
+
+  payload.logger.info(`— Seeding team members...`)
+
+  await seedTeamMembers(payload)
 
   payload.logger.info(`— Seeding globals...`)
 

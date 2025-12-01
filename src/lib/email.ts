@@ -1,8 +1,8 @@
 import { Resend } from 'resend'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@kobamsagro.com'
-const FROM_EMAIL = process.env.FROM_EMAIL || 'notifications@kobamsagro.com'
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'kobamsagrosolutions@gmail.com'
+const FROM_EMAIL = process.env.FROM_EMAIL || 'notifications@kobamsagrosolutions.com'
 
 // Only initialize Resend if API key is available
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
@@ -22,6 +22,9 @@ interface QuoteEmailData {
   phone?: string
   product: string
   quantity: string
+  containerSize: string
+  shippingPreference: string
+  packagingOption: string
   message?: string
 }
 
@@ -32,6 +35,7 @@ interface InquiryEmailData {
   phone?: string
   country: string
   product: string
+  messageType: string
   message?: string
 }
 
@@ -85,6 +89,9 @@ export async function sendQuoteNotification(data: QuoteEmailData) {
     console.log('---')
     console.log('Product:', data.product)
     console.log('Quantity:', data.quantity, 'MT')
+    console.log('Container Size:', data.containerSize)
+    console.log('Shipping Preference:', data.shippingPreference)
+    console.log('Packaging Option:', data.packagingOption)
     console.log('Name:', data.name)
     console.log('Company:', data.company)
     console.log('Email:', data.email)
@@ -104,6 +111,11 @@ export async function sendQuoteNotification(data: QuoteEmailData) {
         <h2>New Quote Request</h2>
         <p><strong>Product:</strong> ${data.product}</p>
         <p><strong>Quantity:</strong> ${data.quantity} MT</p>
+        <hr>
+        <h3>Shipping & Packaging Details</h3>
+        <p><strong>Container Size:</strong> ${data.containerSize}</p>
+        <p><strong>Shipping Preference:</strong> ${data.shippingPreference}</p>
+        <p><strong>Packaging Option:</strong> ${data.packagingOption}</p>
         <hr>
         <h3>Customer Details</h3>
         <p><strong>Name:</strong> ${data.name}</p>
@@ -127,8 +139,9 @@ export async function sendInquiryNotification(data: InquiryEmailData) {
   if (!resend) {
     console.log('📧 [EMAIL NOTIFICATION] Product Inquiry')
     console.log('To:', ADMIN_EMAIL)
-    console.log('Subject:', `New Product Inquiry: ${data.product}`)
+    console.log('Subject:', `New Inquiry: ${data.messageType} - ${data.product}`)
     console.log('---')
+    console.log('Message Type:', data.messageType)
     console.log('Product:', data.product)
     console.log('Name:', data.fullName)
     console.log('Company:', data.companyName)
@@ -145,9 +158,10 @@ export async function sendInquiryNotification(data: InquiryEmailData) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: ADMIN_EMAIL,
-      subject: `New Product Inquiry: ${data.product}`,
+      subject: `New Inquiry: ${data.messageType} - ${data.product}`,
       html: `
-        <h2>New Product Inquiry</h2>
+        <h2>New Inquiry</h2>
+        <p><strong>Message Type:</strong> <span style="background-color: #F4C430; padding: 4px 8px; border-radius: 4px;">${data.messageType}</span></p>
         <p><strong>Product:</strong> ${data.product}</p>
         <hr>
         <h3>Customer Details</h3>

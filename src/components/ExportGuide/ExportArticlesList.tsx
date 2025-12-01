@@ -1,65 +1,12 @@
-'use client'
 import React from 'react'
 import Link from 'next/link'
+import type { ExportArticle } from '@/payload-types'
 
-const articles = [
-  {
-    id: 1,
-    category: 'Agro Commodities',
-    readTime: '8 min read',
-    title: 'How to Prepare Agro Commodities for Export',
-    description:
-      'Comprehensive guide on preparing agricultural products including quality standards and packaging requirements.',
-    tags: ['Quality Standards', 'Packaging', 'Storage Practices'],
-  },
-  {
-    id: 2,
-    category: 'Documentation',
-    readTime: '6 min read',
-    title: 'Understanding Export Quality Certificates',
-    description:
-      'Detailed information on quality certificates required for agricultural exports and how to obtain them.',
-    tags: ['Certificates', 'Quality Assurance', 'Regulatory Process', 'International Trade'],
-  },
-  {
-    id: 3,
-    category: 'Documentation',
-    readTime: '7 min read',
-    title: 'Shipping Documents Every Exporter Must Know',
-    description:
-      'Essential documentation required for shipping agricultural products, including bill of lading and commercial invoice.',
-    tags: ['Bill of Lading', 'Commercial Invoice', 'Packing List', 'Certificate of Origin'],
-  },
-  {
-    id: 4,
-    category: 'Logistics',
-    readTime: '9 min read',
-    title: 'Export Logistics and Supply Chain Management',
-    description:
-      'Best practices for managing the logistics of agricultural exports, from warehouse to destination port.',
-    tags: ['Supply Chain', 'Freight Forwarding', 'Warehouse Management', 'Port Operations'],
-  },
-  {
-    id: 5,
-    category: 'Compliance',
-    readTime: '8 min read',
-    title: 'International Trade Practices for Exporters',
-    description:
-      'Guidelines on international trade practices, trade terms, and best practices for agricultural exporters.',
-    tags: ['Trade Terms', 'Best Practices', 'Risk Management'],
-  },
-  {
-    id: 6,
-    category: 'Logistics',
-    readTime: '5 min read',
-    title: 'Market Entry Strategies for New Countries',
-    description:
-      'Strategic approaches to entering new international markets, from market research to establishing distribution channels.',
-    tags: ['Market Research', 'Market Analysis', 'Entry Strategies', 'Distribution Channels'],
-  },
-]
+interface ExportArticlesListProps {
+  articles: ExportArticle[]
+}
 
-export default function ExportArticlesList() {
+export default function ExportArticlesList({ articles }: ExportArticlesListProps) {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-6">
@@ -71,44 +18,50 @@ export default function ExportArticlesList() {
             </h2>
 
             <div className="space-y-6">
-              {articles.map((article) => (
-                <article
-                  key={article.id}
-                  className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-[#184504] text-white rounded-lg flex items-center justify-center font-bold text-xl">
-                      {article.id}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded">
-                          {article.category}
-                        </span>
-                        <span className="text-sm text-gray-500">{article.readTime}</span>
+              {articles.length === 0 ? (
+                <div className="text-center py-12 text-gray-500">
+                  <p>No articles available at the moment. Check back soon!</p>
+                </div>
+              ) : (
+                articles.map((article, index) => (
+                  <article
+                    key={article.id}
+                    className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-[#184504] text-white rounded-lg flex items-center justify-center font-bold text-xl">
+                        {index + 1}
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{article.title}</h3>
-                      <p className="text-gray-600 mb-4">{article.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {article.tags.map((tag, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
-                          >
-                            {tag}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded">
+                            {article.category}
                           </span>
-                        ))}
+                          <span className="text-sm text-gray-500">{article.readTime}</span>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{article.title}</h3>
+                        <p className="text-gray-600 mb-4">{article.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {article.tags.map((tagObj, tagIndex) => (
+                            <span
+                              key={tagObj.id || tagIndex}
+                              className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                            >
+                              {tagObj.tag}
+                            </span>
+                          ))}
+                        </div>
+                        <Link
+                          href={`/export-guide/${article.slug}`}
+                          className="text-[#184504] font-semibold hover:underline inline-flex items-center gap-1"
+                        >
+                          Read Article →
+                        </Link>
                       </div>
-                      <Link
-                        href={`/export-guide/${article.id}`}
-                        className="text-[#184504] font-semibold hover:underline inline-flex items-center gap-1"
-                      >
-                        Read Article →
-                      </Link>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))
+              )}
             </div>
           </div>
 
