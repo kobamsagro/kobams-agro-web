@@ -1,17 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import type { Media } from '@/payload-types'
-
-interface TeamMember {
-  id: string
-  name: string
-  role: string
-  description: string
-  image?: string | Media | null
-  order: number
-  status: 'active' | 'inactive'
-}
+import type { TeamMember, Media } from '@/payload-types'
 
 interface AboutUsProps {
   teamMembers: TeamMember[]
@@ -306,8 +296,8 @@ export default function AboutUs({ teamMembers = [] }: AboutUsProps) {
             ) : (
               teamMembers.map((member) => {
                 const imageUrl =
-                  typeof member.image === 'object' && member.image !== null
-                    ? (member.image as Media).url
+                  member.image && typeof member.image === 'object' && 'url' in member.image
+                    ? member.image.url
                     : null
 
                 return (
