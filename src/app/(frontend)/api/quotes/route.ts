@@ -7,9 +7,29 @@ export async function POST(request: Request) {
   try {
     const body = await request.json()
 
-    const { name, company, email, phone, product, quantity, message } = body
+    const {
+      name,
+      company,
+      email,
+      phone,
+      product,
+      quantity,
+      containerSize,
+      shippingPreference,
+      packagingOption,
+      message,
+    } = body
 
-    if (!name || !company || !email || !product || !quantity) {
+    if (
+      !name ||
+      !company ||
+      !email ||
+      !product ||
+      !quantity ||
+      !containerSize ||
+      !shippingPreference ||
+      !packagingOption
+    ) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
@@ -25,6 +45,9 @@ export async function POST(request: Request) {
         phone: phone || undefined,
         product,
         quantity,
+        containerSize,
+        shippingPreference,
+        packagingOption,
         message: message || undefined,
         status: 'new',
       },
@@ -38,6 +61,9 @@ export async function POST(request: Request) {
       phone: phone || undefined,
       product,
       quantity,
+      containerSize,
+      shippingPreference,
+      packagingOption,
       message: message || undefined,
     })
 

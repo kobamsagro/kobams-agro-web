@@ -16,21 +16,77 @@ export function RequestQuoteDialog({ isOpen, onClose, productName }: RequestQuot
     email: '',
     phone: '',
     quantity: '',
+    containerSize: '',
+    shippingPreference: '',
+    packagingOption: '',
     message: '',
   })
 
   const [charCount, setCharCount] = useState(0)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error'
+    message: string
+  } | null>(null)
 
   if (!isOpen) return null
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Quote request:', { ...formData, product: productName })
-    // Reset form and close
-    setFormData({ name: '', company: '', email: '', phone: '', quantity: '', message: '' })
-    setCharCount(0)
-    onClose()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const response = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          product: productName || 'General Quote',
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Quote request submitted successfully!',
+        })
+        // Reset form
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          quantity: '',
+          containerSize: '',
+          shippingPreference: '',
+          packagingOption: '',
+          message: '',
+        })
+        setCharCount(0)
+        // Close dialog after 2 seconds
+        setTimeout(() => {
+          onClose()
+          setSubmitStatus(null)
+        }, 2000)
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Failed to submit quote request. Please try again.',
+        })
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'An error occurred. Please try again later.',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -129,6 +185,72 @@ export function RequestQuoteDialog({ isOpen, onClose, productName }: RequestQuot
             </div>
 
             <div>
+              <label
+                htmlFor="containerSize"
+                className="block text-sm font-medium text-[#2D5016] mb-2"
+              >
+                Container Size <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="containerSize"
+                required
+                value={formData.containerSize}
+                onChange={(e) => setFormData({ ...formData, containerSize: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D5016] focus:border-transparent bg-white"
+              >
+                <option value="">Select container size</option>
+                <option value="20ft">20ft Container</option>
+                <option value="40ft">40ft Container</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="shippingPreference"
+                className="block text-sm font-medium text-[#2D5016] mb-2"
+              >
+                Shipping Preference <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="shippingPreference"
+                required
+                value={formData.shippingPreference}
+                onChange={(e) => setFormData({ ...formData, shippingPreference: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D5016] focus:border-transparent bg-white"
+              >
+                <option value="">Select shipping preference</option>
+                <option value="FOB">FOB (Free on Board)</option>
+                <option value="CIF">CIF (Cost, Insurance & Freight)</option>
+                <option value="CFR">CFR (Cost and Freight)</option>
+                <option value="EXW">EXW (Ex Works)</option>
+                <option value="DDP">DDP (Delivered Duty Paid)</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="packagingOption"
+                className="block text-sm font-medium text-[#2D5016] mb-2"
+              >
+                Packaging Option <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="packagingOption"
+                required
+                value={formData.packagingOption}
+                onChange={(e) => setFormData({ ...formData, packagingOption: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D5016] focus:border-transparent bg-white"
+              >
+                <option value="">Select packaging option</option>
+                <option value="PP Bags">PP Bags</option>
+                <option value="Bulk">Bulk</option>
+                <option value="Jute Bags">Jute Bags</option>
+                <option value="Custom Packaging">Custom Packaging</option>
+              </select>
+            </div>
+
+            <div>
               <label htmlFor="message" className="block text-sm font-medium text-[#2D5016] mb-2">
                 Message
               </label>
@@ -143,11 +265,24 @@ export function RequestQuoteDialog({ isOpen, onClose, productName }: RequestQuot
               <div className="text-right text-sm text-gray-400 mt-1">{charCount}/500</div>
             </div>
 
+            {submitStatus && (
+              <div
+                className={`p-4 rounded-lg ${
+                  submitStatus.type === 'success'
+                    ? 'bg-green-50 text-green-800 border border-green-200'
+                    : 'bg-red-50 text-red-800 border border-red-200'
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-[#F4C430] hover:bg-[#E5B520] text-[#2D5016] font-semibold py-4 rounded-lg transition-colors"
+              disabled={isSubmitting}
+              className="w-full bg-[#F4C430] hover:bg-[#E5B520] text-[#2D5016] font-semibold py-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Quote Request
+              {isSubmitting ? 'Submitting...' : 'Send Quote Request'}
             </button>
           </form>
         </div>

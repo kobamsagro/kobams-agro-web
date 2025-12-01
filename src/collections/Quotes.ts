@@ -12,7 +12,15 @@ export const Quotes: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    defaultColumns: ['name', 'company', 'product', 'quantity', 'status', 'createdAt'],
+    defaultColumns: [
+      'name',
+      'company',
+      'product',
+      'quantity',
+      'containerSize',
+      'status',
+      'createdAt',
+    ],
     useAsTitle: 'name',
   },
   fields: [
@@ -50,6 +58,42 @@ export const Quotes: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Quantity (MT)',
+    },
+    {
+      name: 'containerSize',
+      type: 'select',
+      required: true,
+      options: [
+        { label: '20ft Container', value: '20ft' },
+        { label: '40ft Container', value: '40ft' },
+        { label: 'Others', value: 'Others' },
+      ],
+      label: 'Container Size',
+    },
+    {
+      name: 'shippingPreference',
+      type: 'select',
+      required: true,
+      options: [
+        { label: 'FOB (Free on Board)', value: 'FOB' },
+        { label: 'CIF (Cost, Insurance & Freight)', value: 'CIF' },
+        { label: 'CFR (Cost and Freight)', value: 'CFR' },
+        { label: 'EXW (Ex Works)', value: 'EXW' },
+        { label: 'DDP (Delivered Duty Paid)', value: 'DDP' },
+      ],
+      label: 'Shipping Preference',
+    },
+    {
+      name: 'packagingOption',
+      type: 'select',
+      required: true,
+      options: [
+        { label: 'PP Bags', value: 'PP Bags' },
+        { label: 'Bulk', value: 'Bulk' },
+        { label: 'Jute Bags', value: 'Jute Bags' },
+        { label: 'Custom Packaging', value: 'Custom Packaging' },
+      ],
+      label: 'Packaging Option',
     },
     {
       name: 'message',

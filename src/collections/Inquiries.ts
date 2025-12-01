@@ -12,7 +12,15 @@ export const Inquiries: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    defaultColumns: ['fullName', 'companyName', 'country', 'product', 'status', 'createdAt'],
+    defaultColumns: [
+      'fullName',
+      'companyName',
+      'country',
+      'product',
+      'messageType',
+      'status',
+      'createdAt',
+    ],
     useAsTitle: 'fullName',
   },
   fields: [
@@ -50,6 +58,19 @@ export const Inquiries: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Product',
+    },
+    {
+      name: 'messageType',
+      type: 'select',
+      required: true,
+      options: [
+        { label: 'Product Inquiry', value: 'Product Inquiry' },
+        { label: 'Partnership/Collaboration', value: 'Partnership/Collaboration' },
+        { label: 'Export Process Questions', value: 'Export Process Questions' },
+        { label: 'Documentation and Compliance', value: 'Documentation and Compliance' },
+        { label: 'Others', value: 'Others' },
+      ],
+      label: 'Message Type',
     },
     {
       name: 'message',

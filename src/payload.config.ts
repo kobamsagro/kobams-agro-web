@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
 import { Contacts } from './collections/Contacts'
+import { ExportArticles } from './collections/ExportArticles'
 import { Inquiries } from './collections/Inquiries'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -17,6 +18,7 @@ import { Posts } from './collections/Posts'
 import { Products } from './collections/Products'
 import { Quotes } from './collections/Quotes'
 import { Services } from './collections/Services'
+import { TeamMembers } from './collections/TeamMembers'
 import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
@@ -77,6 +79,8 @@ export default buildConfig({
     Services,
     Partners,
     Testimonials,
+    TeamMembers,
+    ExportArticles,
     Quotes,
     Inquiries,
     Contacts,

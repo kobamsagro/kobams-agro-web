@@ -1,8 +1,13 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import type { TeamMember, Media } from '@/payload-types'
 
-export default function AboutUs() {
+interface AboutUsProps {
+  teamMembers: TeamMember[]
+}
+
+export default function AboutUs({ teamMembers = [] }: AboutUsProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -147,9 +152,8 @@ export default function AboutUs() {
               </div>
               <h3 className="font-bold text-xl text-[#2d4a1f] mb-3">Mission</h3>
               <p className="text-gray-600">
-                To bridge the gap between local farmers and global markets by providing premium
-                agricultural products while promoting sustainable farming practices and supporting
-                rural communities.
+                To revolutionize agriculture through innovation, technology, and sustainable farming
+                practices that empower farmers and feed communities globally.
               </p>
             </div>
 
@@ -169,9 +173,8 @@ export default function AboutUs() {
               </div>
               <h3 className="font-bold text-xl text-[#2d4a1f] mb-3">Vision</h3>
               <p className="text-gray-600">
-                To become a leading global supplier of agricultural products, recognized for our
-                commitment to quality, sustainability, and ethical business practices that benefit
-                farmers and customers alike.
+                To be Africa&apos;s most trusted and technology-driven agricultural brand, leading
+                the transformation of the continent&apos;s agricultural landscape.
               </p>
             </div>
           </div>
@@ -200,8 +203,8 @@ export default function AboutUs() {
                   </svg>
                 </span>
               </div>
-              <h3 className="font-bold text-lg text-[#2d4a1f] mb-2">Integrity</h3>
-              <p className="text-gray-600 text-sm">We do business with honesty and fairness.</p>
+              <h3 className="font-bold text-lg text-[#2d4a1f] mb-2">Healthy Living</h3>
+              <p className="text-gray-600 text-sm">We provide efficiency to farm produce, towards healthy consumption and living.</p>
             </div>
 
             <div className="text-center">
@@ -221,7 +224,7 @@ export default function AboutUs() {
                   </svg>
                 </span>
               </div>
-              <h3 className="font-bold text-lg text-[#2d4a1f] mb-2">Innovation</h3>
+              <h3 className="font-bold text-lg text-[#2d4a1f] mb-2">Agro Technology</h3>
               <p className="text-gray-600 text-sm">
                 We use technology to drive agriculture progress.
               </p>
@@ -277,7 +280,7 @@ export default function AboutUs() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-16">
+      <section className="py-16 bg-[#FAF8F3]">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-[#2d4a1f] text-center mb-4">Leadership Team</h2>
           <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
@@ -286,43 +289,35 @@ export default function AboutUs() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: 'Adebayo Kobam',
-                role: 'CEO & Founder',
-                description: 'Leading the company with 15+ years of experience in agro-export.',
-              },
-              {
-                name: 'Dr. Funmi Adebayo',
-                role: 'Chief Operations Officer',
-                description:
-                  'Ensuring seamless operations and quality control across all processes.',
-              },
-              {
-                name: 'Ibrahim Hassan',
-                role: 'Export Director',
-                description: 'Managing international logistics and client relationships.',
-              },
-              {
-                name: 'Dr. Kemi Ogundinmu',
-                role: 'Research & Technology Lead',
-                description: 'Maintaining the highest standards in product quality and safety.',
-              },
-            ].map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200">
-                  <Image
-                    src={`/assets/team-${index + 1}.jpg`}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="font-bold text-lg text-[#2d4a1f] mb-1">{member.name}</h3>
-                <p className="text-yellow-600 text-sm mb-2">{member.role}</p>
-                <p className="text-gray-600 text-sm">{member.description}</p>
+            {teamMembers.length === 0 ? (
+              <div className="col-span-full text-center py-12 text-gray-500">
+                <p>Team information coming soon.</p>
               </div>
-            ))}
+            ) : (
+              teamMembers.map((member) => {
+                const imageUrl =
+                  member.image && typeof member.image === 'object' && 'url' in member.image
+                    ? member.image.url
+                    : null
+
+                return (
+                  <div key={member.id} className="text-center bg-white shadow-md rounded-lg p-4">
+                    <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-300">
+                      {imageUrl ? (
+                        <Image src={imageUrl} alt={member.name} fill className="object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-400 text-4xl font-bold">
+                          {member.name.charAt(0)}
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-lg text-[#2F6D2C] mb-1">{member.name}</h3>
+                    <p className="text-[#E1A72B] text-sm mb-2">{member.role}</p>
+                    <p className="text-gray-600 text-sm">{member.description}</p>
+                  </div>
+                )
+              })
+            )}
           </div>
         </div>
       </section>

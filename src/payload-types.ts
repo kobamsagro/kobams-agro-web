@@ -73,6 +73,8 @@ export interface Config {
     services: Service;
     partners: Partner;
     testimonials: Testimonial;
+    'team-members': TeamMember;
+    'export-articles': ExportArticle;
     quotes: Quote;
     inquiries: Inquiry;
     contacts: Contact;
@@ -102,6 +104,8 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
+    'export-articles': ExportArticlesSelect<false> | ExportArticlesSelect<true>;
     quotes: QuotesSelect<false> | QuotesSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
     contacts: ContactsSelect<false> | ContactsSelect<true>;
@@ -925,6 +929,72 @@ export interface Testimonial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members".
+ */
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  description: string;
+  /**
+   * Upload a professional photo of the team member
+   */
+  image?: (string | null) | Media;
+  /**
+   * Lower numbers appear first
+   */
+  order: number;
+  status?: ('active' | 'inactive') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "export-articles".
+ */
+export interface ExportArticle {
+  id: string;
+  title: string;
+  category: 'Agro Commodities' | 'Documentation' | 'Logistics' | 'Compliance' | 'Market Entry';
+  readTime: string;
+  description: string;
+  tags: {
+    tag: string;
+    id?: string | null;
+  }[];
+  /**
+   * Full article content (optional for now)
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Lower numbers appear first
+   */
+  order: number;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  status?: ('published' | 'draft') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "quotes".
  */
 export interface Quote {
@@ -935,6 +1005,9 @@ export interface Quote {
   phone?: string | null;
   product: string;
   quantity: string;
+  containerSize: '20ft' | '40ft' | 'Others';
+  shippingPreference: 'FOB' | 'CIF' | 'CFR' | 'EXW' | 'DDP';
+  packagingOption: 'PP Bags' | 'Bulk' | 'Jute Bags' | 'Custom Packaging';
   message?: string | null;
   status: 'new' | 'in-progress' | 'quoted' | 'closed';
   /**
@@ -956,6 +1029,12 @@ export interface Inquiry {
   phone?: string | null;
   country: string;
   product: string;
+  messageType:
+    | 'Product Inquiry'
+    | 'Partnership/Collaboration'
+    | 'Export Process Questions'
+    | 'Documentation and Compliance'
+    | 'Others';
   message?: string | null;
   status: 'new' | 'in-progress' | 'responded' | 'closed';
   /**
@@ -1197,6 +1276,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: string | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'team-members';
+        value: string | TeamMember;
+      } | null)
+    | ({
+        relationTo: 'export-articles';
+        value: string | ExportArticle;
       } | null)
     | ({
         relationTo: 'quotes';
@@ -1554,6 +1641,43 @@ export interface TestimonialsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members_select".
+ */
+export interface TeamMembersSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  description?: T;
+  image?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "export-articles_select".
+ */
+export interface ExportArticlesSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  readTime?: T;
+  description?: T;
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  content?: T;
+  order?: T;
+  generateSlug?: T;
+  slug?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "quotes_select".
  */
 export interface QuotesSelect<T extends boolean = true> {
@@ -1563,6 +1687,9 @@ export interface QuotesSelect<T extends boolean = true> {
   phone?: T;
   product?: T;
   quantity?: T;
+  containerSize?: T;
+  shippingPreference?: T;
+  packagingOption?: T;
   message?: T;
   status?: T;
   notes?: T;
@@ -1580,6 +1707,7 @@ export interface InquiriesSelect<T extends boolean = true> {
   phone?: T;
   country?: T;
   product?: T;
+  messageType?: T;
   message?: T;
   status?: T;
   notes?: T;

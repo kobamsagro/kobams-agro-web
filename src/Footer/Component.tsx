@@ -8,6 +8,7 @@ import type { Footer } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import Image from 'next/image'
 
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
@@ -37,7 +38,15 @@ export async function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="text-xl font-semibold">Kobam&apos;s Logo</span>
+               <Link href="/" className="flex items-center">
+                            <Image
+                              src="/assets/kobams-white.png"
+                              alt="Kobams Agro"
+                              width={120}
+                              height={60}
+                              priority
+                            />
+                          </Link>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               {footerData?.description ||
