@@ -20,13 +20,20 @@ export default function ContactForm() {
       const data = await response.json()
 
       if (response.ok) {
-        toast.success(data.message || 'Message sent successfully!')
+        toast.success(data.message || 'Message sent successfully!', {
+          duration: 5000,
+        })
         e.currentTarget.reset()
       } else {
-        toast.error(data.error || 'Failed to send message. Please try again.')
+        toast.error(data.error || 'Failed to send message. Please try again.', {
+          duration: 5000,
+        })
       }
     } catch (error) {
-      toast.error('Network error. Please check your connection and try again.')
+      console.error('Contact form error:', error)
+      toast.error('Network error. Please check your connection and try again.', {
+        duration: 5000,
+      })
     } finally {
       setIsSubmitting(false)
     }

@@ -16,6 +16,7 @@ export default function InquiryDialog({ isOpen, onClose, productName }: InquiryD
     email: '',
     phone: '',
     country: '',
+    messageType: '',
     message: '',
   })
 
@@ -34,6 +35,7 @@ export default function InquiryDialog({ isOpen, onClose, productName }: InquiryD
         body: JSON.stringify({
           ...formData,
           product: productName,
+          messageType: formData.messageType,
         }),
       })
 
@@ -41,7 +43,7 @@ export default function InquiryDialog({ isOpen, onClose, productName }: InquiryD
 
       if (response.ok) {
         toast.success(data.message || 'Inquiry sent successfully!')
-        setFormData({ fullName: '', companyName: '', email: '', phone: '', country: '', message: '' })
+        setFormData({ fullName: '', companyName: '', email: '', phone: '', country: '', messageType: '', message: '' })
         onClose()
       } else {
         toast.error(data.error || 'Failed to submit inquiry. Please try again.')
@@ -53,7 +55,7 @@ export default function InquiryDialog({ isOpen, onClose, productName }: InquiryD
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -157,6 +159,28 @@ export default function InquiryDialog({ isOpen, onClose, productName }: InquiryD
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
               />
+            </div>
+
+            {/* Message Type */}
+            <div>
+              <label htmlFor="messageType" className="block text-gray-700 font-medium mb-2">
+                Message Type <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="messageType"
+                name="messageType"
+                value={formData.messageType}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent bg-white"
+              >
+                <option value="">Select message type</option>
+                <option value="Product Inquiry">Product Inquiry</option>
+                <option value="Partnership/Collaboration">Partnership/Collaboration</option>
+                <option value="Export Process Questions">Export Process Questions</option>
+                <option value="Documentation and Compliance">Documentation and Compliance</option>
+                <option value="Others">Others</option>
+              </select>
             </div>
 
             {/* Message */}

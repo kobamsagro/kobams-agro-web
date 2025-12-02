@@ -4,6 +4,7 @@ import configPromise from '@payload-config'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import RichText from '@/components/RichText'
 
 interface PageProps {
   params: Promise<{
@@ -96,10 +97,7 @@ export default async function ExportArticlePage({ params }: PageProps) {
           </div>
 
           {article.content && (
-            <div className="prose prose-lg max-w-none">
-              {/* Render rich text content here */}
-              <div dangerouslySetInnerHTML={{ __html: JSON.stringify(article.content) }} />
-            </div>
+            <RichText data={article.content} enableGutter={false} className="prose-lg" />
           )}
 
           {!article.content && (

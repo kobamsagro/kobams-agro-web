@@ -22,7 +22,7 @@ import PartnersSection from '../../../components/PartnersSection/PartnersSection
 import TestimonialsSection from '../../../components/TestimonialsSection/TestimonialsSection'
 import NewsSection from '../../../components/NewsSection/NewsSection'
 
-export const revalidate = 0 // Disable caching for immediate updates
+// Using on-demand revalidation via hooks instead of time-based revalidation
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })

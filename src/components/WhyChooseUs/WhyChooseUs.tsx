@@ -40,7 +40,7 @@ const features = [
     id: 3,
     title: 'Sustainable Packaging',
     description:
-      'Eco-friendly packaging protects product quality while minimizing environmental impact.',
+      'Eco-friendly packaging protects product quality while minimizing environmental impact Every shipment is backed by full traceability from farm to final destination.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -55,9 +55,9 @@ const features = [
   },
   {
     id: 4,
-    title: 'Advanced Traceability',
+    title: 'Global Market Experience',
     description:
-      'Every shipment is backed by full traceability from farm to final destination.',
+      'With years in international agricultural trade, we understand the legal, cultural and technical requirements of every region. Our multilingual team ensures smooth operations and successful market entry.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
