@@ -136,8 +136,8 @@ export default function AboutUs({ teamMembers = [] }: AboutUsProps) {
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-[#2d4a1f] text-center mb-12">What we stand by</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-[#184504] rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#FAF8F3] text-left rounded-xl p-4">
+              <div className="w-10 h-10 bg-[#184504] rounded-full flex items-center justify-center mb-4">
                 <span className="text-3xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -157,8 +157,8 @@ export default function AboutUs({ teamMembers = [] }: AboutUsProps) {
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-[#FAF8F3] text-left rounded-xl p-4">
+              <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center mb-4">
                 <span className="text-3xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +204,9 @@ export default function AboutUs({ teamMembers = [] }: AboutUsProps) {
                 </span>
               </div>
               <h3 className="font-bold text-lg text-[#2d4a1f] mb-2">Healthy Living</h3>
-              <p className="text-gray-600 text-sm">We provide efficiency to farm produce, towards healthy consumption and living.</p>
+              <p className="text-gray-600 text-sm">
+                We provide efficiency to farm produce, towards healthy consumption and living.
+              </p>
             </div>
 
             <div className="text-center">
@@ -363,11 +365,7 @@ export default function AboutUs({ teamMembers = [] }: AboutUsProps) {
             ))}
           </div>
 
-          <div className="text-center">
-            <button className="bg-[#184504] hover:bg-[#2d4a1f] text-white font-semibold px-8 py-3 rounded-lg transition-colors">
-              View All Certifications
-            </button>
-          </div>
+         
         </div>
       </section>
     </div>

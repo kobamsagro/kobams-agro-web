@@ -34,19 +34,19 @@ export async function Footer() {
   return (
     <footer className="bg-[#1a4d0a] text-white">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-               <Link href="/" className="flex items-center">
-                            <Image
-                              src="/assets/kobams-white.png"
-                              alt="Kobams Agro"
-                              width={120}
-                              height={60}
-                              priority
-                            />
-                          </Link>
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/assets/kobams-white.png"
+                  alt="Kobams Agro"
+                  width={120}
+                  height={60}
+                  priority
+                />
+              </Link>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               {footerData?.description ||
@@ -163,24 +163,81 @@ export async function Footer() {
             </nav>
           </div>
 
-          {/* Products */}
+          {/* Export */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Products</h3>
+            <h3 className="text-lg font-semibold mb-4">Export Process</h3>
             <ul className="space-y-2">
-              {productsData.docs && productsData.docs.length > 0 ? (
-                productsData.docs.map((product) => (
-                  <li key={product.id}>
-                    <Link
-                      href={`/products/${product.slug}`}
-                      className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
-                    >
-                      {product.name}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <li className="text-gray-400 text-sm">No products available</li>
-              )}
+              <li>
+                <Link
+                  href={`/export-process`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Our Export Flow
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/export-process`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Quality & Compliance
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/export-process`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Packaging & Delivery Standards
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/export-process`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Shipping & Documentation
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/*Market */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Markets</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href={`/markets`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Countries Served
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/export-process`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Port & Logistics Network
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/export-process`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Compliance Certifications for Regions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/export-process`}
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
+                >
+                  Shipping & Documentation
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -229,7 +286,7 @@ export async function Footer() {
                     <path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path>
                   </svg>
                 </span>
-                <span className="text-gray-300">info@kobams.com</span>
+                <span className="text-gray-300">info@kobamsagrosolutions.com</span>
               </li>
             </nav>
           </div>

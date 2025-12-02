@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: 'Step-by-step guidance for export processes, trade documentation, and compliance',
 }
 
+// Using on-demand revalidation via hooks instead of time-based revalidation
+
 export default async function ExportGuidePage() {
   const payload = await getPayload({ config: configPromise })
 
