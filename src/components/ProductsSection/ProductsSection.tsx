@@ -2,7 +2,9 @@
 import React, { useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import type { Product, Media } from '@/payload-types'
+import { fadeInUp, staggerContainer } from '@/utils/animations'
 
 interface ProductsSectionProps {
   products: Product[]
@@ -33,11 +35,17 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
     <section className="py-16 px-6 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2d4a1f] mb-8">
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold text-center text-[#2d4a1f] mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           Our Premium Agricultural
           <br />
           Products
-        </h2>
+        </motion.h2>
 
         {/* Category Dropdown */}
         <div className="flex justify-center mb-12">
@@ -55,7 +63,13 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={staggerContainer}
+        >
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => {
               const imageUrl =
@@ -64,14 +78,18 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                   : ''
 
               return (
-                <div
+                <motion.div
                   key={product.id}
                   className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+                  variants={fadeInUp}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
                 >
                   {/* Product Image */}
-                  <div className="relative h-64 bg-gray-200">
+                  <div className="relative h-64 bg-gray-200 overflow-hidden">
                     {imageUrl && (
-                      <Image src={imageUrl} alt={product.name} fill className="object-cover" />
+                      <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.4 }}>
+                        <Image src={imageUrl} alt={product.name} fill className="object-cover" />
+                      </motion.div>
                     )}
                   </div>
 
@@ -91,17 +109,22 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                       View Details
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               )
             })
           ) : (
-            <div className="col-span-full text-center py-12">
+            <motion.div
+              className="col-span-full text-center py-12"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <p className="text-gray-500 text-lg">
                 No products found in this category. Please try another category.
               </p>
-            </div>
+            </motion.div>
           )}
-        </div>
+        </motion.div>
 
         {/* View All Products Button */}
         <div className="flex justify-center">
