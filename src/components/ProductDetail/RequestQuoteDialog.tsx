@@ -22,6 +22,9 @@ export default function RequestQuoteDialog({
     email: '',
     phone: '',
     quantity: '',
+    containerSize: '20ft',
+    shippingPreference: 'FOB',
+    packagingOption: 'Standard',
     message: '',
   })
 
@@ -47,19 +50,31 @@ export default function RequestQuoteDialog({
 
       if (response.ok) {
         toast.success(data.message || 'Quote request sent successfully!')
-        setFormData({ name: '', company: '', email: '', phone: '', quantity: '', message: '' })
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          quantity: '',
+          containerSize: '20ft',
+          shippingPreference: 'FOB',
+          packagingOption: 'Standard',
+          message: '',
+        })
         onClose()
       } else {
         toast.error(data.error || 'Failed to submit request. Please try again.')
       }
-    } catch (error) {
+    } catch (_error) {
       toast.error('Network error. Please check your connection and try again.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -164,6 +179,64 @@ export default function RequestQuoteDialog({
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
               />
+            </div>
+
+            {/* Container Size */}
+            <div>
+              <label htmlFor="containerSize" className="block text-gray-700 font-medium mb-2">
+                Container Size <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="containerSize"
+                name="containerSize"
+                value={formData.containerSize}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
+              >
+                <option value="20ft">20ft Container</option>
+                <option value="40ft">40ft Container</option>
+                <option value="40ft-HC">40ft High Cube</option>
+              </select>
+            </div>
+
+            {/* Shipping Preference */}
+            <div>
+              <label htmlFor="shippingPreference" className="block text-gray-700 font-medium mb-2">
+                Shipping Terms <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="shippingPreference"
+                name="shippingPreference"
+                value={formData.shippingPreference}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
+              >
+                <option value="FOB">FOB (Free on Board)</option>
+                <option value="CIF">CIF (Cost, Insurance & Freight)</option>
+                <option value="CFR">CFR (Cost and Freight)</option>
+                <option value="EXW">EXW (Ex Works)</option>
+              </select>
+            </div>
+
+            {/* Packaging Option */}
+            <div>
+              <label htmlFor="packagingOption" className="block text-gray-700 font-medium mb-2">
+                Packaging <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="packagingOption"
+                name="packagingOption"
+                value={formData.packagingOption}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
+              >
+                <option value="Standard">Standard Packaging</option>
+                <option value="Bulk">Bulk Packaging</option>
+                <option value="Custom">Custom Packaging</option>
+              </select>
             </div>
 
             {/* Message */}

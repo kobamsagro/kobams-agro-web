@@ -65,6 +65,12 @@ export default async function ExportArticlePage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-white">
+       <section className="bg-[#184504] text-white py-32">
+        <div className="container mx-auto my-12 px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Export Article</h1>
+         
+        </div>
+      </section>
       <div className="container mx-auto px-6 py-16">
         <Link
           href="/export-guide"

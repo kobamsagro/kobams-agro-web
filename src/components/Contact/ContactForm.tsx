@@ -7,9 +7,13 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (isSubmitting) return // Prevent double submission
+
     setIsSubmitting(true)
 
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const formData = new FormData(form)
 
     try {
       const response = await fetch('/api/contact', {
@@ -23,7 +27,7 @@ export default function ContactForm() {
         toast.success(data.message || 'Message sent successfully!', {
           duration: 5000,
         })
-        e.currentTarget.reset()
+        form.reset()
       } else {
         toast.error(data.error || 'Failed to send message. Please try again.', {
           duration: 5000,
