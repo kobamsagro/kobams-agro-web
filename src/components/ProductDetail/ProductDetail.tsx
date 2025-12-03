@@ -2,18 +2,52 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
 import type { Product, Media } from '@/payload-types'
 import RequestQuoteDialog from './RequestQuoteDialog'
 import InquiryDialog from './InquiryDialog'
+import HighlightDetailModal from './HighlightDetailModal'
 
 interface ProductDetailProps {
   product: Product
   relatedProducts: Product[]
 }
 
+interface HighlightDetail {
+  title: string
+  description: string
+  benefits: string[]
+  additionalInfo?: string
+}
+
 export default function ProductDetail({ product, relatedProducts }: ProductDetailProps) {
   const [isQuoteDialogOpen, setIsQuoteDialogOpen] = useState(false)
   const [isInquiryDialogOpen, setIsInquiryDialogOpen] = useState(false)
+  const [selectedHighlight, setSelectedHighlight] = useState<HighlightDetail | null>(null)
+  const [isHighlightModalOpen, setIsHighlightModalOpen] = useState(false)
+
+  // Transform product highlights from CMS to component format
+  const productHighlights: HighlightDetail[] =
+    (
+      product as Product & {
+        highlights?: Array<{
+          title: string
+          description: string
+          benefits?: Array<{ benefit: string }>
+          additionalInfo?: string
+        }>
+      }
+    ).highlights?.map((highlight) => ({
+      title: highlight.title,
+      description: highlight.description,
+      benefits: highlight.benefits?.map((b) => b.benefit) || [],
+      additionalInfo: highlight.additionalInfo || undefined,
+    })) || []
+
+  const handleHighlightClick = (highlight: HighlightDetail) => {
+    setSelectedHighlight(highlight)
+    setIsHighlightModalOpen(true)
+  }
 
   const imageUrl =
     typeof product.image === 'object' && product.image !== null ? (product.image as Media).url : ''
@@ -63,6 +97,36 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
           </div>
         </div>
       </section>
+
+      {/* Product Highlights */}
+      {productHighlights.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl font-bold text-[#2d4a1f] mb-8">Product Highlights</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {productHighlights.map((highlight, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                  onClick={() => handleHighlightClick(highlight)}
+                >
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-[#2d4a1f] mb-2">{highlight.title}</h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm mb-4">{highlight.description}</p>
+
+                  {/* CTA */}
+                  <button className="flex items-center gap-2 text-[#184504] hover:text-[#2d4a1f] font-medium text-sm transition-colors">
+                    Click for details
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Quality Specifications */}
       {product.specifications && product.specifications.length > 0 && (
@@ -122,6 +186,27 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
                 </div>
               ))}
             </div>
+
+            {/* Packaging Process */}
+            {(product as Product & { packagingProcess?: string }).packagingProcess && (
+              <div className="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
+                <h3 className="text-lg font-bold text-[#2d4a1f] mb-3 flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                  >
+                    <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 11V17H13V11H11ZM11 7V9H13V7H11Z"></path>
+                  </svg>
+                  Packaging Process
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {(product as Product & { packagingProcess?: string }).packagingProcess}
+                </p>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -150,7 +235,7 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {product.exportMarkets.map((market, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg shadow-sm text-center">
-                  <div className="text-3xl mb-2">Flag</div>
+                  {/* <div className="text-3xl mb-2">Flag</div> */}
                   <p className="font-semibold text-[#184504]">{market.country}</p>
                 </div>
               ))}
@@ -255,6 +340,11 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
         isOpen={isInquiryDialogOpen}
         onClose={() => setIsInquiryDialogOpen(false)}
         productName={product.name}
+      />
+      <HighlightDetailModal
+        isOpen={isHighlightModalOpen}
+        onClose={() => setIsHighlightModalOpen(false)}
+        highlight={selectedHighlight}
       />
     </div>
   )

@@ -52,6 +52,70 @@ export const Products: CollectionConfig = {
           ],
         },
         {
+          label: 'Product Highlights',
+          fields: [
+            {
+              name: 'highlights',
+              type: 'array',
+              label: 'Product Highlights',
+              admin: {
+                description:
+                  'Showcase key benefits and features of your product (e.g., Long Shelf Life, Premium Quality, Export Ready)',
+              },
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  label: 'Benefit Title',
+                  admin: {
+                    placeholder: 'e.g., Extended Shelf Life, Premium Quality, Export Ready',
+                  },
+                },
+                {
+                  name: 'description',
+                  type: 'text',
+                  required: true,
+                  label: 'Short Description',
+                  admin: {
+                    placeholder: 'e.g., Stays fresh for up to 24 months under proper storage',
+                  },
+                },
+                {
+                  name: 'benefits',
+                  type: 'array',
+                  required: true,
+                  label: 'Detailed Benefits',
+                  minRows: 2,
+                  admin: {
+                    description: 'List specific advantages and value propositions',
+                  },
+                  fields: [
+                    {
+                      name: 'benefit',
+                      type: 'text',
+                      required: true,
+                      label: 'Benefit',
+                      admin: {
+                        placeholder: 'e.g., Reduces waste and storage costs',
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: 'additionalInfo',
+                  type: 'textarea',
+                  label: 'Additional Information (Optional)',
+                  admin: {
+                    placeholder:
+                      'e.g., Our products meet international standards including ISTA, ISO, and HACCP certifications',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
           label: 'Quality & Specifications',
           fields: [
             {
@@ -113,6 +177,17 @@ export const Products: CollectionConfig = {
                   label: 'Description',
                 },
               ],
+            },
+            {
+              name: 'packagingProcess',
+              type: 'textarea',
+              label: 'Packaging Process',
+              admin: {
+                description:
+                  'Describe the packaging process, quality control measures, and handling procedures',
+                placeholder:
+                  'e.g., Our packaging process includes thorough cleaning, sorting, and quality inspection. Products are packed in food-grade materials under strict hygiene standards...',
+              },
             },
             {
               name: 'exportMarkets',

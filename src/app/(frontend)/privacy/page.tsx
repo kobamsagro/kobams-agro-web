@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: "Privacy Policy | Kobam's Agro Solutions",
   description:
-    "Learn how Kobam's Agro Solutions collects, uses, and protects your personal information.",
+    "Learn how Kobam's Agro Solutions collects, uses, and protects your personal information in compliance with NDPA 2023 and NDPR 2019.",
 }
 
 export default function PrivacyPage() {
@@ -29,20 +29,15 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 1
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">About this Notice</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Introduction</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                At Kobam&apos;s Agro Solutions, we are committed to protecting your privacy and
-                ensuring the security of your personal information. This Privacy Policy explains how
-                we collect, use, disclose, and safeguard your information when you visit our
-                website, use our services, or engage with us in any way.
-              </p>
-              <p>
-                Please read this Privacy Policy carefully. By accessing or using our services, you
-                acknowledge that you have read, understood, and agree to be bound by the terms of
-                this Privacy Policy. If you do not agree with our policies and practices, please do
-                not use our services.
+                This Privacy Policy explains how we collect, use, store, and safeguard personal
+                information in compliance with the Nigeria Data Protection Act (NDPA) 2023, the
+                Nigeria Data Protection Regulation (NDPR) 2019, and where applicable international
+                data protection standards such as the General Data Protection Regulation (GDPR) for
+                clients in the EU and similar laws in Asia and the Middle East.
               </p>
             </div>
           </div>
@@ -53,28 +48,20 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 2
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                What Information Do We Collect
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Data We Collect</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                We collect various types of information in connection with the services we provide,
-                including:
+                We collect personal and business information through our website forms, email
+                communication, phone calls, and client interactions. This may include:
               </p>
-              <p className="font-semibold">Personal Information:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Name, email address, phone number, and postal address</li>
-                <li>Company name and business information</li>
-                <li>Payment and billing information</li>
-                <li>Account credentials and preferences</li>
-              </ul>
-              <p className="font-semibold mt-4">Technical Information:</p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>IP address, browser type, and operating system</li>
-                <li>Device identifiers and mobile network information</li>
-                <li>Cookies and similar tracking technologies</li>
-                <li>Website usage data and analytics</li>
+                <li>Full name, email address, phone number, company name</li>
+                <li>Shipping and billing addresses</li>
+                <li>Transaction and purchase history</li>
+                <li>Identification details submitted for export documentation</li>
+                <li>IP address, device information, and browser data for analytics</li>
+                <li>Communication records and inquiries</li>
               </ul>
             </div>
           </div>
@@ -85,26 +72,18 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 3
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                Information that you provide
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Purpose of Data Collection</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
-              <p>We collect information that you voluntarily provide to us when you:</p>
+              <p>We collect and process data to:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Register for an account on our website</li>
-                <li>Place an order or request a quote for our products</li>
-                <li>Subscribe to our newsletter or marketing communications</li>
-                <li>Contact us through our contact forms or customer support channels</li>
-                <li>Participate in surveys, contests, or promotional activities</li>
-                <li>Submit testimonials, reviews, or feedback</li>
-                <li>Apply for employment or business partnerships</li>
+                <li>Process export orders and manage logistics</li>
+                <li>Respond to inquiries and offer customer support</li>
+                <li>Prepare required export, customs, and regulatory documentation</li>
+                <li>Improve website performance and enhance user experience</li>
+                <li>Send promotional or educational emails (only with consent)</li>
+                <li>Fulfil contractual, legal, and compliance obligations</li>
               </ul>
-              <p className="mt-4">
-                The information you provide must be accurate, complete, and current. You are
-                responsible for maintaining the confidentiality of your account credentials and for
-                all activities that occur under your account.
-              </p>
             </div>
           </div>
 
@@ -114,41 +93,18 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 4
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                Information from third-party Sources
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Legal Basis for Processing</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
-              <p>
-                We may receive information about you from third-party sources to enhance our
-                services and improve your experience. These sources may include:
-              </p>
+              <p>Under the NDPA, our processing activities are based on:</p>
               <ul className="list-disc pl-6 space-y-2">
+                <li>User consent</li>
+                <li>Contractual necessity for fulfilling export and supply agreements</li>
+                <li>Legal obligations relating to Nigerian and international export regulations</li>
                 <li>
-                  <strong>Business Partners:</strong> Information from agricultural cooperatives,
-                  distributors, and trade organizations
-                </li>
-                <li>
-                  <strong>Public Databases:</strong> Publicly available business directories and
-                  trade registries
-                </li>
-                <li>
-                  <strong>Social Media Platforms:</strong> Information from your public social media
-                  profiles when you interact with us
-                </li>
-                <li>
-                  <strong>Payment Processors:</strong> Transaction and verification information from
-                  financial institutions
-                </li>
-                <li>
-                  <strong>Marketing Partners:</strong> Demographic and interest data from marketing
-                  and analytics providers
+                  Legitimate business interests such as service improvement and fraud prevention
                 </li>
               </ul>
-              <p className="mt-4">
-                We combine this information with the data we collect directly from you to provide
-                better services and personalized experiences.
-              </p>
             </div>
           </div>
 
@@ -159,33 +115,27 @@ export default function PrivacyPage() {
                 5
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                Information we automatically collect
+                Data Sharing and Third-Party Disclosures
               </h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                When you access our website or use our services, we automatically collect certain
-                information through various technologies:
+                We do not sell or trade personal data. Data may be shared only with trusted parties
+                necessary for business operations:
               </p>
-              <p className="font-semibold">Log Files:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>IP address and geographic location</li>
-                <li>Browser type, version, and language settings</li>
-                <li>Operating system and device information</li>
-                <li>Date and time of access</li>
-                <li>Pages visited and time spent on each page</li>
-                <li>Referring website addresses</li>
-              </ul>
-              <p className="font-semibold mt-4">Cookies and Tracking Technologies:</p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Session cookies to maintain your login state</li>
-                <li>Persistent cookies to remember your preferences</li>
-                <li>Analytics cookies to understand how you use our website</li>
-                <li>Marketing cookies to deliver relevant advertisements</li>
+                <li>Shipping companies and logistics partners</li>
+                <li>Payment processors and banks</li>
+                <li>
+                  Government agencies (for customs, NAFDAC documentation, phytosanitary
+                  certification, etc.)
+                </li>
+                <li>Quality assurance bodies and certified laboratories</li>
+                <li>Technology and cloud service providers who host or support our systems</li>
               </ul>
               <p className="mt-4">
-                You can control cookies through your browser settings, but disabling cookies may
-                affect your ability to use certain features of our website.
+                All third parties must comply with NDPA and uphold confidentiality and data
+                protection standards.
               </p>
             </div>
           </div>
@@ -196,41 +146,25 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 6
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">Use of Information</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">
+                International Data Transfers
+              </h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                We use the information we collect for various legitimate business purposes,
-                including:
+                Because we operate across Africa, Europe, Asia, and the Middle East, your data may
+                be transferred outside Nigeria. All international transfers are handled securely and
+                in compliance with:
               </p>
-              <p className="font-semibold">Service Delivery:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Processing and fulfilling your orders</li>
-                <li>Managing your account and providing customer support</li>
-                <li>Communicating with you about your transactions</li>
-                <li>Delivering products and services you request</li>
+                <li>NDPA 2023</li>
+                <li>GDPR (for EU clients)</li>
+                <li>Relevant regional data protection laws</li>
               </ul>
-              <p className="font-semibold mt-4">Business Operations:</p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Improving our products, services, and website functionality</li>
-                <li>Conducting market research and analysis</li>
-                <li>Developing new products and services</li>
-                <li>Managing our business relationships</li>
-              </ul>
-              <p className="font-semibold mt-4">Marketing and Communications:</p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Sending promotional materials and newsletters (with your consent)</li>
-                <li>Personalizing your experience on our website</li>
-                <li>Providing product recommendations</li>
-                <li>Conducting surveys and gathering feedback</li>
-              </ul>
-              <p className="font-semibold mt-4">Legal and Security:</p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Complying with legal obligations and regulations</li>
-                <li>Protecting against fraud and security threats</li>
-                <li>Enforcing our terms and conditions</li>
-                <li>Resolving disputes and legal claims</li>
-              </ul>
+              <p className="mt-4">
+                We ensure that third-country recipients maintain adequate data protection
+                safeguards.
+              </p>
             </div>
           </div>
 
@@ -240,51 +174,19 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 7
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">Legal Rights</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Data Retention</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                Under applicable data protection laws, including GDPR and other privacy regulations,
-                you have the following rights regarding your personal information:
+                We retain personal and transactional data only for as long as necessary to meet:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Right to Access:</strong> Request a copy of the personal information we
-                  hold about you
-                </li>
-                <li>
-                  <strong>Right to Rectification:</strong> Request correction of inaccurate or
-                  incomplete information
-                </li>
-                <li>
-                  <strong>Right to Erasure:</strong> Request deletion of your personal information
-                  (subject to legal obligations)
-                </li>
-                <li>
-                  <strong>Right to Restrict Processing:</strong> Request limitation on how we use
-                  your information
-                </li>
-                <li>
-                  <strong>Right to Data Portability:</strong> Receive your data in a structured,
-                  machine-readable format
-                </li>
-                <li>
-                  <strong>Right to Object:</strong> Object to processing of your information for
-                  certain purposes
-                </li>
-                <li>
-                  <strong>Right to Withdraw Consent:</strong> Withdraw your consent at any time
-                  where we rely on consent
-                </li>
-                <li>
-                  <strong>Right to Lodge a Complaint:</strong> File a complaint with a supervisory
-                  authority
-                </li>
+                <li>Contractual obligations</li>
+                <li>Export and regulatory requirements</li>
+                <li>Legal and audit purposes</li>
               </ul>
               <p className="mt-4">
-                To exercise any of these rights, please contact us using the information provided in
-                the Contact Us section. We will respond to your request within the timeframe
-                required by applicable law.
+                Data may be deleted earlier upon request unless retention is required by law.
               </p>
             </div>
           </div>
@@ -296,38 +198,27 @@ export default function PrivacyPage() {
                 8
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                How We Share Your Information
+                Your Rights Under Nigerian Law
               </h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
-              <p>
-                We may share your information with third parties in the following circumstances:
-              </p>
+              <p>You have the right to:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Service Providers:</strong> Third-party vendors who perform services on
-                  our behalf (payment processing, shipping, marketing)
-                </li>
-                <li>
-                  <strong>Business Partners:</strong> Agricultural cooperatives, distributors, and
-                  suppliers involved in fulfilling your orders
-                </li>
-                <li>
-                  <strong>Legal Requirements:</strong> When required by law, court order, or
-                  government authority
-                </li>
-                <li>
-                  <strong>Business Transfers:</strong> In connection with a merger, acquisition, or
-                  sale of assets
-                </li>
-                <li>
-                  <strong>With Your Consent:</strong> When you explicitly authorize us to share your
-                  information
-                </li>
+                <li>Request access to your personal data</li>
+                <li>Request correction or deletion</li>
+                <li>Withdraw consent at any time</li>
+                <li>Object to certain types of processing</li>
+                <li>Request a copy of your data (data portability)</li>
+                <li>Report concerns to the Nigeria Data Protection Commission (NDPC)</li>
               </ul>
               <p className="mt-4">
-                We require all third parties to respect the security of your personal information
-                and treat it in accordance with applicable laws.
+                To exercise your rights, contact us at:{' '}
+                <a
+                  href="mailto:info@kobamsagro.com"
+                  className="text-[#184504] hover:underline font-semibold"
+                >
+                  info@kobamsagro.com
+                </a>
               </p>
             </div>
           </div>
@@ -338,36 +229,16 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 9
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">Your Rights and Choices</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Data Security</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
-              <p>You have several choices regarding how we collect and use your information:</p>
+              <p>We maintain strong security measures to protect your data:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Account Information:</strong> Update your account details at any time by
-                  logging into your account settings
-                </li>
-                <li>
-                  <strong>Marketing Communications:</strong> Opt out of promotional emails by
-                  clicking the unsubscribe link or contacting us directly
-                </li>
-                <li>
-                  <strong>Cookies:</strong> Manage cookie preferences through your browser settings
-                  or our cookie consent tool
-                </li>
-                <li>
-                  <strong>Location Data:</strong> Disable location services through your device
-                  settings
-                </li>
-                <li>
-                  <strong>Push Notifications:</strong> Disable notifications through your device or
-                  app settings
-                </li>
+                <li>SSL encryption</li>
+                <li>Secured servers and firewalls</li>
+                <li>Controlled access permissions</li>
+                <li>Routine security checks and vulnerability assessments</li>
               </ul>
-              <p className="mt-4">
-                Please note that opting out of certain communications may affect our ability to
-                provide you with important service-related information.
-              </p>
             </div>
           </div>
 
@@ -377,30 +248,12 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 10
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">Data Security and Retention</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Children&apos;s Data</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                We implement comprehensive security measures to protect your personal information:
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Encryption of data in transit and at rest using industry-standard protocols</li>
-                <li>Secure servers with firewalls and intrusion detection systems</li>
-                <li>Regular security audits and vulnerability assessments</li>
-                <li>Access controls and authentication mechanisms</li>
-                <li>Employee training on data protection and security practices</li>
-              </ul>
-              <p className="mt-4 font-semibold">Data Retention:</p>
-              <p>
-                We retain your personal information for as long as necessary to fulfill the purposes
-                outlined in this Privacy Policy, unless a longer retention period is required or
-                permitted by law. When we no longer need your information, we will securely delete
-                or anonymize it.
-              </p>
-              <p className="mt-4">
-                Despite our security measures, no method of transmission over the internet or
-                electronic storage is 100% secure. While we strive to protect your information, we
-                cannot guarantee absolute security.
+                Our services are intended for adults. We do not knowingly collect personal data from
+                anyone under 18.
               </p>
             </div>
           </div>
@@ -411,28 +264,13 @@ export default function PrivacyPage() {
               <div className="flex-shrink-0 w-10 h-10 bg-[#184504] text-white rounded-full flex items-center justify-center font-bold">
                 11
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">
-                Changes to this Privacy Policy
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Policy Updates</h2>
             </div>
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
-                We may update this Privacy Policy from time to time to reflect changes in our
-                practices, technologies, legal requirements, or other factors. When we make changes,
-                we will:
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Update the &quot;Last Updated&quot; date at the top of this policy</li>
-                <li>Post the revised policy on our website</li>
-                <li>
-                  Notify you via email or prominent notice on our website for material changes
-                </li>
-                <li>Obtain your consent if required by applicable law</li>
-              </ul>
-              <p className="mt-4">
-                We encourage you to review this Privacy Policy periodically to stay informed about
-                how we are protecting your information. Your continued use of our services after any
-                changes constitutes your acceptance of the updated Privacy Policy.
+                We may update this Privacy Policy periodically to reflect changes in our operation
+                or regulatory requirements. Continued use of our website signifies acceptance of the
+                revised terms.
               </p>
             </div>
           </div>
@@ -448,12 +286,12 @@ export default function PrivacyPage() {
             <div className="ml-14 text-gray-700 space-y-4">
               <p>
                 If you have any questions, concerns, or requests regarding this Privacy Policy or
-                our data practices, please don&apos;t hesitate to contact us:
+                our data practices, please contact us:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg mt-4">
                 <p className="font-semibold text-gray-900 mb-2">Kobam&apos;s Agro Solutions</p>
                 <p className="mb-1">
-                  <strong>Email:</strong> privacy@kobamsagro.com
+                  <strong>Email:</strong> info@kobamsagrosolutions.com
                 </p>
                 <p className="mb-1">
                   <strong>Phone:</strong> +234 (0) 123 456 7890
@@ -461,13 +299,7 @@ export default function PrivacyPage() {
                 <p className="mb-1">
                   <strong>Address:</strong> 123 Agricultural Way, Lagos, Nigeria
                 </p>
-                <p className="mt-4 text-sm">
-                  <strong>Data Protection Officer:</strong> dpo@kobamsagro.com
-                </p>
               </div>
-              <p className="mt-4">
-                We will respond to your inquiry within 30 days or as required by applicable law.
-              </p>
             </div>
           </div>
         </div>

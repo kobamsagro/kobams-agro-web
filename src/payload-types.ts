@@ -815,6 +815,24 @@ export interface Product {
    */
   generateSlug?: boolean | null;
   slug: string;
+  /**
+   * Showcase key benefits and features of your product (e.g., Long Shelf Life, Premium Quality, Export Ready)
+   */
+  highlights?:
+    | {
+        title: string;
+        description: string;
+        /**
+         * List specific advantages and value propositions
+         */
+        benefits: {
+          benefit: string;
+          id?: string | null;
+        }[];
+        additionalInfo?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   qualityGrade: 'premium' | 'grade-a' | 'grade-b' | 'standard' | 'export-grade';
   specifications?:
     | {
@@ -831,6 +849,10 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Describe the packaging process, quality control measures, and handling procedures
+   */
+  packagingProcess?: string | null;
   exportMarkets?:
     | {
         country: string;
@@ -1548,6 +1570,20 @@ export interface ProductsSelect<T extends boolean = true> {
   description?: T;
   generateSlug?: T;
   slug?: T;
+  highlights?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+        additionalInfo?: T;
+        id?: T;
+      };
   qualityGrade?: T;
   specifications?:
     | T
@@ -1564,6 +1600,7 @@ export interface ProductsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  packagingProcess?: T;
   exportMarkets?:
     | T
     | {
