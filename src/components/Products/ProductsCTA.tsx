@@ -1,8 +1,11 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import RequestQuoteDialog from '../ProductDetail/RequestQuoteDialog'
 
 export default function ProductsCTA() {
+  const [isQuoteDialogOpen, setIsQuoteDialogOpen] = useState(false)
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
@@ -16,12 +19,12 @@ export default function ProductsCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-block bg-yellow-400 hover:bg-yellow-500 text-[#1a4d2e] font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg"
+            <button
+              onClick={() => setIsQuoteDialogOpen(true)}
+              className="bg-yellow-400 hover:bg-yellow-500 text-[#184504] font-semibold px-8 py-4 rounded-lg transition-colors"
             >
               Request a Quote
-            </Link>
+            </button>
             <Link
               href="/export-guide"
               className="inline-block bg-[#1a4d2e] hover:bg-[#2d5f3f] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg"
@@ -31,6 +34,13 @@ export default function ProductsCTA() {
           </div>
         </div>
       </div>
+      {/* Dialogs */}
+      <RequestQuoteDialog
+        isOpen={isQuoteDialogOpen}
+        onClose={() => setIsQuoteDialogOpen(false)}
+        productName="General Inquiry"
+        minQuantity="Contact us for details"
+      />
     </section>
   )
 }

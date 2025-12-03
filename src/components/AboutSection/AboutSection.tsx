@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function AboutSection() {
   return (
-    <section className="py-32 bg-gray-50">
+    <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 max-w-4xl my-12 mx-auto">
