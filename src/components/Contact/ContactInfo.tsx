@@ -4,9 +4,10 @@ import React from 'react'
 export default function ContactInfo() {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-900 mb-4">Contact Information</h2>
+      <h2 className="text-3xl font-bold text-gray-900 mb-4">Get your produce on the way!</h2>
       <p className="text-gray-600 mb-8">
-        We&apos;re here to help! Reach out to us through any of the following channels
+        Let&apos;s build a strong and sustainable trade partnership. Contact Kobam&apos;s Agro Solutions
+        today.
       </p>
 
       <div className="space-y-6">
@@ -29,7 +30,7 @@ export default function ContactInfo() {
           </div>
           <div>
             <h3 className="font-bold text-gray-900 mb-2">Call Us</h3>
-            <p className="text-gray-700">+234 (0) 123 456 7890</p>
+            <p className="text-gray-700">+1(250)8794154</p>
             <p className="text-sm text-gray-500 mt-1">Monday - Friday: 8:00 AM - 5:00 PM</p>
           </div>
         </div>
