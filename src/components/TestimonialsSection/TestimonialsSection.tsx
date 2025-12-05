@@ -71,7 +71,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
         // Reload the page after 2 seconds to show the new testimonial
         setTimeout(() => {
           window.location.reload()
-        }, 2000)
+        }, 5000)
       } else {
         toast.error(data.error || 'Failed to submit testimonial. Please try again.')
       }

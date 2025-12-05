@@ -20,14 +20,19 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   }, [motionValue, isInView, value])
 
   useEffect(() => {
-    springValue.on('change', (latest) => {
+    const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
         ref.current.textContent = Math.floor(latest).toLocaleString() + suffix
       }
     })
+    return unsubscribe
   }, [springValue, suffix])
 
-  return <div ref={ref} className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400" />
+  return (
+    <div ref={ref} className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">
+      0{suffix}
+    </div>
+  )
 }
 
 export default function HeroSection() {

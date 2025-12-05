@@ -10,16 +10,26 @@ export async function POST(request: Request) {
     const role = formData.get('role') as string
     const location = formData.get('location') as string
     const email = formData.get('email') as string
-    const rating = parseInt(formData.get('rating') as string)
+    const ratingStr = formData.get('rating') as string
     const testimonial = formData.get('testimonial') as string
 
-    if (!name || !role || !location || !rating || !testimonial) {
+    // Validate required fields
+    if (!name || !role || !location || !ratingStr || !testimonial) {
+      console.error('Validation failed:', { name, role, location, rating: ratingStr, testimonial })
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    }
+
+    const rating = parseInt(ratingStr, 10)
+
+    // Validate rating is a valid number
+    if (isNaN(rating) || rating < 1 || rating > 5) {
+      console.error('Invalid rating:', ratingStr)
+      return NextResponse.json({ error: 'Invalid rating value' }, { status: 400 })
     }
 
     const payload = await getPayload({ config: configPromise })
 
-    await payload.create({
+    const result = await payload.create({
       collection: 'testimonials',
       data: {
         name,
@@ -31,6 +41,8 @@ export async function POST(request: Request) {
         status: 'approved',
       },
     })
+
+    console.log('Testimonial created successfully:', result.id)
 
     return NextResponse.json(
       {

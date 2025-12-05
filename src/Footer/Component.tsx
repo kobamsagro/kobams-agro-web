@@ -149,7 +149,7 @@ export async function Footer() {
                 Services
               </Link>
               <Link
-                href="/about-us"
+                href="/about"
                 className="block text-sm md:text-base text-gray-300 hover:text-yellow-400 transition-colors duration-200"
               >
                 About Us
