@@ -1,6 +1,7 @@
 // storage-adapter-import-placeholder
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
@@ -71,6 +72,11 @@ export default buildConfig({
   editor: defaultLexical,
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
+  }),
+  email: resendAdapter({
+    defaultFromAddress: process.env.FROM_EMAIL || 'notifications@kobamsagrosolutions.com',
+    defaultFromName: "Kobam's Agro Solutions",
+    apiKey: process.env.RESEND_API_KEY || '',
   }),
   collections: [
     Pages,
