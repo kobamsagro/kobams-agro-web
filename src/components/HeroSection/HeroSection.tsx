@@ -27,7 +27,7 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
     })
   }, [springValue, suffix])
 
-  return <div ref={ref} className="text-3xl md:text-4xl font-bold text-yellow-400" />
+  return <div ref={ref} className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400" />
 }
 
 export default function HeroSection() {
@@ -74,33 +74,33 @@ export default function HeroSection() {
             </motion.button>
 
             {/* Stats */}
-            <motion.div className="flex gap-8 md:gap-16 pt-8" variants={fadeInUp}>
-              <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.2 }}>
+            <motion.div className="flex gap-4 sm:gap-8 md:gap-16 pt-8" variants={fadeInUp}>
+              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                 <Counter value={500} suffix="+" />
-                <div className="text-white text-sm md:text-base">Farmers</div>
+                <div className="text-white text-xs sm:text-sm md:text-base">Farmers</div>
               </motion.div>
               <motion.div
-                className="border-l border-white pl-8 md:pl-16"
-                whileHover={{ scale: 1.1 }}
+                className="border-l border-white pl-4 sm:pl-8 md:pl-16"
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                <Counter value={1000} suffix="+" />
-                <div className="text-white text-sm md:text-base">Products</div>
+                <Counter value={500} suffix="+" />
+                <div className="text-white text-xs sm:text-sm md:text-base">Products</div>
               </motion.div>
               <motion.div
-                className="border-l border-white pl-8 md:pl-16"
-                whileHover={{ scale: 1.1 }}
+                className="border-l border-white pl-4 sm:pl-8 md:pl-16"
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
                 <Counter value={50} suffix="+" />
-                <div className="text-white text-sm md:text-base">Countries</div>
+                <div className="text-white text-xs sm:text-sm md:text-base">Countries</div>
               </motion.div>
             </motion.div>
           </motion.div>
           {/* stat end */}
           {/* Right Content - Product Cards */}
           <motion.div
-            className="hidden md:relative md:grid grid-cols-2 h-[600px]"
+            className="hidden lg:relative lg:grid grid-cols-2 h-[600px]"
             initial="hidden"
             animate="visible"
             variants={staggerContainer}

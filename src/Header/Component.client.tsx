@@ -202,6 +202,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                   About Us
                 </Link>
 
+                
+
                 {/* Resources with submenu */}
                 <div>
                   <button
@@ -225,10 +227,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                     </svg>
                   </button>
                   <div id="mobile-resources-submenu" className="hidden mt-3 ml-4 space-y-3">
-                    <Link
-                      href="/export-guide"
-                      className="block text-gray-600 hover:text-[#184504]"
-                    >
+                    <Link href="/export-guide" className="block text-gray-600 hover:text-[#184504]">
                       Export Guide
                     </Link>
                     <Link href="/blog" className="block text-gray-600 hover:text-[#184504]">
@@ -337,8 +336,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
               </Link>
             </div>
             {/* about us end */}
+            
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/about" className={getLinkClasses('/about')}>
+              <Link href="/" className={getLinkClasses('/')}>
                 <div className="flex items-center gap-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger>
@@ -374,7 +374,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                           <span className="text-[16px] flex-grow text-right">FAQ</span>
                         </Link>
                       </DropdownMenuItem>
-                      
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>

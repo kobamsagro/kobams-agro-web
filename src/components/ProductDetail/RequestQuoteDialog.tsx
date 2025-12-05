@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-interface RequestQuoteDialogProps {
+export interface RequestQuoteDialogProps {
   isOpen: boolean
   onClose: () => void
   productName: string
