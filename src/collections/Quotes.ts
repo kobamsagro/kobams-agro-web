@@ -12,6 +12,7 @@ export const Quotes: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Customer Requests',
     defaultColumns: [
       'name',
       'company',

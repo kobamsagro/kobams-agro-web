@@ -2,6 +2,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { NextResponse } from 'next/server'
 import { sendContactNotification } from '@/lib/email'
+import { createNotification } from '@/lib/notifications'
 
 export async function POST(request: Request) {
   try {
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
     const payload = await getPayload({ config: configPromise })
 
     // Save to database
-    await payload.create({
+    const contactResult = await payload.create({
       collection: 'contacts',
       data: {
         fullName,
@@ -30,6 +31,16 @@ export async function POST(request: Request) {
         message,
         status: 'new',
       },
+    })
+
+    // Create notification
+    await createNotification({
+      type: 'contact',
+      message: `New contact form submission from ${fullName}`,
+      details: `Subject: ${subject}`,
+      relatedCollection: 'contacts',
+      relatedId: contactResult.id,
+      priority: 'normal',
     })
 
     // Send email notification

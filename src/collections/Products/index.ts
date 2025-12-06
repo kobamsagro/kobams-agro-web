@@ -14,6 +14,7 @@ export const Products: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Products & Services',
     defaultColumns: ['name', 'botanicalName', 'updatedAt'],
     useAsTitle: 'name',
   },

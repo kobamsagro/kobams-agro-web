@@ -1,6 +1,7 @@
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { NextResponse } from 'next/server'
+import { createNotification } from '@/lib/notifications'
 
 export async function POST(request: Request) {
   try {
@@ -40,6 +41,16 @@ export async function POST(request: Request) {
         testimonial,
         status: 'approved',
       },
+    })
+
+    // Create notification
+    await createNotification({
+      type: 'testimonial',
+      message: `New testimonial from ${name} (${rating} stars)`,
+      details: `${role} from ${location}`,
+      relatedCollection: 'testimonials',
+      relatedId: result.id,
+      priority: 'low',
     })
 
     console.log('Testimonial created successfully:', result.id)

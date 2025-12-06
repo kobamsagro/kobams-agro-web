@@ -13,6 +13,7 @@ export const Testimonials: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Customer Requests',
     defaultColumns: ['name', 'role', 'status', 'createdAt'],
     useAsTitle: 'name',
   },

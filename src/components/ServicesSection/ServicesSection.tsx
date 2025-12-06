@@ -47,7 +47,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
             return (
               <motion.div
                 key={service.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow"
+                className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow"
                 variants={scaleIn}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >

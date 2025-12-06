@@ -13,6 +13,7 @@ import { Contacts } from './collections/Contacts'
 import { ExportArticles } from './collections/ExportArticles'
 import { Inquiries } from './collections/Inquiries'
 import { Media } from './collections/Media'
+import { Notifications } from './collections/Notifications'
 import { Pages } from './collections/Pages'
 import { Partners } from './collections/Partners'
 import { Posts } from './collections/Posts'
@@ -34,12 +35,10 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
-      beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
-      beforeDashboard: ['@/components/BeforeDashboard'],
+      // Custom notification dashboard
+      beforeDashboard: ['@/components/NotificationsDashboard'],
+      // Add notification badge to admin header
+      afterNavLinks: ['@/components/AdminNotifications'],
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -90,6 +89,7 @@ export default buildConfig({
     Quotes,
     Inquiries,
     Contacts,
+    Notifications,
     Media,
     Categories,
     Users,
