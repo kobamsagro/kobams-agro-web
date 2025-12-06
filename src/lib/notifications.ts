@@ -57,7 +57,7 @@ export async function getUnreadNotifications() {
     const payload = await getPayload({ config: configPromise })
 
     const result = await payload.find({
-      collection: 'notifications' as unknown,
+      collection: 'notifications' as any,
       where: {
         isRead: {
           equals: false,
