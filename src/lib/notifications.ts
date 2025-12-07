@@ -15,9 +15,10 @@ interface CreateNotificationParams {
 
 export async function createNotification(params: CreateNotificationParams) {
   try {
+    console.log('🔔 Creating notification:', params)
     const payload = await getPayload({ config: configPromise })
 
-    await payload.create({
+    const result = await payload.create({
       collection: 'notifications' as any,
       data: {
         type: params.type,
@@ -30,9 +31,11 @@ export async function createNotification(params: CreateNotificationParams) {
       },
     })
 
-    console.log('✅ Notification created:', params.message)
+    console.log('✅ Notification created successfully:', result.id)
+    return result
   } catch (error) {
-    console.error('Failed to create notification:', error)
+    console.error('❌ Failed to create notification:', error)
+    throw error
   }
 }
 
@@ -54,6 +57,7 @@ export async function markNotificationAsRead(notificationId: string) {
 
 export async function getUnreadNotifications() {
   try {
+    console.log('🔍 Fetching unread notifications...')
     const payload = await getPayload({ config: configPromise })
 
     const result = await payload.find({
@@ -67,9 +71,10 @@ export async function getUnreadNotifications() {
       limit: 50,
     })
 
+    console.log('📊 Found', result.docs.length, 'unread notifications')
     return result.docs
   } catch (error) {
-    console.error('Failed to get unread notifications:', error)
+    console.error('❌ Failed to get unread notifications:', error)
     return []
   }
 }

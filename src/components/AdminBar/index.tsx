@@ -7,10 +7,13 @@ import { useSelectedLayoutSegments } from 'next/navigation'
 import { PayloadAdminBar } from '@payloadcms/admin-bar'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic'
 
 import './index.scss'
 
 import { getClientSideURL } from '@/utilities/getURL'
+
+const NotificationBadge = dynamic(() => import('@/components/NotificationBadge'), { ssr: false })
 
 const baseClass = 'admin-bar'
 
@@ -54,35 +57,44 @@ export const AdminBar: React.FC<{
       })}
     >
       <div className="container">
-        <PayloadAdminBar
-          {...adminBarProps}
-          className="py-2 text-white"
-          classNames={{
-            controls: 'font-medium text-white',
-            logo: 'text-white',
-            user: 'text-white',
-          }}
-          cmsURL={getClientSideURL()}
-          collectionSlug={collection}
-          collectionLabels={{
-            plural: collectionLabels[collection]?.plural || 'Pages',
-            singular: collectionLabels[collection]?.singular || 'Page',
-          }}
-          logo={<Title />}
-          onAuthChange={onAuthChange}
-          onPreviewExit={() => {
-            fetch('/next/exit-preview').then(() => {
-              router.push('/')
-              router.refresh()
-            })
-          }}
-          style={{
-            backgroundColor: 'transparent',
-            padding: 0,
-            position: 'relative',
-            zIndex: 'unset',
-          }}
-        />
+        <div className="flex items-center justify-between">
+          <div className="flex-1">
+            <PayloadAdminBar
+              {...adminBarProps}
+              className="py-2 text-white"
+              classNames={{
+                controls: 'font-medium text-white',
+                logo: 'text-white',
+                user: 'text-white',
+              }}
+              cmsURL={getClientSideURL()}
+              collectionSlug={collection}
+              collectionLabels={{
+                plural: collectionLabels[collection]?.plural || 'Pages',
+                singular: collectionLabels[collection]?.singular || 'Page',
+              }}
+              logo={<Title />}
+              onAuthChange={onAuthChange}
+              onPreviewExit={() => {
+                fetch('/next/exit-preview').then(() => {
+                  router.push('/')
+                  router.refresh()
+                })
+              }}
+              style={{
+                backgroundColor: 'transparent',
+                padding: 0,
+                position: 'relative',
+                zIndex: 'unset',
+              }}
+            />
+          </div>
+          {show && (
+            <div className="ml-4">
+              <NotificationBadge />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

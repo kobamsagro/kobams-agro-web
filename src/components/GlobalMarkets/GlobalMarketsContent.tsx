@@ -741,7 +741,10 @@ export default function GlobalMarketsContent() {
             transition={{ delay: 0.2 }}
           >
             <button
-              onClick={() => setIsQuoteDialogOpen(true)}
+              onClick={() => {
+                console.log('🔘 Request Quote button clicked')
+                setIsQuoteDialogOpen(true)
+              }}
               className="bg-yellow-400 hover:bg-yellow-500 text-[#184504] font-semibold px-8 py-4 rounded-lg transition-colors"
             >
               Request a Quote

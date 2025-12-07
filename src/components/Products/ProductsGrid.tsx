@@ -118,7 +118,7 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                   {/* View Details Button */}
                   <Link
                     href={`/products/${product.slug}`}
-                    className="block w-full bg-[#1a4d2e] hover:bg-[#2d5f3f] text-white text-center font-semibold py-3 rounded-lg transition-colors"
+                    className="block w-full bg-[#184504] hover:bg-[#2d5f3f] text-white text-center font-semibold py-3 rounded-lg transition-colors"
                   >
                     View Details
                   </Link>
