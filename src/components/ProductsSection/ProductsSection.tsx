@@ -80,7 +80,7 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
               return (
                 <motion.div
                   key={product.id}
-                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+                  className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl"
                   variants={fadeInUp}
                   whileHover={{ y: -10, transition: { duration: 0.3 } }}
                 >
