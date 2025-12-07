@@ -80,14 +80,14 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
               return (
                 <motion.div
                   key={product.id}
-                  className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl"
+                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl"
                   variants={fadeInUp}
-                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                
                 >
                   {/* Product Image */}
                   <div className="relative h-64 bg-gray-200 overflow-hidden">
                     {imageUrl && (
-                      <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.4 }}>
+                      <motion.div>
                         <Image src={imageUrl} alt={product.name} fill className="object-cover" />
                       </motion.div>
                     )}

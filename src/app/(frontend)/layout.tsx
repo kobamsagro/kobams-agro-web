@@ -51,6 +51,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 padding: '16px',
                 borderRadius: '8px',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                zIndex: 9999,
               },
               success: {
                 iconTheme: {
@@ -64,6 +65,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   secondary: '#fff',
                 },
               },
+            }}
+            containerStyle={{
+              zIndex: 9999,
             }}
           />
 

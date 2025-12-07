@@ -54,7 +54,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   {imageUrl && (
-                    <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.4 }}>
+                    <motion.div>
                       <Image
                         src={imageUrl}
                         alt={service.subtitle || service.title}

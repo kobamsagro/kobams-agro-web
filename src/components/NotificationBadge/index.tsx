@@ -32,7 +32,7 @@ export default function NotificationBadge() {
   return (
     <button
       onClick={handleClick}
-      className="relative inline-flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 transition-colors"
+      className="relative inline-flex items-center justify-center p-2 rounded-lg hover:bg-gray-800 transition-colors text-white"
       title={`${unreadCount} unread notification${unreadCount !== 1 ? 's' : ''}`}
     >
       <svg
@@ -44,7 +44,7 @@ export default function NotificationBadge() {
       >
         <path d="M20 17H22V19H2V17H4V10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10V17ZM9 21H15V23H9V21Z"></path>
       </svg>
-      <span className="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full min-w-[20px]">
+      <span className="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full min-w-[20px] animate-pulse">
         {unreadCount > 99 ? '99+' : unreadCount}
       </span>
     </button>

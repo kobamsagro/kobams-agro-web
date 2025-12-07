@@ -16,6 +16,7 @@ export default function RequestQuoteDialog({
   productName,
   minQuantity = '5',
 }: RequestQuoteDialogProps) {
+  console.log('🔄 ProductDetail RequestQuoteDialog render:', { isOpen, productName, minQuantity })
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -24,7 +25,7 @@ export default function RequestQuoteDialog({
     quantity: '',
     containerSize: '20ft',
     shippingPreference: 'FOB',
-    packagingOption: 'Standard',
+    packagingOption: 'PP Bags',
     message: '',
   })
 
@@ -58,10 +59,13 @@ export default function RequestQuoteDialog({
           quantity: '',
           containerSize: '20ft',
           shippingPreference: 'FOB',
-          packagingOption: 'Standard',
+          packagingOption: 'PP Bags',
           message: '',
         })
-        onClose()
+        // Close dialog after a short delay to let user see the toast
+        setTimeout(() => {
+          onClose()
+        }, 2000)
       } else {
         toast.error(data.error || 'Failed to submit request. Please try again.')
       }
@@ -196,7 +200,7 @@ export default function RequestQuoteDialog({
               >
                 <option value="20ft">20ft Container</option>
                 <option value="40ft">40ft Container</option>
-                <option value="40ft-HC">40ft High Cube</option>
+                <option value="Others">Others</option>
               </select>
             </div>
 
@@ -217,6 +221,7 @@ export default function RequestQuoteDialog({
                 <option value="CIF">CIF (Cost, Insurance & Freight)</option>
                 <option value="CFR">CFR (Cost and Freight)</option>
                 <option value="EXW">EXW (Ex Works)</option>
+                <option value="DDP">DDP (Delivered Duty Paid)</option>
               </select>
             </div>
 
@@ -233,9 +238,10 @@ export default function RequestQuoteDialog({
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#184504] focus:border-transparent"
               >
-                <option value="Standard">Standard Packaging</option>
-                <option value="Bulk">Bulk Packaging</option>
-                <option value="Custom">Custom Packaging</option>
+                <option value="PP Bags">PP Bags</option>
+                <option value="Bulk">Bulk</option>
+                <option value="Jute Bags">Jute Bags</option>
+                <option value="Custom Packaging">Custom Packaging</option>
               </select>
             </div>
 

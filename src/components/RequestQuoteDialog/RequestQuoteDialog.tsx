@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import toast from 'react-hot-toast'
 
 interface RequestQuoteDialogProps {
   isOpen: boolean
@@ -10,6 +11,7 @@ interface RequestQuoteDialogProps {
 }
 
 export function RequestQuoteDialog({ isOpen, onClose, productName }: RequestQuoteDialogProps) {
+  console.log('🔄 RequestQuoteDialog render:', { isOpen, productName })
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -51,6 +53,10 @@ export function RequestQuoteDialog({ isOpen, onClose, productName }: RequestQuot
       const data = await response.json()
 
       if (response.ok) {
+        // Show success toast
+        console.log('🎉 Showing success toast:', data.message)
+        toast.success(data.message || 'Quote request submitted successfully!')
+
         setSubmitStatus({
           type: 'success',
           message: data.message || 'Quote request submitted successfully!',
@@ -72,14 +78,21 @@ export function RequestQuoteDialog({ isOpen, onClose, productName }: RequestQuot
         setTimeout(() => {
           onClose()
           setSubmitStatus(null)
-        }, 2000)
+        }, 7000)
       } else {
+        // Show error toast
+        console.log('❌ Showing error toast:', data.error)
+        toast.error(data.error || 'Failed to submit quote request. Please try again.')
+
         setSubmitStatus({
           type: 'error',
           message: data.error || 'Failed to submit quote request. Please try again.',
         })
       }
     } catch (error) {
+      // Show error toast
+      toast.error('An error occurred. Please try again later.')
+
       setSubmitStatus({
         type: 'error',
         message: 'An error occurred. Please try again later.',
