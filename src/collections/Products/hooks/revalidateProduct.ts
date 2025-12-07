@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 
 import type { Product } from '../../../payload-types'
 
-export const revalidateProduct: CollectionAfterChangeHook<Product> = ({
+export const revalidateProduct: CollectionAfterChangeHook<Product> = async ({
   doc,
   req: { payload, context },
 }) => {
@@ -20,7 +20,7 @@ export const revalidateProduct: CollectionAfterChangeHook<Product> = ({
   return doc
 }
 
-export const revalidateProductDelete: CollectionAfterDeleteHook<Product> = ({
+export const revalidateProductDelete: CollectionAfterDeleteHook<Product> = async ({
   doc,
   req: { context, payload },
 }) => {

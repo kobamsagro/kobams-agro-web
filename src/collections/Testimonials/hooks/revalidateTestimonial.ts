@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 
 import type { Testimonial } from '../../../payload-types'
 
-export const revalidateTestimonial: CollectionAfterChangeHook<Testimonial> = ({
+export const revalidateTestimonial: CollectionAfterChangeHook<Testimonial> = async ({
   doc,
   req: { payload, context },
 }) => {
@@ -21,7 +21,7 @@ export const revalidateTestimonial: CollectionAfterChangeHook<Testimonial> = ({
   return doc
 }
 
-export const revalidateTestimonialDelete: CollectionAfterDeleteHook<Testimonial> = ({
+export const revalidateTestimonialDelete: CollectionAfterDeleteHook<Testimonial> = async ({
   doc,
   req: { context, payload },
 }) => {
