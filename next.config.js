@@ -27,25 +27,20 @@ const nextConfig = {
       '.mjs': ['.mts', '.mjs'],
     }
 
-    // 🏆 NEW RULE TO FIX 'tap' ISSUE 🏆
-    // Exclude ALL JavaScript files within the node_modules folder from Next.js's
-    // file resolution process, which is often what picks up test files.
-    webpackConfig.module.rules.push({
-      test: /\.js$/,
-      exclude: /node_modules/,
-    })
-
-    // Completely exclude test directories from being processed
-    webpackConfig.module.rules.push({
-      test: /[\\/]node_modules[\\/](thread-stream|pino|pino-abstract-transport|sonic-boom)[\\/]test[\\/]/,
-      loader: 'ignore-loader',
-    })
-
-    // Also exclude .test. files
-    webpackConfig.module.rules.push({
-      test: /\.test\.(js|mjs|cjs|ts|tsx)$/,
-      loader: 'ignore-loader',
-    })
+    // Ignore test files and tap module to prevent build errors
+    webpackConfig.plugins.push(
+      new webpackConfig.constructor.IgnorePlugin({
+        resourceRegExp: /^tap$/,
+      }),
+      new webpackConfig.constructor.IgnorePlugin({
+        resourceRegExp: /\.test\.(js|mjs|cjs|ts|tsx)$/,
+        contextRegExp: /node_modules/,
+      }),
+      new webpackConfig.constructor.IgnorePlugin({
+        resourceRegExp: /[\\/]test[\\/]/,
+        contextRegExp: /node_modules[\\/](thread-stream|pino|pino-abstract-transport|sonic-boom)/,
+      }),
+    )
 
     return webpackConfig
   },
