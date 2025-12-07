@@ -27,25 +27,17 @@ const nextConfig = {
       '.mjs': ['.mts', '.mjs'],
     }
 
-    // Exclude test files and test dependencies from the build
+    // Completely exclude test directories from being processed
     webpackConfig.module.rules.push({
-      test: /node_modules\/(thread-stream|pino)\/test\//,
-      use: 'null-loader',
+      test: /[\\/]node_modules[\\/](thread-stream|pino|pino-abstract-transport|sonic-boom)[\\/]test[\\/]/,
+      loader: 'ignore-loader',
     })
 
-    // Ignore tap and other test dependencies
-    webpackConfig.resolve.alias = {
-      ...webpackConfig.resolve.alias,
-      tap: false,
-    }
-
-    // Ignore test files in node_modules
-    webpackConfig.externals = webpackConfig.externals || []
-    if (isServer) {
-      webpackConfig.externals.push({
-        tap: 'commonjs tap',
-      })
-    }
+    // Also exclude .test. files
+    webpackConfig.module.rules.push({
+      test: /\.test\.(js|mjs|cjs|ts|tsx)$/,
+      loader: 'ignore-loader',
+    })
 
     return webpackConfig
   },
