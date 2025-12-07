@@ -750,7 +750,7 @@ export default function GlobalMarketsContent() {
               href="/contact"
               className="bg-[#184504] hover:bg-black text-white font-semibold px-8 py-4 rounded-lg transition-colors inline-block"
             >
-              Make an Inquiry
+              Contact Us
             </Link>
           </motion.div>
         </div>

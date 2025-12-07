@@ -12,6 +12,7 @@ export const TeamMembers: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Content',
     defaultColumns: ['name', 'role', 'order', 'updatedAt'],
     useAsTitle: 'name',
   },

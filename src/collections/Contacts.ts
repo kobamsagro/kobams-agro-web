@@ -12,6 +12,7 @@ export const Contacts: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Customer Requests',
     defaultColumns: ['fullName', 'email', 'subject', 'status', 'createdAt'],
     useAsTitle: 'fullName',
   },

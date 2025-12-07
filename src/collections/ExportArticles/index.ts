@@ -17,6 +17,7 @@ export const ExportArticles: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Content',
     defaultColumns: ['title', 'category', 'readTime', 'updatedAt'],
     useAsTitle: 'title',
   },

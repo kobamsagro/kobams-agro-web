@@ -8,6 +8,13 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: [
+    'pino',
+    'pino-pretty',
+    'thread-stream',
+    'sonic-boom',
+    'pino-abstract-transport',
+  ],
   images: {
     remotePatterns: [
       ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
@@ -20,12 +27,27 @@ const nextConfig = {
       }),
     ],
   },
-  webpack: (webpackConfig) => {
+  webpack: (webpackConfig, { isServer }) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
     }
+
+    // Ignore test files and tap module to prevent build errors
+    webpackConfig.plugins.push(
+      new webpackConfig.constructor.IgnorePlugin({
+        resourceRegExp: /^tap$/,
+      }),
+      new webpackConfig.constructor.IgnorePlugin({
+        resourceRegExp: /\.test\.(js|mjs|cjs|ts|tsx)$/,
+        contextRegExp: /node_modules/,
+      }),
+      new webpackConfig.constructor.IgnorePlugin({
+        resourceRegExp: /[\\/]test[\\/]/,
+        contextRegExp: /node_modules[\\/](thread-stream|pino|pino-abstract-transport|sonic-boom)/,
+      }),
+    )
 
     return webpackConfig
   },
@@ -33,4 +55,4 @@ const nextConfig = {
   redirects,
 }
 
-export default withPayload(nextConfig, { devBundleServerPackages: false })
+export default withPayload(nextConfig)

@@ -78,6 +78,7 @@ export interface Config {
     quotes: Quote;
     inquiries: Inquiry;
     contacts: Contact;
+    notifications: Notification;
     media: Media;
     categories: Category;
     users: User;
@@ -109,6 +110,7 @@ export interface Config {
     quotes: QuotesSelect<false> | QuotesSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
     contacts: ContactsSelect<false> | ContactsSelect<true>;
+    notifications: NotificationsSelect<false> | NotificationsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -1087,6 +1089,28 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "notifications".
+ */
+export interface Notification {
+  id: string;
+  type: 'quote' | 'contact' | 'inquiry' | 'testimonial' | 'order' | 'system';
+  message: string;
+  details?: string | null;
+  /**
+   * The collection this notification relates to (e.g., quotes, contacts)
+   */
+  relatedCollection?: string | null;
+  /**
+   * The ID of the related document
+   */
+  relatedId?: string | null;
+  isRead?: boolean | null;
+  priority?: ('low' | 'normal' | 'high' | 'urgent') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1318,6 +1342,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contacts';
         value: string | Contact;
+      } | null)
+    | ({
+        relationTo: 'notifications';
+        value: string | Notification;
       } | null)
     | ({
         relationTo: 'media';
@@ -1763,6 +1791,21 @@ export interface ContactsSelect<T extends boolean = true> {
   message?: T;
   status?: T;
   notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "notifications_select".
+ */
+export interface NotificationsSelect<T extends boolean = true> {
+  type?: T;
+  message?: T;
+  details?: T;
+  relatedCollection?: T;
+  relatedId?: T;
+  isRead?: T;
+  priority?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -12,6 +12,7 @@ export const Inquiries: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: 'Customer Requests',
     defaultColumns: [
       'fullName',
       'companyName',

@@ -2,6 +2,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { NextResponse } from 'next/server'
 import { sendInquiryNotification } from '@/lib/email'
+import { createNotification } from '@/lib/notifications'
 
 export async function POST(request: Request) {
   try {
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
     const payload = await getPayload({ config: configPromise })
 
     // Save to database
-    await payload.create({
+    const inquiryResult = await payload.create({
       collection: 'inquiries',
       data: {
         fullName,
@@ -29,6 +30,16 @@ export async function POST(request: Request) {
         message: message || undefined,
         status: 'new',
       },
+    })
+
+    // Create notification
+    await createNotification({
+      type: 'inquiry',
+      message: `New ${messageType} inquiry from ${companyName}`,
+      details: `Product: ${product} - Country: ${country}`,
+      relatedCollection: 'inquiries',
+      relatedId: inquiryResult.id,
+      priority: 'high',
     })
 
     // Send email notification

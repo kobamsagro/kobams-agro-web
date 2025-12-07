@@ -84,7 +84,7 @@ export default function FAQPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Live Chat</h3>
               <p className="text-gray-600 text-sm mb-6">Get instant help from our team</p>
-              <Link href="wa.me/12508794154" target="_blank" rel="noopener noreferrer">
+              <Link href="/wa.me/12508794154" target="_blank" rel="noopener noreferrer">
               <button className="inline-block bg-[#184504] hover:bg-[#2d5f3f] text-white font-semibold px-6 py-3 rounded-lg transition-colors">
                
                 Start Chat
