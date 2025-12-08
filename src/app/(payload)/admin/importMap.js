@@ -25,7 +25,9 @@ import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } f
 import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
 import { RowLabel as RowLabel_1f6ff6ff633e3695d348f4f3c58f1466 } from '@/Footer/RowLabel'
 import { default as default_8db3a8a9300919cc1a7d91ca4a2c35e3 } from '@/components/AdminNotifications'
-import { default as default_9c86737f01a814ba19a13373e320b480 } from '@/components/NotificationsDashboard'
+import { default as default_6d0fe59af291eda0374bdc5d5f9a5829 } from '@/components/CustomDashboard'
+import { default as default_f3ff002b6f36acae51809bbabb6c0631 } from '@/components/AdminStyles'
+import { default as default_9d596c84849fe434056b6569856241b2 } from '@/components/CustomLogin'
 import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e } from '@payloadcms/storage-vercel-blob/client'
 
 export const importMap = {
@@ -56,6 +58,8 @@ export const importMap = {
   "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
   "@/Footer/RowLabel#RowLabel": RowLabel_1f6ff6ff633e3695d348f4f3c58f1466,
   "@/components/AdminNotifications#default": default_8db3a8a9300919cc1a7d91ca4a2c35e3,
-  "@/components/NotificationsDashboard#default": default_9c86737f01a814ba19a13373e320b480,
+  "@/components/CustomDashboard#default": default_6d0fe59af291eda0374bdc5d5f9a5829,
+  "@/components/AdminStyles#default": default_f3ff002b6f36acae51809bbabb6c0631,
+  "@/components/CustomLogin#default": default_9d596c84849fe434056b6569856241b2,
   "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e
 }

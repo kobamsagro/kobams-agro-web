@@ -36,9 +36,11 @@ export default buildConfig({
   admin: {
     components: {
       // Custom notification dashboard
-      beforeDashboard: ['@/components/NotificationsDashboard'],
+      beforeDashboard: ['@/components/CustomDashboard'],
       // Add notification badge to admin header
       afterNavLinks: ['@/components/AdminNotifications'],
+      // Inject custom admin styles and login enhancements
+      beforeLogin: ['@/components/AdminStyles', '@/components/CustomLogin'],
     },
     importMap: {
       baseDir: path.resolve(dirname),
