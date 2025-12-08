@@ -13,7 +13,7 @@ export const Services: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    group: 'Products & Services',
+    group: 'Content',
     defaultColumns: ['title', 'order', 'updatedAt'],
     useAsTitle: 'title',
   },
