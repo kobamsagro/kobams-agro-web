@@ -18,7 +18,7 @@ export const Media: CollectionConfig = {
   slug: 'media',
   folders: true,
   admin: {
-    group: 'Media',
+    group: 'System',
   },
   access: {
     create: authenticated,
