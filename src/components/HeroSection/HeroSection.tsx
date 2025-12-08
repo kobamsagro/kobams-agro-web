@@ -11,7 +11,7 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const motionValue = useMotionValue(0)
   const springValue = useSpring(motionValue, { duration: 2000 })
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
 
   useEffect(() => {
     if (isInView) {
