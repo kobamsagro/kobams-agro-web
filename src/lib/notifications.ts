@@ -78,3 +78,20 @@ export async function getUnreadNotifications() {
     return []
   }
 }
+
+export async function deleteNotification(notificationId: string) {
+  try {
+    console.log('🗑️ Deleting notification:', notificationId)
+    const payload = await getPayload({ config: configPromise })
+
+    await payload.delete({
+      collection: 'notifications' as any,
+      id: notificationId,
+    })
+
+    console.log('✅ Notification deleted successfully')
+  } catch (error) {
+    console.error('❌ Failed to delete notification:', error)
+    throw error
+  }
+}
