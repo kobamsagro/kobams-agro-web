@@ -184,7 +184,7 @@ export default function CustomDashboard() {
       {/* Recent Activities */}
       <div className="dashboard__card" style={{ width: '100%' }}>
         <div className="activity-header">
-          <h3 style={{ marginBottom: '10px'}}>Recent Activities</h3>
+          <h3 style={{ marginBottom: '10px', fontSize: '26px'}}>Recent Activities</h3>
           <div className="activity-controls">
             {selectedActivities.size > 0 && (
               <button onClick={handleMarkSelectedAsRead} className="btn-mark-read">
