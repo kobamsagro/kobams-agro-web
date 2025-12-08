@@ -120,6 +120,45 @@ export default function CustomDashboard() {
     }
   }
 
+  const deleteActivities = async (activityIds: string[]) => {
+    try {
+      const promises = activityIds.map((id) =>
+        fetch(`/api/notifications/${id}/delete`, { method: 'DELETE' }),
+      )
+      await Promise.all(promises)
+
+      // Update local state - remove deleted activities
+      setActivities((prev) => prev.filter((activity) => !activityIds.includes(activity.id)))
+      setSelectedActivities(new Set())
+
+      // Refresh if current page is now empty
+      if (activities.length - activityIds.length === 0 && currentPage > 1) {
+        setCurrentPage((prev) => prev - 1)
+      } else {
+        fetchRecentActivities()
+      }
+    } catch (error) {
+      console.error('Failed to delete activities:', error)
+    }
+  }
+
+  const handleDeleteSelected = () => {
+    if (selectedActivities.size > 0) {
+      if (confirm(`Are you sure you want to delete ${selectedActivities.size} activities?`)) {
+        deleteActivities(Array.from(selectedActivities))
+      }
+    }
+  }
+
+  const handleDeleteRead = () => {
+    const readActivityIds = activities.filter((a) => a.isRead).map((a) => a.id)
+    if (readActivityIds.length > 0) {
+      if (confirm(`Are you sure you want to delete ${readActivityIds.length} read activities?`)) {
+        deleteActivities(readActivityIds)
+      }
+    }
+  }
+
   const getActivityIcon = (type: string) => {
     switch (type) {
       case 'quote':
@@ -184,11 +223,75 @@ export default function CustomDashboard() {
       {/* Recent Activities */}
       <div className="dashboard__card" style={{ width: '100%' }}>
         <div className="activity-header">
-          <h3 style={{ marginBottom: '10px', fontSize: '26px'}}>Recent Activities</h3>
-          <div className="activity-controls">
+          <h3 style={{ marginBottom: '10px', fontSize: '26px' }}>Recent Activities</h3>
+          <div
+            className="activity-controls"
+            style={{
+              display: 'flex',
+              gap: '10px',
+              alignItems: 'center',
+              marginTop: '10px',
+              marginBottom: '10px',
+            }}
+          >
             {selectedActivities.size > 0 && (
-              <button onClick={handleMarkSelectedAsRead} className="btn-mark-read">
-                Mark {selectedActivities.size} as Read
+              <>
+                <button
+                  onClick={handleMarkSelectedAsRead}
+                  style={{
+                    padding: '8px 16px',
+                    backgroundColor: '#28a745',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    fontWeight: '500',
+                    fontSize: '14px',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#218838')}
+                  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#28a745')}
+                >
+                  Mark {selectedActivities.size} as Read
+                </button>
+                <button
+                  onClick={handleDeleteSelected}
+                  style={{
+                    padding: '8px 16px',
+                    backgroundColor: '#dc3545',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    fontWeight: '500',
+                    fontSize: '14px',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#c82333')}
+                  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#dc3545')}
+                >
+                  Delete {selectedActivities.size}
+                </button>
+              </>
+            )}
+            {activities.some((a) => a.isRead) && (
+              <button
+                onClick={handleDeleteRead}
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#6c757d',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  fontWeight: '500',
+                  fontSize: '14px',
+                  transition: 'all 0.2s',
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#5a6268')}
+                onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#6c757d')}
+              >
+                Delete All Read
               </button>
             )}
           </div>
@@ -382,23 +485,57 @@ export default function CustomDashboard() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="activity-pagination">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '1rem',
+              marginTop: '1.5rem',
+              paddingTop: '1rem',
+              borderTop: '1px solid #e5e7eb',
+            }}
+          >
             <button
               onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
               disabled={currentPage === 1}
-              className="pagination-btn"
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: currentPage === 1 ? '#f3f4f6' : '#155724',
+                color: currentPage === 1 ? '#9ca3af' : '#ffffff',
+                border: 'none',
+                borderRadius: '0.375rem',
+                cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                fontWeight: '500',
+                transition: 'all 0.2s',
+              }}
             >
               Previous
             </button>
 
-            <div className="pagination-info">
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: '#6b7280',
+                fontWeight: '500',
+              }}
+            >
               Page {currentPage} of {totalPages}
             </div>
 
             <button
               onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
               disabled={currentPage === totalPages}
-              className="pagination-btn"
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: currentPage === totalPages ? '#f3f4f6' : '#155724',
+                color: currentPage === totalPages ? '#9ca3af' : '#ffffff',
+                border: 'none',
+                borderRadius: '0.375rem',
+                cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+                fontWeight: '500',
+                transition: 'all 0.2s',
+              }}
             >
               Next
             </button>

@@ -73,7 +73,7 @@ export default function AboutUs({ teamMembers = [] }: AboutUsProps) {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-[#2d4a1f] mb-8">Core Focus Areas</h2>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-6">
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-[#184504] rounded-full flex items-center justify-center text-white font-bold">
                 <svg
