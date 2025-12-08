@@ -54,7 +54,9 @@ export default function ContactInfo() {
           </div>
           <div>
             <h3 className="font-bold text-gray-900 mb-2">Email Us</h3>
-            <p className="text-gray-700">info@kobamsagrosolution.com</p>
+            <p className="text-gray-700">info@kobamsagrosolutions.com</p>
+            <p className="text-gray-700"> kobamsagrosolutions@gmail.com</p>
+
           </div>
         </div>
 
