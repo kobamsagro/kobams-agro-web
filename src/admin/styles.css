@@ -218,3 +218,37 @@ ride Default Payload Dashboard Styles */
   --theme-warning-500: #FFCB05;
   --theme-warning-600: #E5B520;
 }
+
+/* Password field with eye icon */
+.password-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field-wrapper input {
+  padding-right: 40px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #184504;
+}
+
+.password-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+}

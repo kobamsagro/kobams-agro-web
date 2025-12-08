@@ -118,15 +118,7 @@ export default function AdminStyles() {
         background: rgba(255, 203, 5, 0.1) !important;
       }
 
-      .btn--style-primary {
-        background: #184504 !important;
-        border-color: #184504 !important;
-      }
 
-      .btn--style-primary:hover {
-        background: #2d5f3f !important;
-        border-color: #2d5f3f !important;
-      }
 
       /* Enhanced Activity Table Styles */
       .activity-header {
