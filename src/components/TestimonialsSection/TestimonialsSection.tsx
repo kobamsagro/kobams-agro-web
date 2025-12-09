@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import type { Testimonial as TestimonialType } from '@/payload-types'
 import {
   Dialog,
@@ -52,7 +52,8 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
     e.preventDefault()
     setIsSubmitting(true)
 
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const formData = new FormData(form)
 
     try {
       const response = await fetch('/api/testimonials', {
@@ -62,29 +63,32 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
 
       const data = await response.json()
 
-      if (response.ok) {
-        toast.success(
-          data.message || 'Thank you! Your testimonial has been published successfully.',
-        )
-        e.currentTarget.reset()
-        setShowForm(false)
-        // Reload the page after 2 seconds to show the new testimonial
-        setTimeout(() => {
-          window.location.reload()
-        }, 5000)
-      } else {
+      if (!response.ok || data.success === false) {
+        // Handle error
         toast.error(data.error || 'Failed to submit testimonial. Please try again.')
+        setIsSubmitting(false)
+        return
       }
+
+      // Success - reset form first
+      form.reset()
+      // Close dialog
+      setShowForm(false)
+      // Show success toast
+      toast.success(data.message || 'Thank you! Your testimonial has been published successfully.')
+      // Reload the page after 3 seconds to show the new testimonial
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000)
     } catch (error) {
+      console.error('Testimonial submission error:', error)
       toast.error('An error occurred. Please try again later.')
-    } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
     <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
-      <Toaster position="top-center" />
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">

@@ -70,7 +70,7 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.button
-              className="bg-yellow-400 hover:bg-yellow-500 text-[#184504] font-semibold px-8 py-4 rounded-lg transition-colors"
+              className="bg-yellow-400 hover:bg-yellow-500 text-[#184504] font-semibold px-8 py-4 rounded-xl transition-colors"
               variants={fadeInUp}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -81,7 +81,7 @@ export default function HeroSection() {
             {/* Stats */}
             <motion.div className="flex gap-4 sm:gap-8 md:gap-16 pt-8" variants={fadeInUp}>
               <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-                <Counter value={500} suffix="+" />
+                <Counter value={200} suffix="+" />
                 <div className="text-white text-xs sm:text-sm md:text-base">Farmers</div>
               </motion.div>
               <motion.div
@@ -89,7 +89,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                <Counter value={500} suffix="+" />
+                <Counter value={10} suffix="+" />
                 <div className="text-white text-xs sm:text-sm md:text-base">Products</div>
               </motion.div>
               <motion.div
@@ -97,8 +97,8 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                <Counter value={50} suffix="+" />
-                <div className="text-white text-xs sm:text-sm md:text-base">Countries</div>
+                <Counter value={5100000} suffix="+" />
+                <div className="text-white text-xs sm:text-sm md:text-base">Hectares</div>
               </motion.div>
             </motion.div>
           </motion.div>
