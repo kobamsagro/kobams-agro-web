@@ -95,9 +95,11 @@ export default function ExportArticlesList({ articles }: ExportArticlesListProps
               <p className="text-gray-200 text-sm mb-4">
                 Our export specialists are ready to guide you through the entire export process
               </p>
+              <Link href="/contact">
               <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-[#1a4d2e] font-semibold py-3 rounded-lg transition-colors">
                 Talk to an Expert
               </button>
+              </Link>
             </div>
           </aside>
         </div>
