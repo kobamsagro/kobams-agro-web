@@ -53,19 +53,22 @@ export async function POST(request: Request) {
       priority: 'low',
     })
 
-    console.log('Testimonial created successfully:', result.id)
+    console.log('✅ Testimonial created successfully:', result.id)
 
     return NextResponse.json(
       {
         success: true,
         message: 'Thank you! Your testimonial has been published successfully.',
       },
-      { status: 201 },
+      { status: 200 },
     )
   } catch (error) {
-    console.error('Error submitting testimonial:', error)
+    console.error('❌ Error submitting testimonial:', error)
     return NextResponse.json(
-      { error: 'Failed to submit testimonial. Please try again.' },
+      {
+        success: false,
+        error: 'Failed to submit testimonial. Please try again.',
+      },
       { status: 500 },
     )
   }

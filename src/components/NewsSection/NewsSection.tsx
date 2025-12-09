@@ -22,7 +22,7 @@ export default function NewsSection({ posts }: NewsSectionProps) {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Latest News & Articles</h2>
           <Link
             href="/blog"
-            className="bg-yellow-400 hover:bg-yellow-500 text-[#1a4d2e] font-semibold px-6 py-3 rounded-lg transition-colors"
+            className="bg-yellow-400 hover:bg-yellow-500 text-[#1a4d2e] font-semibold px-2 py-2 lg:px-6 lg:py-3 rounded-lg transition-colors"
           >
             See More News
           </Link>

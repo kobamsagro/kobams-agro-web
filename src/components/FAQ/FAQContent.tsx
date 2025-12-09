@@ -34,7 +34,7 @@ Note: Kobam's is not liable for damage to goods shipped using the client's nomin
     {
       question: `How do I contact Kobam's customer service?`,
       answer:
-        'Absolutely. We are fully equipped for B2B bulk export and international distribution.',
+        'You can reach us via email, phone, or our website contact form. Response time is typically within 24–48 hours.',
     },
   ],
   shipping: [

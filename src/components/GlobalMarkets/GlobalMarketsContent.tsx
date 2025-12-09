@@ -55,7 +55,7 @@ export default function GlobalMarketsContent() {
   const regionalHubs = [
     {
       title: 'Major Seaports',
-      description: `Lagos Port Complex Tin Can Island Apapa Port - Nigeria&apos;s primary export gateways.`,
+      description: `Lagos Port Complex Tin Can Island Apapa Port - Nigeria primary export gateways.`,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
