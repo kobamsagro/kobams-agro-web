@@ -124,7 +124,6 @@ export default function NewsSection({ posts }: NewsSectionProps) {
           </div>
         ) : (
           <div className="text-center py-16 bg-gray-50 rounded-2xl">
-           
             <h3 className="text-xl font-semibold text-gray-700 mb-2">No Articles Yet</h3>
             <p className="text-gray-500 mb-6">
               Check back soon for the latest news and insights from the agricultural industry
