@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
+import { revalidatePartner, revalidateDeletedPartner } from './Partners/hooks/revalidatePartner'
 
 export const Partners: CollectionConfig = {
   slug: 'partners',
@@ -10,6 +11,10 @@ export const Partners: CollectionConfig = {
     delete: authenticated,
     read: anyone,
     update: authenticated,
+  },
+  hooks: {
+    afterChange: [revalidatePartner],
+    afterDelete: [revalidateDeletedPartner],
   },
   admin: {
     group: 'Content',
