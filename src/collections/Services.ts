@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 import { slugField } from 'payload'
+import { revalidateService, revalidateDeletedService } from './Services/hooks/revalidateService'
 
 export const Services: CollectionConfig = {
   slug: 'services',
@@ -108,4 +109,8 @@ export const Services: CollectionConfig = {
       },
     },
   ],
+  hooks: {
+    afterChange: [revalidateService],
+    afterDelete: [revalidateDeletedService],
+  },
 }

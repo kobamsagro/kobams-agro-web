@@ -6,15 +6,27 @@ import type { ExportArticle } from '../../../payload-types'
 
 export const revalidateExportArticle: CollectionAfterChangeHook<ExportArticle> = async ({
   doc,
+  previousDoc,
   req: { payload, context },
 }) => {
   if (!context.disableRevalidate) {
     if (doc.status === 'published') {
-      const path = '/export-guide'
+      const guidePath = '/export-guide'
+      const articlePath = `/export-guide/${doc.slug}`
 
-      payload.logger.info(`Revalidating export guide page at path: ${path}`)
+      payload.logger.info(`Revalidating export guide at paths: ${guidePath}, ${articlePath}`)
 
-      revalidatePath(path)
+      revalidatePath(guidePath)
+      revalidatePath(articlePath)
+    }
+
+    // If the article was previously published, we need to revalidate the old path
+    if (previousDoc?.status === 'published' && doc.status !== 'published') {
+      const oldPath = `/export-guide/${previousDoc.slug}`
+
+      payload.logger.info(`Revalidating old export article at path: ${oldPath}`)
+
+      revalidatePath(oldPath)
     }
   }
 
@@ -26,11 +38,15 @@ export const revalidateExportArticleDelete: CollectionAfterDeleteHook<ExportArti
   req: { context, payload },
 }) => {
   if (!context.disableRevalidate) {
-    const path = '/export-guide'
+    const guidePath = '/export-guide'
+    const articlePath = `/export-guide/${doc?.slug}`
 
-    payload.logger.info(`Revalidating export guide page after delete`)
+    payload.logger.info(
+      `Revalidating export guide after delete at paths: ${guidePath}, ${articlePath}`,
+    )
 
-    revalidatePath(path)
+    revalidatePath(guidePath)
+    revalidatePath(articlePath)
   }
 
   return doc
