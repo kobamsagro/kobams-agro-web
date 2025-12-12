@@ -56,7 +56,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
     const formData = new FormData(form)
 
     try {
-      const response = await fetch('/api/testimonials', {
+      const response = await fetch('/api/testimonials/submit', {
         method: 'POST',
         body: formData,
       })
