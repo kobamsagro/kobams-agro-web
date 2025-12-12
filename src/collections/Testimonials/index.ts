@@ -8,7 +8,7 @@ export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
   access: {
     create: anyone, // Allow anyone to submit testimonials
-    delete: authenticated,
+    delete: authenticated, // Only authenticated users can delete
     read: anyone,
     update: authenticated,
   },
