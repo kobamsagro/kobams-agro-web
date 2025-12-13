@@ -146,7 +146,7 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
               </span>{' '}
               Quality Specifications
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {product.specifications.map((spec, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg shadow-sm text-center">
                   <p className="text-gray-600 text-sm mb-2">{spec.attribute}</p>
@@ -169,7 +169,7 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
             <div className="grid md:grid-cols-3 gap-6">
               {product.packagingOptions.map((pkg, index) => (
                 <div key={index} className="bg-gray-50 p-8 rounded-lg text-center">
-                  <div className="text-4xl mb-4">
+                  {/* <div className="text-4xl mb-4">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -179,7 +179,7 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
                     >
                       <path d="M3 10H2V4.00293C2 3.44903 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.43788 22 4.00293V10H21V20.0015C21 20.553 20.5551 21 20.0066 21H3.9934C3.44476 21 3 20.5525 3 20.0015V10ZM19 10H5V19H19V10ZM4 5V8H20V5H4ZM9 12H15V14H9V12Z"></path>
                     </svg>
-                  </div>
+                  </div> */}
                   <h3 className="font-bold text-xl mb-2">{pkg.type}</h3>
                   {pkg.weight && <p className="text-gray-600 mb-2">{pkg.weight}</p>}
                   {pkg.description && <p className="text-sm text-gray-500">{pkg.description}</p>}
