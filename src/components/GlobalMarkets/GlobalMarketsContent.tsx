@@ -160,7 +160,7 @@ export default function GlobalMarketsContent() {
       </section>
 
       {/* Countries Served */}
-      <section className="py-16 bg-white">
+      <section id="countries-served" className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-12"
@@ -370,7 +370,7 @@ export default function GlobalMarketsContent() {
       </section>
 
       {/* Port & Logistics Network */}
-      <section className="py-16 bg-[#FAF8F3]">
+      <section id="port-logistics" className="py-16 bg-[#FAF8F3]">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-12"
@@ -639,7 +639,7 @@ export default function GlobalMarketsContent() {
       </section> */}
 
       {/* Compliance Certifications */}
-      <section className="py-16 bg-[#FAF8F3]">
+      <section id="compliance-certifications" className="py-16 bg-[#FAF8F3]">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-12"

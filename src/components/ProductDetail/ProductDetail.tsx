@@ -65,7 +65,7 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
                   Home
                 </Link>
                 <span>/</span>
-                <Link href="/#products" className="hover:text-black">
+                <Link href="/products" className="hover:text-black">
                   Products
                 </Link>
                 <span>/</span>

@@ -22,20 +22,17 @@ export default function ExportProcessContent() {
     },
     {
       title: 'Logistics Planning',
-      description:
-        'Arrange transportation, insurance, and shipping schedules',
+      description: 'Arrange transportation, insurance, and shipping schedules',
       icon: '3',
     },
     {
       title: 'Customs Clearance',
-      description:
-        'Handle export customs procedures and compliance requirements',
+      description: 'Handle export customs procedures and compliance requirements',
       icon: '4',
     },
     {
       title: 'Shipment Tracking',
-      description:
-        'Monitor shipment progress and coordinate with buyers',
+      description: 'Monitor shipment progress and coordinate with buyers',
       icon: '5',
     },
   ]
@@ -44,22 +41,18 @@ export default function ExportProcessContent() {
     {
       title: 'ISO 22000',
       description: 'Food Safety Management',
-      
     },
     {
       title: 'GAP',
       description: 'Good Agricultural Practices',
-      
     },
     {
       title: 'EQC',
       description: 'Export Quality Compliance',
-      
     },
     {
       title: 'SFI',
       description: 'Sustainable Farming Initiative',
-     
     },
   ]
 
@@ -98,7 +91,15 @@ export default function ExportProcessContent() {
       title: 'Insulated Containers',
       description: 'Temperature - controlled packaging for perishable items',
       icon: (
-       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="rgba(255,255,255,1)"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z"></path></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          fill="rgba(255,255,255,1)"
+        >
+          <path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z"></path>
+        </svg>
       ),
     },
     {
@@ -182,7 +183,7 @@ export default function ExportProcessContent() {
   const documentsChecklist = [
     { name: 'Commercial Invoice' },
     { name: 'Bill of Lading / Air Waybill' },
-    { name: 'Certificate of Origin'},
+    { name: 'Certificate of Origin' },
     { name: 'Insurance Certificate' },
   ]
 
@@ -213,7 +214,7 @@ export default function ExportProcessContent() {
       </section>
 
       {/* Our Export Flow */}
-      <section className="py-16 bg-white">
+      <section id="export-flow" className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-12"
@@ -251,7 +252,7 @@ export default function ExportProcessContent() {
       </section>
 
       {/* Quality & Compliance */}
-      <section className="py-16 bg-gray-50">
+      <section id="quality-compliance" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-12"
@@ -302,7 +303,7 @@ export default function ExportProcessContent() {
       </section>
 
       {/* Packaging & Delivery Standards */}
-      <section className="py-16 bg-[#FAF8F3]">
+      <section id="packaging-delivery" className="py-16 bg-[#FAF8F3]">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-12"
@@ -380,7 +381,7 @@ export default function ExportProcessContent() {
       </section>
 
       {/* Shipping & Documentation */}
-      <section className="py-16 bg-gray-50">
+      <section id="shipping-documentation" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-12"
