@@ -43,8 +43,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
   /* Storing the value in a useState to avoid hydration errors */
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [theme, setTheme] = useState<string | null>(null)
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false)
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
   const isMobile = useMediaQuery('(max-width: 640px)')
@@ -92,10 +92,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
+  // Close dropdowns on route change
   useEffect(() => {
-    if (headerTheme && headerTheme !== theme) setTheme(headerTheme)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [headerTheme])
+    setProductsDropdownOpen(false)
+    setResourcesDropdownOpen(false)
+  }, [pathname])
 
   return (
     <header className={headerClasses}>
@@ -202,8 +203,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                   About Us
                 </Link>
 
-                
-
                 {/* Resources with submenu */}
                 <div>
                   <button
@@ -277,7 +276,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
             {/* product start */}
 
             <div className="hidden md:flex items-center  space-x-8">
-              <DropdownMenu>
+              <DropdownMenu open={productsDropdownOpen} onOpenChange={setProductsDropdownOpen}>
                 <DropdownMenuTrigger className={getLinkClasses('/products')}>
                   <div className="flex items-center gap-1">
                     Products{' '}
@@ -296,7 +295,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="max-h-[400px] overflow-y-auto">
                   <DropdownMenuItem>
-                    <Link href="/products" className="w-full">
+                    <Link
+                      href="/products"
+                      className="w-full"
+                      onClick={() => setProductsDropdownOpen(false)}
+                    >
                       <span className="text-[16px] font-semibold">View All Products</span>
                     </Link>
                   </DropdownMenuItem>
@@ -304,7 +307,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                   {products && products.length > 0 ? (
                     products.map((product) => (
                       <DropdownMenuItem key={product.id}>
-                        <Link href={`/products/${product.slug}`} className="w-full">
+                        <Link
+                          href={`/products/${product.slug}`}
+                          className="w-full"
+                          onClick={() => setProductsDropdownOpen(false)}
+                        >
                           <span className="text-[16px]">{product.name}</span>
                         </Link>
                       </DropdownMenuItem>
@@ -336,11 +343,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
               </Link>
             </div>
             {/* about us end */}
-            
+
             <div className="hidden md:flex items-center space-x-8">
               <Link href="/" className={getLinkClasses('/')}>
                 <div className="flex items-center gap-2">
-                  <DropdownMenu>
+                  <DropdownMenu
+                    open={resourcesDropdownOpen}
+                    onOpenChange={setResourcesDropdownOpen}
+                  >
                     <DropdownMenuTrigger>
                       <div className="flex items-center gap-1">
                         Resources{' '}
@@ -357,7 +367,37 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                         </span>
                       </div>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    {/* trial */}
+                    <DropdownMenuContent className="max-h-[400px] overflow-y-auto">
+                      <DropdownMenuItem>
+                        <Link
+                          href="/export-guide"
+                          className="w-full"
+                          onClick={() => setResourcesDropdownOpen(false)}
+                        >
+                          <span className="text-[16px] font-semibold">Export Guide</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Link
+                          href="/blog"
+                          className="w-full"
+                          onClick={() => setResourcesDropdownOpen(false)}
+                        >
+                          <span className="text-[16px] font-semibold">News</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Link
+                          href="/faq"
+                          className="w-full"
+                          onClick={() => setResourcesDropdownOpen(false)}
+                        >
+                          <span className="text-[16px] font-semibold">FAQ</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      {/* trial end */}
+                      {/* <DropdownMenuContent>
                       <DropdownMenuItem>
                         {' '}
                         <Link href="/export-guide" className={getLinkClasses('/export-guide')}>
@@ -373,7 +413,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, products = [] 
                         <Link href="/faq" className={getLinkClasses('/faq')}>
                           <span className="text-[16px] flex-grow text-right">FAQ</span>
                         </Link>
-                      </DropdownMenuItem>
+                      </DropdownMenuItem> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>

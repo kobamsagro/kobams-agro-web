@@ -169,7 +169,7 @@ export async function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={`/export-process`}
+                  href="/export-process#export-flow"
                   className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
                 >
                   Our Export Flow
@@ -177,7 +177,7 @@ export async function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/export-process`}
+                  href="/export-process#quality-compliance"
                   className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
                 >
                   Quality & Compliance
@@ -185,7 +185,7 @@ export async function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/export-process`}
+                  href="/export-process#packaging-delivery"
                   className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
                 >
                   Packaging & Delivery Standards
@@ -193,7 +193,7 @@ export async function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/export-process`}
+                  href="/export-process#shipping-documentation"
                   className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
                 >
                   Shipping & Documentation
@@ -208,7 +208,7 @@ export async function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={`/global-markets`}
+                  href="/global-markets#countries-served"
                   className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
                 >
                   Countries Served
@@ -216,7 +216,7 @@ export async function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/global-markets`}
+                  href="/global-markets#port-logistics"
                   className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
                 >
                   Port & Logistics Network
@@ -224,7 +224,7 @@ export async function Footer() {
               </li>
               <li>
                 <Link
-                  href={`/global-markets`}
+                  href="/global-markets#compliance-certifications"
                   className="text-gray-300 hover:text-yellow-400 transition-colors text-sm block"
                 >
                   Compliance Certifications for Regions
